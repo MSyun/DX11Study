@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\DelayFunction">
+      <UniqueIdentifier>{f0aa07f0-04c7-43d6-9e47-402b01836f4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework">
+      <UniqueIdentifier>{364a7342-b42d-4310-bddd-47f4b16d3e49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\DelayFunction\Collection">
+      <UniqueIdentifier>{c1fba621-3c3b-4d90-8434-a09c0d05473b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\AnimationCurve">
+      <UniqueIdentifier>{a1661ec4-9e32-4ddc-b7ff-b8e2ba0550fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Application">
+      <UniqueIdentifier>{445e785d-157d-40de-9698-8d9bbe00129c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Application\DirectX">
+      <UniqueIdentifier>{1face33e-b152-40c4-af8e-336e5d39385c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Convert">
+      <UniqueIdentifier>{d360a84a-9566-4a04-a0b4-cbf42a23dcf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\CPPEvent">
+      <UniqueIdentifier>{b6ed0d7b-fe31-48a0-bb57-615990a713ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Debug">
+      <UniqueIdentifier>{c759ec72-1a44-406b-a884-a6840ebe899d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Delegate">
+      <UniqueIdentifier>{a386f4db-b89c-43d7-972a-905551863918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\DirectX">
+      <UniqueIdentifier>{331d32e9-75bf-4fc1-aafd-5263fe29eb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Screen">
+      <UniqueIdentifier>{92856046-8c1e-4298-ba08-642f6806298f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Singleton">
+      <UniqueIdentifier>{9884ac27-f916-4a80-abc0-209c0cd37920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Time">
+      <UniqueIdentifier>{710b30d1-ffbf-4a8d-a40c-66ab1d8fb18d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Utility">
+      <UniqueIdentifier>{67cd3926-d1a8-4096-9416-50ac249b1da4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Vector">
+      <UniqueIdentifier>{c4431143-5b8a-47d0-ae40-bd7e2c9997b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Utility\Math">
+      <UniqueIdentifier>{96b49efa-7294-4360-8fd7-8d671cfa3bf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Utility\System">
+      <UniqueIdentifier>{9b9384b5-84f2-46a3-9c84-0677f59d50db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Vector\Vector2">
+      <UniqueIdentifier>{2c5d9074-0858-41bb-ac30-e2e36703e406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Vector\Vector3">
+      <UniqueIdentifier>{fc3f6f59-6f37-4d27-b1e6-c110b8d16ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Vector\Vector4">
+      <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\DelayFunction\DelayFunction.cpp">
+      <Filter>ソース ファイル\DelayFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\DelayFunction\Collection\DelayFunctionCollection.cpp">
+      <Filter>ソース ファイル\DelayFunction\Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.cpp">
+      <Filter>ソース ファイル\framework\AnimationCurve</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Application\Application.cpp">
+      <Filter>ソース ファイル\framework\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Application\DirectX\DXApplication.cpp">
+      <Filter>ソース ファイル\framework\Application\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Debug\Debug.cpp">
+      <Filter>ソース ファイル\framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Screen\Screen.cpp">
+      <Filter>ソース ファイル\framework\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Time\Time.cpp">
+      <Filter>ソース ファイル\framework\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp">
+      <Filter>ソース ファイル\framework\Utility\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Vector\Vector2\Vector2.cpp">
+      <Filter>ソース ファイル\framework\Vector\Vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Vector\Vector3\Vector3.cpp">
+      <Filter>ソース ファイル\framework\Vector\Vector3</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\GameFramework\DelayFunction\DelayFunction.h">
+      <Filter>ソース ファイル\DelayFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\DelayFunction\Collection\DelayFunctionCollection.h">
+      <Filter>ソース ファイル\DelayFunction\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.h">
+      <Filter>ソース ファイル\framework\AnimationCurve</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Application\Application.h">
+      <Filter>ソース ファイル\framework\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Application\DirectX\DXApplication.h">
+      <Filter>ソース ファイル\framework\Application\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Convert\Convert.h">
+      <Filter>ソース ファイル\framework\Convert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\CPPEvent\CPPEvent.h">
+      <Filter>ソース ファイル\framework\CPPEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Debug\Debug.h">
+      <Filter>ソース ファイル\framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Delegate\Delegate.h">
+      <Filter>ソース ファイル\framework\Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Delegate\IDelegate.h">
+      <Filter>ソース ファイル\framework\Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\DirectX\DXBase.h">
+      <Filter>ソース ファイル\framework\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Screen\Screen.h">
+      <Filter>ソース ファイル\framework\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Singleton\Singleton.h">
+      <Filter>ソース ファイル\framework\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Time\Time.h">
+      <Filter>ソース ファイル\framework\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Utility\System\SystemUtility.h">
+      <Filter>ソース ファイル\framework\Utility\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Utility\Math\MathUtility.h">
+      <Filter>ソース ファイル\framework\Utility\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Vector\Vector2\Vector2.h">
+      <Filter>ソース ファイル\framework\Vector\Vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Vector\Vector3\Vector3.h">
+      <Filter>ソース ファイル\framework\Vector\Vector3</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
