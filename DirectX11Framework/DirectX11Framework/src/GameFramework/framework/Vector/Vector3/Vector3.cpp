@@ -1,4 +1,4 @@
-// 2Dベクトル
+// 3Dベクトル
 // 2017. 1.29	プログラム作成
 // author		SyunMizuno
 
@@ -112,7 +112,7 @@ Vector3 Vector3::operator /(const Vector3& vec) const {
 	else				v3.x = this->x / vec.x;
 	if (vec.y == 0.0f)	v3.y = this->y;
 	else				v3.y = this->y / vec.y;
-	if (vec.y == 0.0f)	v3.z = this->z;
+	if (vec.z == 0.0f)	v3.z = this->z;
 	else				v3.z = this->z / vec.z;
 	return v3;
 }

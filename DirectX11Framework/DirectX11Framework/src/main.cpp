@@ -6,6 +6,7 @@
 #include	<crtdbg.h>
 #include	<Windows.h>
 #include	"GameFramework/framework/Application/DirectX/DXApplication.h"
+#include	"GameFramework/framework/DirectX/DX11Base.h"
 
 
 //************************************************************
@@ -26,8 +27,8 @@ int APIENTRY WinMain(
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	g_pApp = new DXApplication(1280, 720, true);
-	//g_pApp->RegistDXObj(new ActionGameDX9(g_pApp));
-	//g_pApp->Run(hInstance);
+	g_pApp->RegistDXObj(new DX11Base(g_pApp));
+	g_pApp->Run(hInstance);
 	delete g_pApp;
 
 	return 0;

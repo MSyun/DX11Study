@@ -152,6 +152,7 @@
     <ClCompile Include="src\GameFramework\framework\Application\Application.cpp" />
     <ClCompile Include="src\GameFramework\framework\Application\DirectX\DXApplication.cpp" />
     <ClCompile Include="src\GameFramework\framework\Debug\Debug.cpp" />
+    <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp" />
     <ClCompile Include="src\GameFramework\framework\Screen\Screen.cpp" />
     <ClCompile Include="src\GameFramework\framework\Time\Time.cpp" />
     <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="src\GameFramework\framework\Debug\Debug.h" />
     <ClInclude Include="src\GameFramework\framework\Delegate\Delegate.h" />
     <ClInclude Include="src\GameFramework\framework\Delegate\IDelegate.h" />
+    <ClInclude Include="src\GameFramework\framework\DirectX\DX11Base.h" />
     <ClInclude Include="src\GameFramework\framework\DirectX\DXBase.h" />
     <ClInclude Include="src\GameFramework\framework\Screen\Screen.h" />
     <ClInclude Include="src\GameFramework\framework\Singleton\Singleton.h" />

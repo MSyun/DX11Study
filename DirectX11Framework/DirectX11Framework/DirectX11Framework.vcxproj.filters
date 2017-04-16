@@ -76,6 +76,9 @@
     <Filter Include="ソース ファイル\framework\Vector\Vector4">
       <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\framework\DirectX\Ver.11">
+      <UniqueIdentifier>{fcedbae2-9f8d-42d9-83c4-d87794984113}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -113,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Vector\Vector3\Vector3.cpp">
       <Filter>ソース ファイル\framework\Vector\Vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp">
+      <Filter>ソース ファイル\framework\DirectX\Ver.11</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Vector\Vector3\Vector3.h">
       <Filter>ソース ファイル\framework\Vector\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\DirectX\DX11Base.h">
+      <Filter>ソース ファイル\framework\DirectX\Ver.11</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

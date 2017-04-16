@@ -33,11 +33,6 @@ public:
 	virtual HRESULT ChangeWindowSize() { return S_OK; }	// サイズの変更
 	virtual void ChangeDisplayMode() {}	// モードの変更
 
-	// グラフィック
-	virtual void GraphicAdd() {}
-	virtual void GraphicAlpha() {}
-	virtual void GraphicSub() {}
-
 protected:
 	virtual HRESULT InvalidateDeviceObjects() { return S_OK; };	// OnLostDevice
 	virtual HRESULT RestoreDeviceObjects() { return S_OK; };	// OnResetDevice

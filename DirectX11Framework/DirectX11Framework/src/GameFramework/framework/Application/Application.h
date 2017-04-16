@@ -14,7 +14,8 @@ protected:
 
 	HINSTANCE		m_hInstance;	// アプリケーションハンドル
 	WNDCLASSEX		m_WndClassEx;	// ウインドウクラス構造体
-									//----- Window関連
+
+	//----- Window関連
 	CREATESTRUCT	m_cs;
 	static HWND m_hWnd;
 
