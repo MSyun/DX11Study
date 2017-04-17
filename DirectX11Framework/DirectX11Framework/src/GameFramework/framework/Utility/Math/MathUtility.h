@@ -15,7 +15,7 @@ int Clamp(int val, int min, int max);
 
 
 // 2つのベクトルからABのなす角度θを求める
-float AngleOf2Vector(Vector3 A, Vector3 B);
+//float AngleOf2Vector(Vector3 A, Vector3 B);
 
 
 // 壁釣りベクトル算出
@@ -44,9 +44,9 @@ Vector2 Bezier(
 //	p3	: point4
 //	t	: 0.0f ～ 1.0f
 */
-Vector3 CatmullRom(
-	Vector3& p0,
-	Vector3& p1,
-	Vector3& p2,
-	Vector3& p3,
-	float t);
+//Vector3 CatmullRom(
+//	Vector3& p0,
+//	Vector3& p1,
+//	Vector3& p2,
+//	Vector3& p3,
+//	float t);

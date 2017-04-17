@@ -7,11 +7,15 @@
 #pragma once
 
 
-#define	DX9
+#define	DX11
 
 
 #ifdef DX9
 #include	<d3dx9.h>
+#include	<d3d9.h>
+#pragma comment ( lib, "d3d9.lib" )		// 描画処理に必要
+#pragma comment ( lib, "d3dx9.lib" )	// [d3d9.lib]の拡張ライブラリ
+#pragma comment ( lib, "dxguid.lib" )	// DirectXコンポーネント使用に必要
 
 typedef	D3DXMATRIX		Matrix;
 typedef	D3DXVECTOR2		Point2;
@@ -24,7 +28,10 @@ typedef D3DXQUATERNION	Quaternion;
 typedef	D3DXCOLOR		Color;
 
 #else
-#include	"Vector/Vector2/Vector2.h"
-#include	"Vector/Vector3/Vector3.h"
+#include	"../Math/Vector/Vector2/Vector2.h"
+#include	"../Math/Vector/Vector3/Vector3.h"
+#include	"../Math/Vector/Vector4/Vector4.h"
+#include	"../Math/Matrix/Matrix4x4/Matrix4x4.h"
+#include	"../Math/Funcs/MathFuncs.h"
 
 #endif

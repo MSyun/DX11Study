@@ -52,15 +52,15 @@ void Debug::Log(const Vector4& val) {
 		" )\n";
 	OutputDebugString(st.c_str());
 }
-void Debug::Log(const Quaternion& qua) {
-	string st = "( " +
-		to_string(qua.x) + ", " +
-		to_string(qua.y) + ", " +
-		to_string(qua.z) + ", " +
-		to_string(qua.w) +
-		" )\n";
-	OutputDebugString(st.c_str());
-}
+//void Debug::Log(const Quaternion& qua) {
+//	string st = "( " +
+//		to_string(qua.x) + ", " +
+//		to_string(qua.y) + ", " +
+//		to_string(qua.z) + ", " +
+//		to_string(qua.w) +
+//		" )\n";
+//	OutputDebugString(st.c_str());
+//}
 #pragma endregion
 
 

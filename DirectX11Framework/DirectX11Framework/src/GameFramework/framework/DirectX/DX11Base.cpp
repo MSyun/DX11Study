@@ -7,7 +7,20 @@
 #include	"../Screen/Screen.h"
 #include	"../Utility/System/SystemUtility.h"
 
+///////////////////////
+// ここから一時的
+#include	"../Convert/Convert.h"
+#include	<d3dcompiler.h>
+struct SimpleVertex {
+	Point3 Pos;
+};
 
+struct SIMPLESHADER_CONSTANT_BUFFER {
+	Matrix mWVP;
+	Vector4 vColor;
+};
+
+///////////////////////
 
 /*									//
 //			コンストラクタ			//
@@ -19,7 +32,13 @@ DX11Base::DX11Base(Application* app) :
 	m_pSwapChain(NULL),
 	m_pRenderTargetView(NULL),
 	m_pDepthStencilView(NULL),
-	m_pDepthStencil(NULL)
+	m_pDepthStencil(NULL),
+	m_pRasterizerState(NULL),
+	m_pVertexLayout(NULL),
+	m_pVertexShader(NULL),
+	m_pPixelShader(NULL),
+	m_pConstantBuffer(NULL),
+	m_pVertexBuffer(NULL)
 {
 
 }
@@ -57,6 +76,12 @@ HRESULT DX11Base::Init() {
 
 	// ラスタライズ設定
 	CreateRasterize();
+
+	// シェーダの作成
+	CreateShader();
+
+	// ポリゴンの作成
+	CreatePolygon();
 
 	return S_OK;
 }
@@ -164,10 +189,137 @@ void DX11Base::CreateRasterize() {
 	ZeroMemory(&rdc, sizeof(rdc));
 	rdc.CullMode = D3D11_CULL_NONE;
 	rdc.FillMode = D3D11_FILL_SOLID;
-	ID3D11RasterizerState* pIr = NULL;
-	m_pDevice->CreateRasterizerState(&rdc, &pIr);
-	m_pDeviceContext->RSSetState(pIr);
-	SAFE_RELEASE(pIr);
+	rdc.FrontCounterClockwise = TRUE;
+
+	m_pDevice->CreateRasterizerState(&rdc, &m_pRasterizerState);
+	m_pDeviceContext->RSSetState(m_pRasterizerState);
+}
+
+
+void DX11Base::CreateShader() {
+	ID3DBlob* pCompiledShader = NULL;
+	ID3DBlob* pErrors = NULL;
+
+	// ブロブからバーテックスシェーダ作成
+	HRESULT hr;
+	hr = D3DX11CompileFromFile(
+		"Simple.hlsl",
+		NULL,
+		NULL,
+		"VS",
+		"vs_5_0",
+		0,
+		0,
+		NULL,
+		&pCompiledShader,
+		&pErrors,
+		NULL);
+	if (FAILED(hr)) {
+		MessageBox(0, "hlsl読み込み失敗", NULL, MB_OK);
+		return;
+	}
+	SAFE_RELEASE(pErrors);
+
+	hr = m_pDevice->CreateVertexShader(
+		pCompiledShader->GetBufferPointer(),
+		pCompiledShader->GetBufferSize(),
+		NULL,
+		&m_pVertexShader);
+	if (FAILED(hr)) {
+		SAFE_RELEASE(pCompiledShader);
+		MessageBox(0, "バーテックスシェーダ作成失敗", NULL, MB_OK);
+		return;
+	}
+
+	// 頂点インプットレイアウトを定義
+	D3D11_INPUT_ELEMENT_DESC layout[] = {
+		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
+	};
+	UINT numElements = sizeof(layout) / sizeof(layout[0]);
+
+	// 頂点インプットレイアウトを作成
+	hr = m_pDevice->CreateInputLayout(
+		layout,
+		numElements,
+		pCompiledShader->GetBufferPointer(),
+		pCompiledShader->GetBufferSize(),
+		&m_pVertexLayout);
+	if (FAILED(hr))	return;
+
+	// ブロブからピクセルシェーダ作成
+	hr = D3DX11CompileFromFile(
+		"Simple.hlsl",
+		NULL,
+		NULL,
+		"PS",
+		"ps_5_0",
+		0,
+		0,
+		NULL,
+		&pCompiledShader,
+		&pErrors,
+		NULL);
+	if (FAILED(hr)) {
+		MessageBox(0, "hlsl読み込み失敗", NULL, MB_OK);
+		return;
+	}
+	SAFE_RELEASE(pErrors);
+	hr = m_pDevice->CreatePixelShader(
+		pCompiledShader->GetBufferPointer(),
+		pCompiledShader->GetBufferSize(),
+		NULL,
+		&m_pPixelShader);
+	if (FAILED(hr)) {
+		SAFE_RELEASE(pCompiledShader);
+		MessageBox(0, "ピクセルシェーダ作成失敗", NULL, MB_OK);
+		return;
+	}
+	SAFE_RELEASE(pCompiledShader);
+
+	// コンスタントバッファ―作成
+	D3D11_BUFFER_DESC cb;
+	cb.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	cb.ByteWidth = sizeof(SIMPLESHADER_CONSTANT_BUFFER);
+	cb.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	cb.MiscFlags = 0;
+	cb.StructureByteStride = 0;
+	cb.Usage = D3D11_USAGE_DYNAMIC;
+
+	hr = m_pDevice->CreateBuffer(&cb, NULL, &m_pConstantBuffer);
+	if (FAILED(hr))	return;
+}
+
+
+void DX11Base::CreatePolygon() {
+	HRESULT hr;
+
+	// バーテックスバッファー作成
+	SimpleVertex vertices[] = {
+		Vector3(0.0f, 0.5f, 0.0f),
+		Vector3(0.5f, -0.5f, 0.0f),
+		Vector3(-0.5f, -0.5f, 0.0f),
+	};
+	D3D11_BUFFER_DESC bd;
+	bd.Usage = D3D11_USAGE_DEFAULT;
+	bd.ByteWidth = sizeof(SimpleVertex) * 3;
+	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bd.CPUAccessFlags = 0;
+	bd.MiscFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA InitData;
+	InitData.pSysMem = vertices;
+	hr = m_pDevice->CreateBuffer(&bd, &InitData, &m_pVertexBuffer);
+	if (FAILED(hr))	return;
+
+	// バーテックスバッファーをセット
+	UINT stride = sizeof(SimpleVertex);
+	UINT offset = 0;
+	m_pDeviceContext->IASetVertexBuffers(
+		0,
+		1,
+		&m_pVertexBuffer,
+		&stride,
+		&offset);
 }
 
 
@@ -198,6 +350,56 @@ void DX11Base::Draw() {
 	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, ClearColor);
 	m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
+	Matrix mWorld;
+	Matrix mView;
+	Matrix mProj;
+	// ワールドトランスフォーム（絶対座標変換）
+	static float an = 0.0f;
+	an += (1.0f / 1000.0f);
+	MatrixRotationY(&mWorld, an);
+	// ビュートランスフォーム
+	Vector3 vEyePt(0.0f, 1.0f, -2.0f);
+	Vector3 vLookatPt(0.0f, 0.0f, 0.0f);
+	Vector3 vUpVec(0.0f, 1.0f, 0.0f);
+	MatrixLookAtLH(&mView, &vEyePt, &vLookatPt, &vUpVec);
+	// プロジェクショントランスフォーム（射影変換）
+	MatrixPerspectiveFovLH(
+		&mProj,
+		3.141592f/4.0f,
+		(float)Screen::GetWidth()/(float)Screen::GetHeight(),
+		0.1f,
+		100.0f);
+
+
+	// 使用するシェーダの登録
+	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
+	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
+	// シェーダのコンスタントバッファーに各種データを渡す
+	D3D11_MAPPED_SUBRESOURCE pData;
+	SIMPLESHADER_CONSTANT_BUFFER cb;
+	HRESULT hr;
+	hr = m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
+	if (SUCCEEDED(hr)) {
+		// ワールド、カメラ、射影行列を渡す
+		Matrix m = mWorld * mView * mProj;
+		MatrixTranspose(&m, &m);
+		cb.mWVP = m;
+		// カラーを渡す
+		Vector4 vColor(1, 0, 0, 1);
+		cb.vColor = vColor;
+		memcpy_s(pData.pData, pData.RowPitch, (void*)(&cb), sizeof(cb));
+		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
+	}
+	// このコンスタントバッファーを使うシェーダの登録
+	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	// 頂点インプットレイアウトをセット
+	m_pDeviceContext->IASetInputLayout(m_pVertexLayout);
+	// プリミティブ・トポロジーをセット
+	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	// プリミティブをレンダリング
+	m_pDeviceContext->Draw(3, 0);
+
 	m_pSwapChain->Present(0, 0);
 }
 
@@ -206,6 +408,13 @@ void DX11Base::Draw() {
 //				終了処理			//
 //									*/
 HRESULT DX11Base::Release() {
+	SAFE_RELEASE(m_pRasterizerState);
+	SAFE_RELEASE(m_pConstantBuffer);
+	SAFE_RELEASE(m_pVertexShader);
+	SAFE_RELEASE(m_pPixelShader);
+	SAFE_RELEASE(m_pVertexBuffer);
+	SAFE_RELEASE(m_pVertexLayout);
+
 	SAFE_RELEASE(m_pSwapChain);
 	SAFE_RELEASE(m_pRenderTargetView);
 	SAFE_RELEASE(m_pDeviceContext);

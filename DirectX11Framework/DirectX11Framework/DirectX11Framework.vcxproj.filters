@@ -58,26 +58,38 @@
     <Filter Include="ソース ファイル\framework\Utility">
       <UniqueIdentifier>{67cd3926-d1a8-4096-9416-50ac249b1da4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\framework\Vector">
-      <UniqueIdentifier>{c4431143-5b8a-47d0-ae40-bd7e2c9997b9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\framework\Utility\Math">
       <UniqueIdentifier>{96b49efa-7294-4360-8fd7-8d671cfa3bf8}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\framework\Utility\System">
       <UniqueIdentifier>{9b9384b5-84f2-46a3-9c84-0677f59d50db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\framework\Vector\Vector2">
-      <UniqueIdentifier>{2c5d9074-0858-41bb-ac30-e2e36703e406}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\framework\Vector\Vector3">
-      <UniqueIdentifier>{fc3f6f59-6f37-4d27-b1e6-c110b8d16ac2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\framework\Vector\Vector4">
-      <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\framework\DirectX\Ver.11">
       <UniqueIdentifier>{fcedbae2-9f8d-42d9-83c4-d87794984113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math">
+      <UniqueIdentifier>{d9c6687f-f9fd-45fc-ae37-de6c18f03731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math\Matrix">
+      <UniqueIdentifier>{13378320-98c2-4085-85c7-6a462f4bfd43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math\Vector">
+      <UniqueIdentifier>{c4431143-5b8a-47d0-ae40-bd7e2c9997b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math\Vector\Vector2">
+      <UniqueIdentifier>{2c5d9074-0858-41bb-ac30-e2e36703e406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math\Vector\Vector3">
+      <UniqueIdentifier>{fc3f6f59-6f37-4d27-b1e6-c110b8d16ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math\Vector\Vector4">
+      <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math\Matrix\Matrix4x4">
+      <UniqueIdentifier>{4e86f176-6d6e-480f-86c4-43a90154b58a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Math\Funcs">
+      <UniqueIdentifier>{fc34edfa-8e72-495a-8251-8bbeb32f04cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,14 +123,23 @@
     <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp">
       <Filter>ソース ファイル\framework\Utility\Math</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameFramework\framework\Vector\Vector2\Vector2.cpp">
-      <Filter>ソース ファイル\framework\Vector\Vector2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameFramework\framework\Vector\Vector3\Vector3.cpp">
-      <Filter>ソース ファイル\framework\Vector\Vector3</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp">
       <Filter>ソース ファイル\framework\DirectX\Ver.11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.cpp">
+      <Filter>ソース ファイル\framework\Math\Matrix\Matrix4x4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.cpp">
+      <Filter>ソース ファイル\framework\Math\Vector\Vector4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.cpp">
+      <Filter>ソース ファイル\framework\Math\Vector\Vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.cpp">
+      <Filter>ソース ファイル\framework\Math\Vector\Vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Math\Funcs\MathFuncs.cpp">
+      <Filter>ソース ファイル\framework\Math\Funcs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,14 +191,28 @@
     <ClInclude Include="src\GameFramework\framework\Utility\Math\MathUtility.h">
       <Filter>ソース ファイル\framework\Utility\Math</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameFramework\framework\Vector\Vector2\Vector2.h">
-      <Filter>ソース ファイル\framework\Vector\Vector2</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameFramework\framework\Vector\Vector3\Vector3.h">
-      <Filter>ソース ファイル\framework\Vector\Vector3</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameFramework\framework\DirectX\DX11Base.h">
       <Filter>ソース ファイル\framework\DirectX\Ver.11</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.h">
+      <Filter>ソース ファイル\framework\Math\Matrix\Matrix4x4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.h">
+      <Filter>ソース ファイル\framework\Math\Vector\Vector4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.h">
+      <Filter>ソース ファイル\framework\Math\Vector\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.h">
+      <Filter>ソース ファイル\framework\Math\Vector\Vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Math\Funcs\MathFuncs.h">
+      <Filter>ソース ファイル\framework\Math\Funcs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Simple.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

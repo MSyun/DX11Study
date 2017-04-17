@@ -153,11 +153,14 @@
     <ClCompile Include="src\GameFramework\framework\Application\DirectX\DXApplication.cpp" />
     <ClCompile Include="src\GameFramework\framework\Debug\Debug.cpp" />
     <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Math\Funcs\MathFuncs.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.cpp" />
     <ClCompile Include="src\GameFramework\framework\Screen\Screen.cpp" />
     <ClCompile Include="src\GameFramework\framework\Time\Time.cpp" />
     <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp" />
-    <ClCompile Include="src\GameFramework\framework\Vector\Vector2\Vector2.cpp" />
-    <ClCompile Include="src\GameFramework\framework\Vector\Vector3\Vector3.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,13 +176,21 @@
     <ClInclude Include="src\GameFramework\framework\Delegate\IDelegate.h" />
     <ClInclude Include="src\GameFramework\framework\DirectX\DX11Base.h" />
     <ClInclude Include="src\GameFramework\framework\DirectX\DXBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\Funcs\MathFuncs.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.h" />
     <ClInclude Include="src\GameFramework\framework\Screen\Screen.h" />
     <ClInclude Include="src\GameFramework\framework\Singleton\Singleton.h" />
     <ClInclude Include="src\GameFramework\framework\Time\Time.h" />
     <ClInclude Include="src\GameFramework\framework\Utility\Math\MathUtility.h" />
     <ClInclude Include="src\GameFramework\framework\Utility\System\SystemUtility.h" />
-    <ClInclude Include="src\GameFramework\framework\Vector\Vector2\Vector2.h" />
-    <ClInclude Include="src\GameFramework\framework\Vector\Vector3\Vector3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Simple.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

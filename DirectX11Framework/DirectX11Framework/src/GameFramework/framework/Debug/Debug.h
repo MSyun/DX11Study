@@ -39,7 +39,7 @@ public:
 	static void Log(const Vector2& val);
 	static void Log(const Vector3& val);
 	static void Log(const Vector4& val);
-	static void Log(const Quaternion& qua);
+	//static void Log(const Quaternion& qua);
 #pragma endregion
 
 	// エラーログの表示

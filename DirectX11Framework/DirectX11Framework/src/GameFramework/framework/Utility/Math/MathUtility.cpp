@@ -16,24 +16,24 @@ int Clamp(int val, int min, int max) {
 
 
 // 2つのベクトルからABのなす角度θを求める
-float AngleOf2Vector(Vector3 A, Vector3 B) {
-	// ※ベクトルの長さが0だと答えが出ないので注意
-
-	// ベクトルAとBの長さを計算する
-	float length_A = D3DXVec3Length(&A);
-	float length_B = D3DXVec3Length(&B);
-
-	// 内積とベクトル長さを使ってcosθを求める
-	float cos_sita = D3DXVec3Dot(&A, &B) / (length_A * length_B);
-
-	// cosθからθを求める
-	float sita = acosf(cos_sita);
-
-	// ラジアンから 0 ～ 180 の角度でほしい場合はコメントを外す
-	sita = sita * 180.0f / D3DX_PI;
-
-	return sita;
-}
+//float AngleOf2Vector(Vector3 A, Vector3 B) {
+//	// ※ベクトルの長さが0だと答えが出ないので注意
+//
+//	// ベクトルAとBの長さを計算する
+//	float length_A = D3DXVec3Length(&A);
+//	float length_B = D3DXVec3Length(&B);
+//
+//	// 内積とベクトル長さを使ってcosθを求める
+//	float cos_sita = D3DXVec3Dot(&A, &B) / (length_A * length_B);
+//
+//	// cosθからθを求める
+//	float sita = acosf(cos_sita);
+//
+//	// ラジアンから 0 ～ 180 の角度でほしい場合はコメントを外す
+//	sita = sita * 180.0f / D3DX_PI;
+//
+//	return sita;
+//}
 
 
 //////////////////////////////////
@@ -84,19 +84,19 @@ Vector2 Bezier(
 }
 
 // Catmull-Romスプライン曲線
-Vector3 CatmullRom(
-	Vector3& p0,
-	Vector3& p1,
-	Vector3& p2,
-	Vector3& p3,
-	float t)		// 0.0f ～ 1.0f
-{
-	// 公式
-	Vector3	v0 = 0.5f * (p2 - p0);
-	Vector3	v1 = 0.5f * (p3 - p1);
-	float	t2 = t * t;
-	float	t3 = t2 * t;
-	return	((p1 - p2)*2.0f + v0 + v1) * t3 +
-		((p2 - p1)*3.0f - 2.0f*v0 - v1) * t2 +
-		v0 * t + p1;
-}
+//Vector3 CatmullRom(
+//	Vector3& p0,
+//	Vector3& p1,
+//	Vector3& p2,
+//	Vector3& p3,
+//	float t)		// 0.0f ～ 1.0f
+//{
+//	// 公式
+//	Vector3	v0 = 0.5f * (p2 - p0);
+//	Vector3	v1 = 0.5f * (p3 - p1);
+//	float	t2 = t * t;
+//	float	t3 = t2 * t;
+//	return	((p1 - p2)*2.0f + v0 + v1) * t3 +
+//		((p2 - p1)*3.0f - 2.0f*v0 - v1) * t2 +
+//		v0 * t + p1;
+//}

@@ -7,6 +7,7 @@
 
 #include	"DXBase.h"
 #include	<d3d11.h>
+#include	<D3DX11.h>
 
 
 #pragma comment(lib, "d3d11.lib")
@@ -25,6 +26,17 @@ protected:
 	ID3D11RenderTargetView*	m_pRenderTargetView;
 	ID3D11DepthStencilView*	m_pDepthStencilView;
 	ID3D11Texture2D*		m_pDepthStencil;
+	ID3D11RasterizerState*	m_pRasterizerState;
+
+	///////////////////////////////////////
+	// 一時的
+	ID3D11InputLayout*	m_pVertexLayout;
+	ID3D11VertexShader*	m_pVertexShader;
+	ID3D11PixelShader*	m_pPixelShader;
+	ID3D11Buffer*		m_pConstantBuffer;
+
+	ID3D11Buffer*		m_pVertexBuffer;
+	///////////////////////////////////////
 
 #pragma endregion
 
@@ -77,6 +89,11 @@ private:
 
 	/* ラスタライズの設定 */
 	virtual void CreateRasterize();
+
+	/* シェーダの作成 */
+	virtual void CreateShader();
+
+	virtual void CreatePolygon();
 
 	virtual void Update();
 	virtual void Draw();
