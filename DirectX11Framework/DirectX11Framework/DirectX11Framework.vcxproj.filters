@@ -91,6 +91,15 @@
     <Filter Include="ソース ファイル\framework\Math\Funcs">
       <UniqueIdentifier>{fc34edfa-8e72-495a-8251-8bbeb32f04cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\framework\Resource">
+      <UniqueIdentifier>{f729ccba-9a10-4a62-a41b-dd2cc52c7e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Resource\Texture">
+      <UniqueIdentifier>{7a1fe877-004c-4af4-95a1-78ded27f4749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Resource\ManagerBase">
+      <UniqueIdentifier>{1bf61612-c9f6-4796-9a40-8abde0e1f058}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

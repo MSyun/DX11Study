@@ -11,14 +11,23 @@
 // ここから一時的
 #include	"../Convert/Convert.h"
 #include	<d3dcompiler.h>
+#include	<tchar.h>
 struct SimpleVertex {
 	Point3 Pos;
+	Vector3 Normal;
+	Vector2 Tex;
 };
 
 struct SIMPLESHADER_CONSTANT_BUFFER {
-	Matrix mWVP;
-	Vector4 vColor;
+	Matrix	mWorld;
+	Matrix	mWVP;
+	Vector4	vLightDir;
+	Vector4	vColor;
+	Vector4	vEye;
 };
+
+Vector4 g_Light = Vector4(0.0f, 0.5f, -1.0f, 0.0f);
+
 
 ///////////////////////
 
@@ -215,7 +224,7 @@ void DX11Base::CreateShader() {
 		&pErrors,
 		NULL);
 	if (FAILED(hr)) {
-		MessageBox(0, "hlsl読み込み失敗", NULL, MB_OK);
+		MessageBox(0, (LPCTSTR)pErrors->GetBufferPointer(), _T("ERROR"), MB_OK);
 		return;
 	}
 	SAFE_RELEASE(pErrors);
@@ -234,6 +243,8 @@ void DX11Base::CreateShader() {
 	// 頂点インプットレイアウトを定義
 	D3D11_INPUT_ELEMENT_DESC layout[] = {
 		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
+		{"NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
+		{"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 24, D3D11_INPUT_PER_VERTEX_DATA, 0},
 	};
 	UINT numElements = sizeof(layout) / sizeof(layout[0]);
 
@@ -260,7 +271,7 @@ void DX11Base::CreateShader() {
 		&pErrors,
 		NULL);
 	if (FAILED(hr)) {
-		MessageBox(0, "hlsl読み込み失敗", NULL, MB_OK);
+		MessageBox(0, (LPCTSTR)pErrors->GetBufferPointer(), _T("ERROR"), MB_OK);
 		return;
 	}
 	SAFE_RELEASE(pErrors);
@@ -271,7 +282,7 @@ void DX11Base::CreateShader() {
 		&m_pPixelShader);
 	if (FAILED(hr)) {
 		SAFE_RELEASE(pCompiledShader);
-		MessageBox(0, "ピクセルシェーダ作成失敗", NULL, MB_OK);
+		MessageBox(0, (LPCTSTR)pErrors->GetBufferPointer(), NULL, MB_OK);
 		return;
 	}
 	SAFE_RELEASE(pCompiledShader);
@@ -295,13 +306,14 @@ void DX11Base::CreatePolygon() {
 
 	// バーテックスバッファー作成
 	SimpleVertex vertices[] = {
-		Vector3(0.0f, 0.5f, 0.0f),
-		Vector3(0.5f, -0.5f, 0.0f),
-		Vector3(-0.5f, -0.5f, 0.0f),
+		Vector3(-0.5f, -0.5f, 0.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(0, 1),
+		Vector3(-0.5f, 0.5f, 0.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(0, 0),
+		Vector3(0.5f, -0.5f, 0.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(1, 1),
+		Vector3(0.5f, 0.5f, 0.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(1, 0),
 	};
 	D3D11_BUFFER_DESC bd;
 	bd.Usage = D3D11_USAGE_DEFAULT;
-	bd.ByteWidth = sizeof(SimpleVertex) * 3;
+	bd.ByteWidth = sizeof(SimpleVertex) * 4;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	bd.CPUAccessFlags = 0;
 	bd.MiscFlags = 0;
@@ -320,6 +332,26 @@ void DX11Base::CreatePolygon() {
 		&m_pVertexBuffer,
 		&stride,
 		&offset);
+	g_Light.normalize();
+	// テクスチャ―用サンプラー作成
+	D3D11_SAMPLER_DESC SamDesc;
+	ZeroMemory(&SamDesc, sizeof(D3D11_SAMPLER_DESC));
+	SamDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+	SamDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+	SamDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+	SamDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+	m_pDevice->CreateSamplerState(&SamDesc, &m_pSampleLinear);
+	// テクスチャ―作成
+	hr = D3DX11CreateShaderResourceViewFromFile(
+		m_pDevice,
+		"sprite.jpg",
+		NULL,
+		NULL,
+		&m_pTexture,
+		NULL);
+	if (FAILED(hr)) {
+		return;
+	}
 }
 
 
@@ -350,9 +382,7 @@ void DX11Base::Draw() {
 	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, ClearColor);
 	m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
-	Matrix mWorld;
-	Matrix mView;
-	Matrix mProj;
+	Matrix mWorld, mView, mProj;
 	// ワールドトランスフォーム（絶対座標変換）
 	static float an = 0.0f;
 	an += (1.0f / 1000.0f);
@@ -370,7 +400,6 @@ void DX11Base::Draw() {
 		0.1f,
 		100.0f);
 
-
 	// 使用するシェーダの登録
 	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
 	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
@@ -380,6 +409,8 @@ void DX11Base::Draw() {
 	HRESULT hr;
 	hr = m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
 	if (SUCCEEDED(hr)) {
+		cb.mWorld = mWorld;
+		MatrixTranspose(&cb.mWorld, &cb.mWorld);
 		// ワールド、カメラ、射影行列を渡す
 		Matrix m = mWorld * mView * mProj;
 		MatrixTranspose(&m, &m);
@@ -387,18 +418,29 @@ void DX11Base::Draw() {
 		// カラーを渡す
 		Vector4 vColor(1, 0, 0, 1);
 		cb.vColor = vColor;
+		// ライトベクトルを渡す
+		cb.vLightDir = g_Light;
+		// カメラの位置（視点）をシェーダに渡す
+		cb.vEye = Vector4(vEyePt.x, vEyePt.y, vEyePt.z, 0.0f);
+
 		memcpy_s(pData.pData, pData.RowPitch, (void*)(&cb), sizeof(cb));
 		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
 	}
 	// このコンスタントバッファーを使うシェーダの登録
 	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 	m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+
 	// 頂点インプットレイアウトをセット
 	m_pDeviceContext->IASetInputLayout(m_pVertexLayout);
 	// プリミティブ・トポロジーをセット
-	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+
+	// テクスチャ―をシェーダに渡す
+	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSampleLinear);
+	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTexture);
+
 	// プリミティブをレンダリング
-	m_pDeviceContext->Draw(3, 0);
+	m_pDeviceContext->Draw(4, 0);
 
 	m_pSwapChain->Present(0, 0);
 }

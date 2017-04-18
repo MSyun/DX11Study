@@ -31,6 +31,36 @@ void Vec3Cross(Vector3* pOut, const Vector3* pL, const Vector3* pR) {
 }
 
 
+/*									//
+//	ベクトルの長さの2乗を算出する	//
+//									*/
+float Vec3LengthSq(const Vector3* pV) {
+	return Vec3Dot(pV, pV);
+}
+
+
+/*									//
+//		ベクトルの長さを算出する	//
+//									*/
+float Vec3Length(const Vector3* pV) {
+	return sqrtf(Vec3LengthSq(pV));
+}
+
+
+/*									//
+//		3Dベクトルの正規化			//
+//									*/
+void Vec3Normalize(Vector3* pOut, const Vector3* pV) {
+	float msgSq = pV->x * pV->x + pV->y * pV->y + pV->z * pV->z;
+	if (msgSq > 0.0f) {
+		float oneOverMsg = 1.0f / sqrtf(msgSq);
+		pOut->x = pV->x * oneOverMsg;
+		pOut->y = pV->y * oneOverMsg;
+		pOut->z = pV->z * oneOverMsg;
+	}
+}
+
+
 
 /*									//
 //			単位行列の生成			//

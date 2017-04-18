@@ -26,6 +26,23 @@ float Vec3Dot(const Vector3* pL, const Vector3* pR);
 */
 void Vec3Cross(Vector3* pOut, const Vector3* pL, const Vector3* pR);
 
+/* ベクトルの長さの2乗を算出する
+// pV		: 処理のもとになるベクトル
+// return	: 算出した長さ
+*/
+float Vec3LengthSq(const Vector3* pV);
+
+/* ベクトルの長さを算出する
+// pV		: 処理のもとになるベクトル
+// return	: 算出したベクトルの長さ
+*/
+float Vec3Length(const Vector3* pV);
+
+/* 3Dベクトルの正規化
+// pOut	: 演算結果
+// pV	: 処理のもとになるベクトル
+*/
+void Vec3Normalize(Vector3* pOut, const Vector3* pV);
 
 /* 単位行列の生成
 // pMat	: 生成する元の行列

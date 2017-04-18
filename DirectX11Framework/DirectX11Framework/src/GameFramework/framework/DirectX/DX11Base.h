@@ -36,6 +36,9 @@ protected:
 	ID3D11Buffer*		m_pConstantBuffer;
 
 	ID3D11Buffer*		m_pVertexBuffer;
+
+	ID3D11SamplerState*	m_pSampleLinear;
+	ID3D11ShaderResourceView*	m_pTexture;
 	///////////////////////////////////////
 
 #pragma endregion
