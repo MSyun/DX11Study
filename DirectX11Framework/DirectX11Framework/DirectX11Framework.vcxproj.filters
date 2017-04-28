@@ -97,7 +97,16 @@
     <Filter Include="ソース ファイル\framework\Resource\Texture">
       <UniqueIdentifier>{7a1fe877-004c-4af4-95a1-78ded27f4749}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\framework\Resource\ManagerBase">
+    <Filter Include="ソース ファイル\framework\Resource\Base">
+      <UniqueIdentifier>{594d4ac1-dbac-4b5f-b1bc-4d6e1415ef3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Graphic">
+      <UniqueIdentifier>{69479914-833c-4a7a-bee1-c1ea79765265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Graphic\IGraphics">
+      <UniqueIdentifier>{0f7f15b4-3339-4b37-af75-d51e8850c631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\framework\Resource\Manager">
       <UniqueIdentifier>{1bf61612-c9f6-4796-9a40-8abde0e1f058}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -149,6 +158,15 @@
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\Funcs\MathFuncs.cpp">
       <Filter>ソース ファイル\framework\Math\Funcs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Base\IResource.cpp">
+      <Filter>ソース ファイル\framework\Resource\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Texture\Texture.cpp">
+      <Filter>ソース ファイル\framework\Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Graphic\Graphics.cpp">
+      <Filter>ソース ファイル\framework\Graphic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +235,21 @@
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\Funcs\MathFuncs.h">
       <Filter>ソース ファイル\framework\Math\Funcs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Base\IResource.h">
+      <Filter>ソース ファイル\framework\Resource\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Texture\Texture.h">
+      <Filter>ソース ファイル\framework\Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Graphic\IGraphics\IGraphics.h">
+      <Filter>ソース ファイル\framework\Graphic\IGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Graphic\Graphics.h">
+      <Filter>ソース ファイル\framework\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Manager\ResourceManager.h">
+      <Filter>ソース ファイル\framework\Resource\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

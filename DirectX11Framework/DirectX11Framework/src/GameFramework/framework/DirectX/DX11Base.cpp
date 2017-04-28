@@ -6,6 +6,8 @@
 #include	"DX11Base.h"
 #include	"../Screen/Screen.h"
 #include	"../Utility/System/SystemUtility.h"
+#include	"../Resource/Base/IResource.h"
+#include	"../Graphic/Graphics.h"
 
 ///////////////////////
 // ここから一時的
@@ -36,8 +38,6 @@ Vector4 g_Light = Vector4(0.0f, 0.5f, -1.0f, 0.0f);
 //									*/
 DX11Base::DX11Base(Application* app) :
 	IDXBase(app),
-	m_pDevice(NULL),
-	m_pDeviceContext(NULL),
 	m_pSwapChain(NULL),
 	m_pRenderTargetView(NULL),
 	m_pDepthStencilView(NULL),
@@ -57,7 +57,7 @@ DX11Base::DX11Base(Application* app) :
 //			デストラクタ			//
 //									*/
 DX11Base::~DX11Base() {
-
+	Release();
 }
 
 
@@ -78,7 +78,7 @@ HRESULT DX11Base::Init() {
 		return E_FAIL;
 
 	// レンダーターゲットビューと深度ステンシルビューをパイプラインにバインド
-	m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
+	Graphics::GetDevice()->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
 
 	// ビューポートの設定
 	CreateViewport();
@@ -117,6 +117,9 @@ HRESULT DX11Base::CreateDeviceSwapChain() {
 	D3D_FEATURE_LEVEL pFeatureLevels = D3D_FEATURE_LEVEL_11_0;
 	D3D_FEATURE_LEVEL* pFeatureLevel = NULL;
 
+
+	ID3D11Device* device;
+	ID3D11DeviceContext* context;
 	HRESULT hr = D3D11CreateDeviceAndSwapChain(
 		NULL,
 		D3D_DRIVER_TYPE_HARDWARE,
@@ -127,9 +130,11 @@ HRESULT DX11Base::CreateDeviceSwapChain() {
 		D3D11_SDK_VERSION,
 		&sd,
 		&m_pSwapChain,
-		&m_pDevice,
+		&device,
 		pFeatureLevel,
-		&m_pDeviceContext);
+		&context);
+	IResource::SetDevice(device);
+	Graphics::SetDevice(context);
 
 	return hr;
 }
@@ -143,7 +148,7 @@ HRESULT DX11Base::CreateRenderTargetView() {
 
 	ID3D11Texture2D* pBackBuffer;
 	m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
-	hr = m_pDevice->CreateRenderTargetView(pBackBuffer, NULL, &m_pRenderTargetView);
+	hr = IResource::GetDevice()->CreateRenderTargetView(pBackBuffer, NULL, &m_pRenderTargetView);
 	SAFE_RELEASE(pBackBuffer);
 
 	return hr;
@@ -155,6 +160,7 @@ HRESULT DX11Base::CreateRenderTargetView() {
 //									*/
 HRESULT DX11Base::CreateDepthStencilView() {
 	HRESULT hr;
+	ID3D11Device* device = IResource::GetDevice();
 
 	D3D11_TEXTURE2D_DESC descDepth;
 	descDepth.Width = Screen::GetWidth();
@@ -168,8 +174,8 @@ HRESULT DX11Base::CreateDepthStencilView() {
 	descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	descDepth.CPUAccessFlags = 0;
 	descDepth.MiscFlags = 0;
-	m_pDevice->CreateTexture2D(&descDepth, NULL, &m_pDepthStencil);
-	hr = m_pDevice->CreateDepthStencilView(m_pDepthStencil, NULL, &m_pDepthStencilView);
+	device->CreateTexture2D(&descDepth, NULL, &m_pDepthStencil);
+	hr = device->CreateDepthStencilView(m_pDepthStencil, NULL, &m_pDepthStencilView);
 
 	return hr;
 }
@@ -186,7 +192,7 @@ void DX11Base::CreateViewport() {
 	vp.MaxDepth = 1.0f;
 	vp.TopLeftX = 0;
 	vp.TopLeftY = 0;
-	m_pDeviceContext->RSSetViewports(1, &vp);
+	Graphics::GetDevice()->RSSetViewports(1, &vp);
 }
 
 
@@ -200,14 +206,15 @@ void DX11Base::CreateRasterize() {
 	rdc.FillMode = D3D11_FILL_SOLID;
 	rdc.FrontCounterClockwise = TRUE;
 
-	m_pDevice->CreateRasterizerState(&rdc, &m_pRasterizerState);
-	m_pDeviceContext->RSSetState(m_pRasterizerState);
+	IResource::GetDevice()->CreateRasterizerState(&rdc, &m_pRasterizerState);
+	Graphics::GetDevice()->RSSetState(m_pRasterizerState);
 }
 
 
 void DX11Base::CreateShader() {
 	ID3DBlob* pCompiledShader = NULL;
 	ID3DBlob* pErrors = NULL;
+	ID3D11Device* device = IResource::GetDevice();
 
 	// ブロブからバーテックスシェーダ作成
 	HRESULT hr;
@@ -229,7 +236,7 @@ void DX11Base::CreateShader() {
 	}
 	SAFE_RELEASE(pErrors);
 
-	hr = m_pDevice->CreateVertexShader(
+	hr = device->CreateVertexShader(
 		pCompiledShader->GetBufferPointer(),
 		pCompiledShader->GetBufferSize(),
 		NULL,
@@ -249,7 +256,7 @@ void DX11Base::CreateShader() {
 	UINT numElements = sizeof(layout) / sizeof(layout[0]);
 
 	// 頂点インプットレイアウトを作成
-	hr = m_pDevice->CreateInputLayout(
+	hr = device->CreateInputLayout(
 		layout,
 		numElements,
 		pCompiledShader->GetBufferPointer(),
@@ -275,7 +282,7 @@ void DX11Base::CreateShader() {
 		return;
 	}
 	SAFE_RELEASE(pErrors);
-	hr = m_pDevice->CreatePixelShader(
+	hr = device->CreatePixelShader(
 		pCompiledShader->GetBufferPointer(),
 		pCompiledShader->GetBufferSize(),
 		NULL,
@@ -296,13 +303,14 @@ void DX11Base::CreateShader() {
 	cb.StructureByteStride = 0;
 	cb.Usage = D3D11_USAGE_DYNAMIC;
 
-	hr = m_pDevice->CreateBuffer(&cb, NULL, &m_pConstantBuffer);
+	hr = device->CreateBuffer(&cb, NULL, &m_pConstantBuffer);
 	if (FAILED(hr))	return;
 }
 
 
 void DX11Base::CreatePolygon() {
 	HRESULT hr;
+	ID3D11Device* device = IResource::GetDevice();
 
 	// バーテックスバッファー作成
 	SimpleVertex vertices[] = {
@@ -320,38 +328,23 @@ void DX11Base::CreatePolygon() {
 
 	D3D11_SUBRESOURCE_DATA InitData;
 	InitData.pSysMem = vertices;
-	hr = m_pDevice->CreateBuffer(&bd, &InitData, &m_pVertexBuffer);
+	hr = device->CreateBuffer(&bd, &InitData, &m_pVertexBuffer);
 	if (FAILED(hr))	return;
 
 	// バーテックスバッファーをセット
 	UINT stride = sizeof(SimpleVertex);
 	UINT offset = 0;
-	m_pDeviceContext->IASetVertexBuffers(
+	Graphics::GetDevice()->IASetVertexBuffers(
 		0,
 		1,
 		&m_pVertexBuffer,
 		&stride,
 		&offset);
 	g_Light.normalize();
-	// テクスチャ―用サンプラー作成
-	D3D11_SAMPLER_DESC SamDesc;
-	ZeroMemory(&SamDesc, sizeof(D3D11_SAMPLER_DESC));
-	SamDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
-	SamDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
-	SamDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
-	SamDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
-	m_pDevice->CreateSamplerState(&SamDesc, &m_pSampleLinear);
-	// テクスチャ―作成
-	hr = D3DX11CreateShaderResourceViewFromFile(
-		m_pDevice,
-		"sprite.jpg",
-		NULL,
-		NULL,
-		&m_pTexture,
-		NULL);
-	if (FAILED(hr)) {
-		return;
-	}
+
+//	m_pTexture = new Texture;
+//	m_pTexture->Create("Sprite.jpg");
+	m_pTexture = m_TexManager.Create("Sprite.jpg");
 }
 
 
@@ -379,8 +372,10 @@ void DX11Base::Update() {
 //									*/
 void DX11Base::Draw() {
 	float ClearColor[4] = { 0, 0, 1, 1 };
-	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, ClearColor);
-	m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+	ID3D11DeviceContext* context = Graphics::GetDevice();
+
+	context->ClearRenderTargetView(m_pRenderTargetView, ClearColor);
+	context->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
 	Matrix mWorld, mView, mProj;
 	// ワールドトランスフォーム（絶対座標変換）
@@ -401,13 +396,13 @@ void DX11Base::Draw() {
 		100.0f);
 
 	// 使用するシェーダの登録
-	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
-	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
+	context->VSSetShader(m_pVertexShader, NULL, 0);
+	context->PSSetShader(m_pPixelShader, NULL, 0);
 	// シェーダのコンスタントバッファーに各種データを渡す
 	D3D11_MAPPED_SUBRESOURCE pData;
 	SIMPLESHADER_CONSTANT_BUFFER cb;
 	HRESULT hr;
-	hr = m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
+	hr = context->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
 	if (SUCCEEDED(hr)) {
 		cb.mWorld = mWorld;
 		MatrixTranspose(&cb.mWorld, &cb.mWorld);
@@ -424,23 +419,25 @@ void DX11Base::Draw() {
 		cb.vEye = Vector4(vEyePt.x, vEyePt.y, vEyePt.z, 0.0f);
 
 		memcpy_s(pData.pData, pData.RowPitch, (void*)(&cb), sizeof(cb));
-		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
+		context->Unmap(m_pConstantBuffer, 0);
 	}
 	// このコンスタントバッファーを使うシェーダの登録
-	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
-	m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	context->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	context->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
 	// 頂点インプットレイアウトをセット
-	m_pDeviceContext->IASetInputLayout(m_pVertexLayout);
+	context->IASetInputLayout(m_pVertexLayout);
 	// プリミティブ・トポロジーをセット
-	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	// テクスチャ―をシェーダに渡す
-	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSampleLinear);
-	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTexture);
+	auto samp = m_pTexture->GetSample();
+	auto tex = m_pTexture->GetTexture();
+	context->PSSetSamplers(0, 1, &samp);
+	context->PSSetShaderResources(0, 1, &tex);
 
 	// プリミティブをレンダリング
-	m_pDeviceContext->Draw(4, 0);
+	context->Draw(4, 0);
 
 	m_pSwapChain->Present(0, 0);
 }
@@ -459,10 +456,8 @@ HRESULT DX11Base::Release() {
 
 	SAFE_RELEASE(m_pSwapChain);
 	SAFE_RELEASE(m_pRenderTargetView);
-	SAFE_RELEASE(m_pDeviceContext);
 	SAFE_RELEASE(m_pDepthStencil);
 	SAFE_RELEASE(m_pDepthStencilView);
-	SAFE_RELEASE(m_pDevice);
 
 	return S_OK;
 }

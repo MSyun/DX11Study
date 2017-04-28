@@ -8,6 +8,8 @@
 #include	"DXBase.h"
 #include	<d3d11.h>
 #include	<D3DX11.h>
+#include	"../Resource/Manager/ResourceManager.h"
+#include	"../Resource/Texture/Texture.h"
 
 
 #pragma comment(lib, "d3d11.lib")
@@ -20,8 +22,6 @@ class	DX11Base	:	public	IDXBase {
 protected:
 #pragma region variable
 
-	ID3D11Device*			m_pDevice;
-	ID3D11DeviceContext*	m_pDeviceContext;
 	IDXGISwapChain*			m_pSwapChain;
 	ID3D11RenderTargetView*	m_pRenderTargetView;
 	ID3D11DepthStencilView*	m_pDepthStencilView;
@@ -37,8 +37,8 @@ protected:
 
 	ID3D11Buffer*		m_pVertexBuffer;
 
-	ID3D11SamplerState*	m_pSampleLinear;
-	ID3D11ShaderResourceView*	m_pTexture;
+	Texture*			m_pTexture;
+	ResourceManager<Texture>	m_TexManager;
 	///////////////////////////////////////
 
 #pragma endregion
