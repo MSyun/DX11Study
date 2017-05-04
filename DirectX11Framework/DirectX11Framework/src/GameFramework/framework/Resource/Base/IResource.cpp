@@ -4,7 +4,7 @@
 
 
 #include	"IResource.h"
-
+#include	"../../Debug/Debug.h"
 
 ID3D11Device* IResource::m_pDevice = nullptr;
 

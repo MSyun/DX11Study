@@ -10,6 +10,21 @@
 
 
 /*									//
+//		ラジアンを角度に変換		//
+//									*/
+float ToDegree(const float radian) {
+	return radian * (180.0f / PI);
+}
+
+/*									//
+//		角度をラジアンに変換		//
+//									*/
+float ToRadian(const float degree) {
+	return degree * (PI / 180.0f);
+}
+
+
+/*									//
 //				内積				//
 //									*/
 float Vec3Dot(const Vector3* pL, const Vector3* pR) {
@@ -60,6 +75,47 @@ void Vec3Normalize(Vector3* pOut, const Vector3* pV) {
 	}
 }
 
+
+/*									//
+//		4Dベクトルに行列を反映		//
+//									*/
+void Vec4TransformCoord(
+	Vector4* pOut,
+	const Vector4* pV,
+	const Matrix* pM)
+{
+	if (!pOut || !pV || !pM)
+		return;
+
+	Vector4 v;
+	for (int i = 0; i < 4; ++ i) {
+		v.e[i] = 0.0f;
+		for (int n = 0; n < 4; ++ n) {
+			v.e[i] += pM->m[n][i] * pV->e[n];
+		}
+	}
+	*pOut = v;
+}
+
+
+/*									//
+//		3Dベクトルに行列を反映		//
+//									*/
+void Vec3TransformCoord(
+	Vector3* pOut,
+	const Vector3* pV,
+	const Matrix* pM)
+{
+	if (!pOut || !pV || !pM)
+		return;
+
+	Vector4 vIn(pV->x, pV->y, pV->z, 1.0f);
+	Vector4 vOut;
+	Vec4TransformCoord(&vOut, &vIn, pM);
+	pOut->x = vOut.x;
+	pOut->y = vOut.y;
+	pOut->z = vOut.z;
+}
 
 
 /*									//
@@ -205,6 +261,90 @@ void MatrixTranspose(Matrix4x4* pOut, const Matrix4x4* pM) {
 		}
 	}
 	*pOut = m;
+}
+
+
+/*									//
+//			逆行列生成				//
+//									*/
+void MatrixInverse(Matrix* pOut, const Matrix* pM) {
+	Matrix mat;
+	int i;
+	double fDat, fDat2;
+	double mat_8x4[4][8];
+	int flag;
+	double* pD;
+
+	// 8x4行列に値を入れる
+	for (i = 0; i < 4; ++i) {
+		float const* pF = &(pM->e[i]);
+		for (int j = 0; j < 4; ++j, ++pF)
+			mat_8x4[i][j] = (double)(*pF);
+		pD = mat_8x4[i] + 4;
+		for (int j = 0; j < 4; ++ j) {
+			if (i == j)	*pD = 1.0;
+			else		*pD = 0.0f;
+			++pD;
+		}
+	}
+
+	flag = 1;
+	for (int loop = 0; loop < 4; ++loop) {
+		fDat = mat_8x4[loop][loop];
+		if (fDat != 1.0) {
+			if (fDat == 0.0) {
+				for (i = loop + 1; i < 4; ++ i) {
+					fDat = mat_8x4[i][loop];
+					if (fDat != 0.0)
+						break;
+				}
+				if (i >= 4) {
+					flag = 0;
+					break;
+				}
+				// 行を入れ替える
+				for (int j = 0; j < 8; ++ j) {
+					fDat = mat_8x4[i][j];
+					mat_8x4[i][j] = mat_8x4[loop][j];
+					mat_8x4[loop][j] = fDat;
+				}
+				fDat = mat_8x4[loop][loop];
+			}
+
+			for (i = 0; i < 8; ++ i)
+				mat_8x4[loop][i] /= fDat;
+		}
+
+		for (i = 0; i < 4; ++ i) {
+			if (i != loop) {
+				fDat = mat_8x4[i][loop];
+				if (fDat != 0.0) {
+					// mat[i][loop]をmat[loop]の行にかけて
+					// mat[j] - mat[loop] * fDatを計算
+					for (int j = 0; j < 8; ++ j) {
+						fDat2 = mat_8x4[loop][j] * fDat;
+						mat_8x4[i][j] -= fDat2;
+					}
+				}
+			}
+		}
+	}
+
+	if (flag) {
+		for (i = 0; i < 4; ++ i) {
+			float* pF = &mat.e[i];
+			pD = mat_8x4[i] + 4;
+			for (int j = 0; j < 4; ++ j) {
+				*pF = (float)(*pD);
+				++ pF;
+				++ pD;
+			}
+		}
+	} else {
+		MatrixIdentity(&mat);
+	}
+
+	*pOut = mat;
 }
 
 

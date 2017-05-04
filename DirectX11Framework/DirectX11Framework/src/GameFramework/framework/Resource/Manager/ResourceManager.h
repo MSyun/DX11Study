@@ -10,10 +10,11 @@
 #include	"../../Utility/System/SystemUtility.h"
 #include	"../../Debug/Debug.h"
 #include	<typeinfo>
+#include	"../../Singleton/Singleton.h"
 
 
 template<class T>
-class ResourceManager {
+class ResourceManager	:	public	Singleton<ResourceManager<T>> {
 protected:
 #pragma region variable
 
@@ -132,3 +133,9 @@ public:
 
 #pragma endregion
 };
+
+
+template<class T>
+inline ResourceManager<T>* GetResourceManager() {
+	return ResourceManager<T>::Instance();
+}

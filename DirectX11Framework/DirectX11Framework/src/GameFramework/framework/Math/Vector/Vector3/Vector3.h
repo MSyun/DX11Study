@@ -6,11 +6,14 @@
 #pragma once
 
 
-class Vector3 {
+typedef struct Vector3 {
 public:
 	union {
 		struct {
 			float x, y, z;
+		};
+		struct {
+			float r, g, b;
 		};
 		float e[3];
 	};
@@ -46,6 +49,4 @@ public:
 	void normalize();
 	Vector3 getNormalize() const;
 	float length() const;
-};
-
-using	Point3 = Vector3;
+} Vector3, Point3, float3;

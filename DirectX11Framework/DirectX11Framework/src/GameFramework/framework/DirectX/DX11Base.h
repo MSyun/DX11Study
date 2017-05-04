@@ -8,8 +8,11 @@
 #include	"DXBase.h"
 #include	<d3d11.h>
 #include	<D3DX11.h>
+
 #include	"../Resource/Manager/ResourceManager.h"
 #include	"../Resource/Texture/Texture.h"
+#include	"../Camera/Camera.h"
+#include	"../Resource/Mesh/Mesh.h"
 
 
 #pragma comment(lib, "d3d11.lib")
@@ -38,7 +41,10 @@ protected:
 	ID3D11Buffer*		m_pVertexBuffer;
 
 	Texture*			m_pTexture;
+	Mesh*				m_pMesh;
 	ResourceManager<Texture>	m_TexManager;
+	ResourceManager<Mesh>		m_MeshManager;
+	Camera*				m_pCamera;
 	///////////////////////////////////////
 
 #pragma endregion

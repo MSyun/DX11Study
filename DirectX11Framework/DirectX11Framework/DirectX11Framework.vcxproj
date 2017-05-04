@@ -36,13 +36,13 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -89,10 +89,17 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2018.1.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2018.1.1\lib\vs2015\x86\release;C:\Program Files\Autodesk\FBX\FBX SDK\2018.1.1\lib\vs2015\x86\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>libfbxsdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,12 +126,16 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libfbxsdk-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.1\lib\vs2010\x86\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,19 +162,34 @@
     <ClCompile Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.cpp" />
     <ClCompile Include="src\GameFramework\framework\Application\Application.cpp" />
     <ClCompile Include="src\GameFramework\framework\Application\DirectX\DXApplication.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Camera\Camera.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Collision\Collision.cpp" />
     <ClCompile Include="src\GameFramework\framework\Debug\Debug.cpp" />
     <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp" />
     <ClCompile Include="src\GameFramework\framework\Graphic\Graphics.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Input\Input.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Funcs\MathFuncs.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Object\3DObject\Object3D.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Object\Object.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Base\IResource.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Analyzer\MaterialAnalyzer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Analyzer\UVAnalyzer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Mesh.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Texture\Texture.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Save\Factory\SaveFactory.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Save\Manager\SaveManagerBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Save\Obj\SaveObjBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Scene\Fade\SceneFadeBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Scene\ManagerWin\SceneManagerWin.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Scene\Manager\SceneManager.cpp" />
     <ClCompile Include="src\GameFramework\framework\Screen\Screen.cpp" />
     <ClCompile Include="src\GameFramework\framework\Time\Time.cpp" />
     <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp" />
+    <ClCompile Include="src\GameFramework\Transform\Transform.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +198,9 @@
     <ClInclude Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.h" />
     <ClInclude Include="src\GameFramework\framework\Application\Application.h" />
     <ClInclude Include="src\GameFramework\framework\Application\DirectX\DXApplication.h" />
+    <ClInclude Include="src\GameFramework\framework\Camera\Camera.h" />
+    <ClInclude Include="src\GameFramework\framework\Collision\cell.h" />
+    <ClInclude Include="src\GameFramework\framework\Collision\Collision.h" />
     <ClInclude Include="src\GameFramework\framework\Convert\Convert.h" />
     <ClInclude Include="src\GameFramework\framework\CPPEvent\CPPEvent.h" />
     <ClInclude Include="src\GameFramework\framework\Debug\Debug.h" />
@@ -181,24 +210,45 @@
     <ClInclude Include="src\GameFramework\framework\DirectX\DXBase.h" />
     <ClInclude Include="src\GameFramework\framework\Graphic\Graphics.h" />
     <ClInclude Include="src\GameFramework\framework\Graphic\IGraphics\IGraphics.h" />
+    <ClInclude Include="src\GameFramework\framework\Input\Input.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Funcs\MathFuncs.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\MathDefine.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.h" />
+    <ClInclude Include="src\GameFramework\framework\Object\3DObject\Object3D.h" />
+    <ClInclude Include="src\GameFramework\framework\Object\Object.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Base\IResource.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Manager\ResourceManager.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Analyzer\MaterialAnalyzer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Analyzer\UVAnalyzer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Mesh.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Texture\Texture.h" />
+    <ClInclude Include="src\GameFramework\framework\Save\Factory\SaveFactory.h" />
+    <ClInclude Include="src\GameFramework\framework\Save\Manager\SaveManagerBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Save\Obj\SaveObjBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Scene\Base\SceneBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Scene\Fade\SceneFadeBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Scene\ManagerWin\SceneManagerWin.h" />
+    <ClInclude Include="src\GameFramework\framework\Scene\Manager\SceneManager.h" />
     <ClInclude Include="src\GameFramework\framework\Screen\Screen.h" />
     <ClInclude Include="src\GameFramework\framework\Singleton\Singleton.h" />
     <ClInclude Include="src\GameFramework\framework\Time\Time.h" />
     <ClInclude Include="src\GameFramework\framework\Utility\Math\MathUtility.h" />
     <ClInclude Include="src\GameFramework\framework\Utility\System\SystemUtility.h" />
+    <ClInclude Include="src\GameFramework\Transform\Transform.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Simple.hlsl">
+    <FxCompile Include="Lambert.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
     </FxCompile>
+    <FxCompile Include="Phong.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Material.hlslh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

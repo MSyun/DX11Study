@@ -5,8 +5,7 @@
 
 #pragma once
 #include	<string>
-#include	<D3D11.h>
-#include	"../../Debug/Debug.h"
+#include	<d3d11.h>
 using namespace std;
 
 
@@ -27,9 +26,11 @@ public:
 	*/
 	static ID3D11Device* GetDevice();
 
-	/* 作成 */
+	/* リソースを作成
+	// name	: ファイルディレクトリ
+	*/
 	virtual bool Create(const string name) = 0;
 
-	/* 削除 */
+	/* リソースを削除 */
 	virtual void Delete() = 0;
 };

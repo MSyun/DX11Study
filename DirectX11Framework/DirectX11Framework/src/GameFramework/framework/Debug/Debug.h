@@ -10,10 +10,10 @@
 
 #pragma warning( disable : 4996 )
 
-#include	<d3dx9.h>
 #include	<string>
 #include	<stdlib.h>
 #include	"../Convert/Convert.h"
+#include	<Windows.h>
 
 
 /*

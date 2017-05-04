@@ -12,6 +12,7 @@
 
 class Texture	:	public IResource {
 protected:
+#pragma region variable
 
 	// テクスチャの設定が入ったもの
 	D3D11_SAMPLER_DESC		m_Sampler;
@@ -22,17 +23,21 @@ protected:
 	// テクスチャ
 	ID3D11ShaderResourceView*	m_pTexture;
 
+#pragma endregion
+
 public:
+#pragma region method
+
 	Texture();
 	virtual ~Texture();
 
 	/* リソースを作成
 	// name	: ファイルディレクトリ
 	*/
-	bool Create(const string name);
+	bool Create(const string name) override;
 
 	/* リソースを削除 */
-	void Delete();
+	void Delete() override;
 
 	/* 情報を設定
 	// samp	: サンプラーの設定
@@ -48,6 +53,8 @@ public:
 	// return	: テクスチャ
 	*/
 	ID3D11ShaderResourceView* GetTexture() const;
+
+#pragma endregion
 
 protected:
 	/* デフォルトの情報を設定 */

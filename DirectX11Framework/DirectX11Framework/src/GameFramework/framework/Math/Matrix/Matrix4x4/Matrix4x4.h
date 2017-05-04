@@ -7,7 +7,7 @@
 
 
 
-class Matrix4x4 {
+typedef struct Matrix4x4 {
 public:
 	union {
 		struct {
@@ -48,7 +48,4 @@ public:
 
 	bool operator == (const Matrix4x4& mat) const;
 	bool operator != (const Matrix4x4& mat) const;
-};
-
-using Matrix = Matrix4x4;
-using Matrix44 = Matrix4x4;
+} Matrix4x4, Matrix, Matrix44, float4x4;

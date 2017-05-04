@@ -9,13 +9,19 @@
 
 #define	DX11
 
+#if defined(_DEBUG) && !defined(NEW)
+#define NEW		::new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#else
+#define NEW		new
+#endif
+
 
 #ifdef DX9
 #include	<d3dx9.h>
 #include	<d3d9.h>
-#pragma comment ( lib, "d3d9.lib" )		// 描画処理に必要
-#pragma comment ( lib, "d3dx9.lib" )	// [d3d9.lib]の拡張ライブラリ
-#pragma comment ( lib, "dxguid.lib" )	// DirectXコンポーネント使用に必要
+//#pragma comment ( lib, "d3d9.lib" )		// 描画処理に必要
+//#pragma comment ( lib, "d3dx9.lib" )	// [d3d9.lib]の拡張ライブラリ
+//#pragma comment ( lib, "dxguid.lib" )	// DirectXコンポーネント使用に必要
 
 typedef	D3DXMATRIX		Matrix;
 typedef	D3DXVECTOR2		Point2;

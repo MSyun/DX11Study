@@ -24,7 +24,7 @@ struct SIMPLESHADER_CONSTANT_BUFFER {
 	Matrix	mWorld;
 	Matrix	mWVP;
 	Vector4	vLightDir;
-	Vector4	vColor;
+	Vector4	vDiffuse;
 	Vector4	vEye;
 };
 
@@ -114,25 +114,43 @@ HRESULT DX11Base::CreateDeviceSwapChain() {
 	sd.SampleDesc.Quality = 0;
 	sd.Windowed = true;
 
-	D3D_FEATURE_LEVEL pFeatureLevels = D3D_FEATURE_LEVEL_11_0;
+	D3D_DRIVER_TYPE driverTypes[] = {
+		D3D_DRIVER_TYPE_HARDWARE,
+		D3D_DRIVER_TYPE_WARP,
+		D3D_DRIVER_TYPE_REFERENCE,
+	};
+	UINT numDriverTypes = sizeof(driverTypes) / sizeof(driverTypes[0]);
+
+	D3D_FEATURE_LEVEL featureLevels[] = {
+		D3D_FEATURE_LEVEL_11_0,
+		D3D_FEATURE_LEVEL_10_1,
+		D3D_FEATURE_LEVEL_10_0,
+		D3D_FEATURE_LEVEL_9_3,
+	};
+	UINT numFeatureLevels = sizeof(featureLevels) / sizeof(featureLevels[0]);
 	D3D_FEATURE_LEVEL* pFeatureLevel = NULL;
 
-
+	HRESULT hr;
 	ID3D11Device* device;
 	ID3D11DeviceContext* context;
-	HRESULT hr = D3D11CreateDeviceAndSwapChain(
-		NULL,
-		D3D_DRIVER_TYPE_HARDWARE,
-		NULL,
-		0,
-		&pFeatureLevels,
-		1,
-		D3D11_SDK_VERSION,
-		&sd,
-		&m_pSwapChain,
-		&device,
-		pFeatureLevel,
-		&context);
+	for (int i = 0; i < numDriverTypes; ++ i) {
+		hr = D3D11CreateDeviceAndSwapChain(
+			NULL,
+			driverTypes[i],
+			NULL,
+			0,
+			featureLevels,
+			numFeatureLevels,
+			D3D11_SDK_VERSION,
+			&sd,
+			&m_pSwapChain,
+			&device,
+			pFeatureLevel,
+			&context);
+
+		if (SUCCEEDED(hr))
+			break;
+	}
 	IResource::SetDevice(device);
 	Graphics::SetDevice(context);
 
@@ -219,7 +237,7 @@ void DX11Base::CreateShader() {
 	// ブロブからバーテックスシェーダ作成
 	HRESULT hr;
 	hr = D3DX11CompileFromFile(
-		"Simple.hlsl",
+		"Phong.hlsl",
 		NULL,
 		NULL,
 		"VS",
@@ -266,7 +284,7 @@ void DX11Base::CreateShader() {
 
 	// ブロブからピクセルシェーダ作成
 	hr = D3DX11CompileFromFile(
-		"Simple.hlsl",
+		"Phong.hlsl",
 		NULL,
 		NULL,
 		"PS",
@@ -342,9 +360,9 @@ void DX11Base::CreatePolygon() {
 		&offset);
 	g_Light.normalize();
 
-//	m_pTexture = new Texture;
-//	m_pTexture->Create("Sprite.jpg");
-	m_pTexture = m_TexManager.Create("Sprite.jpg");
+	m_pTexture = GetResourceManager<Texture>()->Create("Sprite.jpg");
+	m_pCamera = NEW Camera;
+//	m_pMesh = GetResourceManager<Mesh>()->Create("data/Mesh/x-wing.fbx");
 }
 
 
@@ -377,23 +395,15 @@ void DX11Base::Draw() {
 	context->ClearRenderTargetView(m_pRenderTargetView, ClearColor);
 	context->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
-	Matrix mWorld, mView, mProj;
+	Matrix mWorld;
 	// ワールドトランスフォーム（絶対座標変換）
 	static float an = 0.0f;
 	an += (1.0f / 1000.0f);
 	MatrixRotationY(&mWorld, an);
-	// ビュートランスフォーム
-	Vector3 vEyePt(0.0f, 1.0f, -2.0f);
-	Vector3 vLookatPt(0.0f, 0.0f, 0.0f);
-	Vector3 vUpVec(0.0f, 1.0f, 0.0f);
-	MatrixLookAtLH(&mView, &vEyePt, &vLookatPt, &vUpVec);
-	// プロジェクショントランスフォーム（射影変換）
-	MatrixPerspectiveFovLH(
-		&mProj,
-		3.141592f/4.0f,
-		(float)Screen::GetWidth()/(float)Screen::GetHeight(),
-		0.1f,
-		100.0f);
+
+	// カメラ
+	m_pCamera->Set();
+	Vector3 pos = m_pCamera->GetTransform()->GetPos();
 
 	// 使用するシェーダの登録
 	context->VSSetShader(m_pVertexShader, NULL, 0);
@@ -407,16 +417,15 @@ void DX11Base::Draw() {
 		cb.mWorld = mWorld;
 		MatrixTranspose(&cb.mWorld, &cb.mWorld);
 		// ワールド、カメラ、射影行列を渡す
-		Matrix m = mWorld * mView * mProj;
+		Matrix m = mWorld * m_pCamera->GetView() * m_pCamera->GetProj();
 		MatrixTranspose(&m, &m);
 		cb.mWVP = m;
 		// カラーを渡す
-		Vector4 vColor(1, 0, 0, 1);
-		cb.vColor = vColor;
+		cb.vDiffuse = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 		// ライトベクトルを渡す
 		cb.vLightDir = g_Light;
 		// カメラの位置（視点）をシェーダに渡す
-		cb.vEye = Vector4(vEyePt.x, vEyePt.y, vEyePt.z, 0.0f);
+		cb.vEye = Vector4(pos.x, pos.y, pos.z, 0.0f);
 
 		memcpy_s(pData.pData, pData.RowPitch, (void*)(&cb), sizeof(cb));
 		context->Unmap(m_pConstantBuffer, 0);
@@ -447,6 +456,8 @@ void DX11Base::Draw() {
 //				終了処理			//
 //									*/
 HRESULT DX11Base::Release() {
+	SAFE_DELETE(m_pCamera);
+
 	SAFE_RELEASE(m_pRasterizerState);
 	SAFE_RELEASE(m_pConstantBuffer);
 	SAFE_RELEASE(m_pVertexShader);

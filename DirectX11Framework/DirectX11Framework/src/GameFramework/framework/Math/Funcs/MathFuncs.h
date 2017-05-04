@@ -5,13 +5,25 @@
 
 #pragma once
 
-
+#include	"../MathDefine.h"
 #include	"../Matrix/Matrix4x4/Matrix4x4.h"
 #include	"../Vector/Vector2/Vector2.h"
 #include	"../Vector/Vector3/Vector3.h"
 #include	"../Vector/Vector4/Vector4.h"
 
 
+
+/* ラジアンを角度に変換
+// radian	: 角度に変換したいラジアン
+// return	: 変換した角度
+*/
+float ToDegree(const float radian);
+
+/* 角度をラジアンに変換
+// degree	: ラジアンに変換したい角度
+// return	: 変換したいラジアン
+*/
+float ToRadian(const float degree);
 
 /* 内積
 // pL	: 左辺値
@@ -43,6 +55,26 @@ float Vec3Length(const Vector3* pV);
 // pV	: 処理のもとになるベクトル
 */
 void Vec3Normalize(Vector3* pOut, const Vector3* pV);
+
+/* 4Dベクトルに行列を反映
+// pOut	: 演算結果
+// pV	: 反映されるベクトル
+// pM	: 反映する行列
+*/
+void Vec4TransformCoord(
+	Vector4* pOut,
+	const Vector4* pV,
+	const Matrix* pM);
+
+/* 3Dベクトルに行列を反映
+// pOut	: 演算結果
+// pV	: 反映されるベクトル
+// pM	: 反映する行列
+*/
+void Vec3TransformCoord(
+	Vector3* pOut,
+	const Vector3* pV,
+	const Matrix* pM);
 
 /* 単位行列の生成
 // pMat	: 生成する元の行列
@@ -110,6 +142,12 @@ void MatrixScaling(Matrix4x4* pMat, float X, float Y, float Z);
 // pM	: 転置したい行列
 */
 void MatrixTranspose(Matrix4x4* pOut, const Matrix4x4* pM);
+
+/* 逆行列の生成
+// pOut	: 格納したい行列
+// pM	: 逆にしたい行列
+*/
+void MatrixInverse(Matrix* pOut, const Matrix* pM);
 
 /* 左手座標系ビュー行列作成
 // pOut	: 格納したい行列

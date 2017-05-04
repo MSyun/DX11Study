@@ -86,6 +86,11 @@ void Texture::SetDefaultInfo() {
 	m_Sampler.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
 	m_Sampler.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
 	m_Sampler.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+	m_Sampler.MipLODBias = 0;
+	m_Sampler.MaxAnisotropy = 16;
+	m_Sampler.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+	m_Sampler.MinLOD = 0;
+	m_Sampler.MaxLOD = D3D11_FLOAT32_MAX;
 
 	GetDevice()->CreateSamplerState(&m_Sampler, &m_pSampleLinear);
 }
