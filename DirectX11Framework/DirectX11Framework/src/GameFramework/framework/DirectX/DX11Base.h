@@ -9,11 +9,6 @@
 #include	<d3d11.h>
 #include	<D3DX11.h>
 
-#include	"../Resource/Manager/ResourceManager.h"
-#include	"../Resource/Texture/Texture.h"
-#include	"../Camera/Camera.h"
-#include	"../Resource/Mesh/Mesh.h"
-#include	"../Light/Light.h"
 
 
 #pragma comment(lib, "d3d11.lib")
@@ -32,23 +27,6 @@ protected:
 	ID3D11Texture2D*		m_pDepthStencil;
 	ID3D11RasterizerState*	m_pRasterizerState;
 
-	///////////////////////////////////////
-	// 一時的
-	ID3D11InputLayout*	m_pVertexLayout;
-	ID3D11VertexShader*	m_pVertexShader;
-	ID3D11PixelShader*	m_pPixelShader;
-	ID3D11Buffer*		m_pConstantBuffer;
-
-	ID3D11Buffer*		m_pVertexBuffer;
-
-	Texture*			m_pTexture;
-	Mesh*				m_pMesh;
-	ResourceManager<Texture>	m_TexManager;
-	ResourceManager<Mesh>		m_MeshManager;
-	Camera*				m_pCamera;
-	Light*				m_pLight;
-	///////////////////////////////////////
-
 #pragma endregion
 
 public:
@@ -60,25 +38,22 @@ public:
 	/* 初期化
 	// return	: S_OK. 成功、E_FAIL. 失敗
 	*/
-	virtual HRESULT Init();
+	virtual HRESULT Init() override;
 
 	/* ステップ関数
 	// return	: S_OK. 成功、E_FAIL. 失敗
 	*/
-	virtual HRESULT Step();
+	virtual HRESULT Step() override;
 
 	/* 終了処理
 	// return	: S_OK. 成功、E_FAIL. 失敗
 	*/
-	virtual HRESULT Release();
+	virtual HRESULT Release() override;
 
 #pragma endregion
 
-private:
+protected:
 #pragma region conceal method
-
-	virtual HRESULT InvalidateDeviceObjects() { return S_OK; };	// OnLostDevice
-	virtual HRESULT RestoreDeviceObjects() { return S_OK; };	// OnResetDevice
 
 	/* デバイスとスワップチェーンの作成
 	// return	: S_OK. 成功、E_FAIL. 失敗
@@ -101,10 +76,8 @@ private:
 	/* ラスタライズの設定 */
 	virtual void CreateRasterize();
 
-	/* シェーダの作成 */
-	virtual void CreateShader();
-
-	virtual void CreatePolygon();
+	virtual HRESULT InitApp();
+	virtual HRESULT ReleaseApp();
 
 	virtual void Update();
 	virtual void Draw();

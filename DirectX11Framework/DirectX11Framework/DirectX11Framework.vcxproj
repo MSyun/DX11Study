@@ -157,8 +157,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\DirectX\GameDirectX11.cpp" />
     <ClCompile Include="src\GameFramework\DelayFunction\Collection\DelayFunctionCollection.cpp" />
     <ClCompile Include="src\GameFramework\DelayFunction\DelayFunction.cpp" />
+    <ClCompile Include="src\GameFramework\DirectX\GameDirectX11Base.cpp" />
     <ClCompile Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.cpp" />
     <ClCompile Include="src\GameFramework\framework\Application\Application.cpp" />
     <ClCompile Include="src\GameFramework\framework\Application\DirectX\DXApplication.cpp" />
@@ -168,8 +170,11 @@
     <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp" />
     <ClCompile Include="src\GameFramework\framework\Graphic\Graphics.cpp" />
     <ClCompile Include="src\GameFramework\framework\Input\Input.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Light\Light.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Funcs\MathFuncs.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Math\Quaternion\Quaternion.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.cpp" />
@@ -191,10 +196,13 @@
     <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp" />
     <ClCompile Include="src\GameFramework\Transform\Transform.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Scene\CheckScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DirectX\GameDirectX11.h" />
     <ClInclude Include="src\GameFramework\DelayFunction\Collection\DelayFunctionCollection.h" />
     <ClInclude Include="src\GameFramework\DelayFunction\DelayFunction.h" />
+    <ClInclude Include="src\GameFramework\DirectX\GameDirectX11Base.h" />
     <ClInclude Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.h" />
     <ClInclude Include="src\GameFramework\framework\Application\Application.h" />
     <ClInclude Include="src\GameFramework\framework\Application\DirectX\DXApplication.h" />
@@ -211,9 +219,12 @@
     <ClInclude Include="src\GameFramework\framework\Graphic\Graphics.h" />
     <ClInclude Include="src\GameFramework\framework\Graphic\IGraphics\IGraphics.h" />
     <ClInclude Include="src\GameFramework\framework\Input\Input.h" />
+    <ClInclude Include="src\GameFramework\framework\Light\Light.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Funcs\MathFuncs.h" />
     <ClInclude Include="src\GameFramework\framework\Math\MathDefine.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.h" />
+    <ClInclude Include="src\GameFramework\framework\Math\Quaternion\Quaternion.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.h" />
@@ -238,6 +249,7 @@
     <ClInclude Include="src\GameFramework\framework\Utility\Math\MathUtility.h" />
     <ClInclude Include="src\GameFramework\framework\Utility\System\SystemUtility.h" />
     <ClInclude Include="src\GameFramework\Transform\Transform.h" />
+    <ClInclude Include="src\Scene\CheckScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Lambert.hlsl">
@@ -249,6 +261,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Material.hlslh" />
+    <None Include="src\GameFramework\framework\CPPEvent\CPPEvent.inl" />
+    <None Include="src\GameFramework\framework\Delegate\Delegate.inl" />
+    <None Include="src\GameFramework\framework\Resource\Manager\ResourceManager.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

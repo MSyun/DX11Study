@@ -52,15 +52,15 @@ void Debug::Log(const Vector4& val) {
 		" )\n";
 	OutputDebugString(st.c_str());
 }
-//void Debug::Log(const Quaternion& qua) {
-//	string st = "( " +
-//		to_string(qua.x) + ", " +
-//		to_string(qua.y) + ", " +
-//		to_string(qua.z) + ", " +
-//		to_string(qua.w) +
-//		" )\n";
-//	OutputDebugString(st.c_str());
-//}
+void Debug::Log(const Quaternion& qua) {
+	string st = "( " +
+		to_string(qua.x) + ", " +
+		to_string(qua.y) + ", " +
+		to_string(qua.z) + ", " +
+		to_string(qua.w) +
+		" )\n";
+	OutputDebugString(st.c_str());
+}
 #pragma endregion
 
 
@@ -82,7 +82,7 @@ void Debug::LogError(const string& message) {
 //			デバイスロスト			//
 //									*/
 HRESULT Debug::InvalidateDeviceObjects() {
-	return true;
+	return S_OK;
 }
 
 
@@ -90,5 +90,5 @@ HRESULT Debug::InvalidateDeviceObjects() {
 //			デバイスリセット		//
 //									*/
 HRESULT Debug::RestoreDeviceObjects() {
-	return true;
+	return S_OK;
 }

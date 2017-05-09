@@ -175,6 +175,27 @@
     <Filter Include="ソース ファイル\GameFramework\framework\Resource\Mesh\Analyzer\Material">
       <UniqueIdentifier>{b06efcc1-6c8a-4710-a17d-d6a1861fe4db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Light">
+      <UniqueIdentifier>{e8ec288f-60d2-4a47-a1d6-854315dc5401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Quaternion">
+      <UniqueIdentifier>{b65ea478-b81d-4efe-a502-378d2b0d1ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\EulerAngle">
+      <UniqueIdentifier>{4ac33e95-2341-48ef-8712-00272aba5f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader">
+      <UniqueIdentifier>{c6604532-f9d8-4209-951c-c5e1463715c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\DirectX">
+      <UniqueIdentifier>{74d940a9-2ece-4254-8ac4-6430b907e01a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{df69c9da-7ea1-41ea-b675-ea61ed3341b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\DirectX">
+      <UniqueIdentifier>{420528da-46d7-4202-9471-44a31a8cccde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -278,6 +299,24 @@
     </ClCompile>
     <ClCompile Include="src\GameFramework\DelayFunction\DelayFunction.cpp">
       <Filter>ソース ファイル\GameFramework\DelayFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Light\Light.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Math\Quaternion\Quaternion.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Math\Quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Math\EulerAngle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\DirectX\GameDirectX11Base.cpp">
+      <Filter>ソース ファイル\GameFramework\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\CheckScene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX\GameDirectX11.cpp">
+      <Filter>ソース ファイル\DirectX</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,10 +455,37 @@
     <ClInclude Include="src\GameFramework\framework\Delegate\IDelegate.h">
       <Filter>ソース ファイル\GameFramework\framework\Delegate</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Light\Light.h">
+      <Filter>ソース ファイル\GameFramework\framework\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Math\Quaternion\Quaternion.h">
+      <Filter>ソース ファイル\GameFramework\framework\Math\Quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.h">
+      <Filter>ソース ファイル\GameFramework\framework\Math\EulerAngle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\DirectX\GameDirectX11Base.h">
+      <Filter>ソース ファイル\GameFramework\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\CheckScene.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX\GameDirectX11.h">
+      <Filter>ソース ファイル\DirectX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Material.hlslh">
       <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="src\GameFramework\framework\Delegate\Delegate.inl">
+      <Filter>ソース ファイル\GameFramework\framework\Delegate</Filter>
+    </None>
+    <None Include="src\GameFramework\framework\CPPEvent\CPPEvent.inl">
+      <Filter>ソース ファイル\GameFramework\framework\CPPEvent</Filter>
+    </None>
+    <None Include="src\GameFramework\framework\Resource\Manager\ResourceManager.inl">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Manager</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
