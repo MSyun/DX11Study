@@ -24,6 +24,9 @@ float ToRadian(const float degree) {
 }
 
 
+/////////////////////////////////////////////////////////////
+// Vec3
+
 /*									//
 //				内積				//
 //									*/
@@ -77,6 +80,29 @@ void Vec3Normalize(Vector3* pOut, const Vector3* pV) {
 
 
 /*									//
+//		3Dベクトルに行列を反映		//
+//									*/
+void Vec3TransformCoord(
+	Vector3* pOut,
+	const Vector3* pV,
+	const Matrix* pM)
+{
+	if (!pOut || !pV || !pM)
+		return;
+
+	Vector4 vIn(pV->x, pV->y, pV->z, 1.0f);
+	Vector4 vOut;
+	Vec4TransformCoord(&vOut, &vIn, pM);
+	pOut->x = vOut.x;
+	pOut->y = vOut.y;
+	pOut->z = vOut.z;
+}
+
+
+/////////////////////////////////////////////////////////////
+// Vec4
+
+/*									//
 //		4Dベクトルに行列を反映		//
 //									*/
 void Vec4TransformCoord(
@@ -98,25 +124,8 @@ void Vec4TransformCoord(
 }
 
 
-/*									//
-//		3Dベクトルに行列を反映		//
-//									*/
-void Vec3TransformCoord(
-	Vector3* pOut,
-	const Vector3* pV,
-	const Matrix* pM)
-{
-	if (!pOut || !pV || !pM)
-		return;
-
-	Vector4 vIn(pV->x, pV->y, pV->z, 1.0f);
-	Vector4 vOut;
-	Vec4TransformCoord(&vOut, &vIn, pM);
-	pOut->x = vOut.x;
-	pOut->y = vOut.y;
-	pOut->z = vOut.z;
-}
-
+/////////////////////////////////////////////////////////////
+// Matrix
 
 /*									//
 //			単位行列の生成			//
@@ -481,4 +490,90 @@ void MatrixRotationAxis(
 	pMat->_42 = 0.0f;
 	pMat->_43 = 0.0f;
 	pMat->_44 = 1.0f;
+}
+
+
+/*									//
+//	クォータニオンから				//
+//	回転行列を作成する				*/
+void MatrixRotationQuaternion(
+	Matrix* pOut,
+	const Quaternion* pQ)
+{
+	float qw, qx, qy, qz;
+	float x2, y2, z2;
+	float xy, yz, zx;
+	float wx, wy, wz;
+
+	qw = pQ->w;
+	qx = pQ->x;
+	qy = pQ->y;
+	qz = pQ->z;
+
+	x2 = 2.0f * qx * qx;
+	y2 = 2.0f * qy * qy;
+	z2 = 2.0f * qz * qz;
+
+	xy = 2.0f * qx * qy;
+	yz = 2.0f * qy * qz;
+	zx = 2.0f * qz * qx;
+
+	wx = 2.0f * qw * qx;
+	wy = 2.0f * qw * qy;
+	wz = 2.0f * qw * qz;
+
+	pOut->m[0][0] = 1.0f - y2 - z2;
+	pOut->m[0][1] = xy - wz;
+	pOut->m[0][2] = zx + wy;
+	pOut->m[0][3] = 0.0f;
+	pOut->m[1][0] = xy + wz;
+	pOut->m[1][1] = 1.0f - z2 - x2;
+	pOut->m[1][2] = yz - wx;
+	pOut->m[1][3] = 0.0f;
+	pOut->m[2][0] = zx - wy;
+	pOut->m[2][1] = yz + wx;
+	pOut->m[2][2] = 1.0f - x2 - y2;
+	pOut->m[2][3] = 0.0f;
+	pOut->m[3][0] = pOut->m[3][1] = pOut->m[3][2] = 0.0f;
+	pOut->m[3][3] = 1.0f;
+}
+
+
+/////////////////////////////////////////////////////////////
+// Quaternion
+
+/*									//
+//		クォータニオンの初期化		//
+//									*/
+void QuaternionIdentity(Quaternion* pOut) {
+	pOut->x = 0.0f;
+	pOut->y = 0.0f;
+	pOut->z = 0.0f;
+	pOut->w = 1.0f;
+}
+
+
+/*									//
+//	任意の軸を回転軸として			//
+//	クォータニオンを回転させる		*/
+void QuaternionRotationAxis(
+	Quaternion* pOut,
+	const Vector3* pV,
+	float rad)
+{
+	if ((pV->x == 0.0f) && (pV->y == 0.0f) && (pV->z == 0.0f))
+		return;
+
+	Vector3 Normal = pV->getNormalize();
+
+	float hrad;
+	float s;
+
+	hrad = 0.5f * rad;
+	s = sinf(hrad);
+
+	pOut->w = cosf(hrad);
+	pOut->x = s * Normal.x;
+	pOut->y = s * Normal.y;
+	pOut->z = s * Normal.z;
 }

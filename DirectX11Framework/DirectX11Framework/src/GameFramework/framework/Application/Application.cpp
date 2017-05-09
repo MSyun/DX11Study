@@ -39,7 +39,7 @@ Application::~Application() {
 
 
 /*									//
-//			プロシージャ			//
+//			プロシージャー			//
 //									*/
 LRESULT CALLBACK Application::WndProc(
 	HWND hWnd,

@@ -7,6 +7,7 @@
 #include	"Transform.h"
 #include	"../framework/Debug/Debug.h"
 #include	"../framework/Utility/System/SystemUtility.h"
+#include	"../framework/Object/Object.h"
 
 
 /*									//
@@ -14,7 +15,7 @@
 //									*/
 Transform::Transform(Object* object) :
 	m_pObject(object),
-	m_pParent(NULL)
+	m_pParent(nullptr)
 {
 	MatrixIdentity(&m_matWorld);
 	MatrixIdentity(&m_matLocal);
@@ -28,7 +29,7 @@ Transform::Transform(Object* object) :
 Transform::~Transform() {
 	RemoveParent();
 	for (auto it = m_Childs.begin(); it != m_Childs.end(); ++it)
-		(*it)->SetParent(NULL);
+		(*it)->SetParent(nullptr);
 }
 
 #pragma region Matrix
@@ -104,11 +105,11 @@ Vector3 Transform::GetRight() {
 //				座標取得			//
 //									*/
 // ワールド
-Point3 Transform::GetPos() {
+Point3 Transform::GetPos() const {
 	return Point3(m_matWorld._41, m_matWorld._42, m_matWorld._43);
 }
 // ローカル
-Point3 Transform::GetLocalPos() {
+Point3 Transform::GetLocalPos() const {
 	return Point3(m_matLocal._41, m_matLocal._42, m_matLocal._43);
 }
 
@@ -206,11 +207,11 @@ void Transform::SetEularAngles(float xAngle, float yAngle, float zAngle) {
 	Vector3 scale = GetScale();
 	MatrixIdentity(&m_matWorld);
 
-	//Quaternion qx, qy, qz;
-	//D3DXQuaternionRotationAxis(&qx, &GetRight(), D3DXToRadian(xAngle));
-	//D3DXQuaternionRotationAxis(&qy, &GetUp(), D3DXToRadian(yAngle));
-	//D3DXQuaternionRotationAxis(&qz, &GetForward(), D3DXToRadian(zAngle));
-	//D3DXMatrixRotationQuaternion(&m_matWorld, &(qz * qy * qx));
+	Quaternion qx, qy, qz;
+	QuaternionRotationAxis(&qx, &GetRight(), ToRadian(xAngle));
+	QuaternionRotationAxis(&qy, &GetUp(), ToRadian(yAngle));
+	QuaternionRotationAxis(&qz, &GetForward(), ToRadian(zAngle));
+	MatrixRotationQuaternion(&m_matWorld, &(qz * qy * qx));
 
 	SetScale(scale);
 	SetPos(pos);
@@ -241,11 +242,11 @@ void Transform::RotateLocal(float xAngle, float yAngle, float zAngle) {
 	m_matWorld._41 = m_matWorld._42 = m_matWorld._43 = 0.0f;
 	Matrix mat;
 
-	//Quaternion qx, qy, qz;
-	//D3DXQuaternionRotationAxis(&qx, &GetRight(), D3DXToRadian(xAngle));
-	//D3DXQuaternionRotationAxis(&qy, &GetUp(), D3DXToRadian(yAngle));
-	//D3DXQuaternionRotationAxis(&qz, &GetForward(), D3DXToRadian(zAngle));
-	//D3DXMatrixRotationQuaternion(&mat, &(qz * qy * qx));
+	Quaternion qx, qy, qz;
+	QuaternionRotationAxis(&qx, &GetRight(), ToRadian(xAngle));
+	QuaternionRotationAxis(&qy, &GetUp(), ToRadian(yAngle));
+	QuaternionRotationAxis(&qz, &GetForward(), ToRadian(zAngle));
+	MatrixRotationQuaternion(&mat, &(qz * qy * qx));
 
 	m_matWorld *= mat;
 
@@ -260,14 +261,14 @@ void Transform::RotateLocal(float xAngle, float yAngle, float zAngle) {
 //				拡大率取得			//
 //									*/
 // ワールド
-Vector3 Transform::GetScale() {
+Vector3 Transform::GetScale() const {
 	float x = Vector3(m_matWorld._11, m_matWorld._12, m_matWorld._13).length();
 	float y = Vector3(m_matWorld._21, m_matWorld._22, m_matWorld._23).length();
 	float z = Vector3(m_matWorld._31, m_matWorld._32, m_matWorld._33).length();
 	return Vector3(x, y, z);
 }
 // ローカル
-Vector3 Transform::GetLocalScale() {
+Vector3 Transform::GetLocalScale() const {
 	float x = Vector3(m_matLocal._11, m_matLocal._12, m_matLocal._13).length();
 	float y = Vector3(m_matLocal._21, m_matLocal._22, m_matLocal._23).length();
 	float z = Vector3(m_matLocal._31, m_matLocal._32, m_matLocal._33).length();

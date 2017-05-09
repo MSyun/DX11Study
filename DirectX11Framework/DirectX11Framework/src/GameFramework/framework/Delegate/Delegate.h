@@ -21,34 +21,23 @@ private:
 public:
 #pragma region method
 
-	Delegate() {}
-	virtual ~Delegate() {}
+	Delegate();
+	virtual ~Delegate();
 
 	// 登録関数実行
-	virtual void Invoke(Args... args) {
-		if(m_Func)
-			m_Func(args...);
-	}
+	virtual void Invoke(Args... args);
 
 	// 自身と同じかチェック
-	bool CheckSame(std::function<Return(Args...)> func) {
-		if (m_Func == func)
-			return true;
-
-		return false;
-	}
+	bool CheckSame(std::function<Return(Args...)> func);
 
 	// 関数の設定
-	void Set(std::function<Return(Args...)> func) {
-		m_Func = func;
-	}
+	void Set(std::function<Return(Args...)> func);
 
 	// 作成
-	static IDelegate<Args...>* Create(std::function<Return(Args...)> func) {
-		Delegate<Return, Args...>* dele = new Delegate<Return, Args...>;
-		dele->Set(func);
-		return dele;
-	}
+	static IDelegate<Args...>* Create(std::function<Return(Args...)> func);
 
 #pragma endregion
 };
+
+
+#include	"Delegate.inl"

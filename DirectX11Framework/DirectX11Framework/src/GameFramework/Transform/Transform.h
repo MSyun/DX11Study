@@ -7,8 +7,10 @@
 
 #include	"../framework/Convert/Convert.h"
 #include	<vector>
-#include	"../framework/Object/Object.h"
+using namespace std;
 
+
+class Object;
 
 class Transform {
 private:
@@ -49,9 +51,9 @@ public:
 
 #pragma region Position
 	// 座標取得
-	Point3 GetPos();
+	Point3 GetPos() const;
 	// 座標取得（ローカル
-	Point3 GetLocalPos();
+	Point3 GetLocalPos() const;
 	// 座標設定
 	void SetPos(const Point3& pos);
 	void SetPos(float x, float y, float z);
@@ -73,9 +75,9 @@ public:
 
 #pragma region Scale
 	// 拡大率取得（ワールド
-	Vector3 GetScale();
+	Vector3 GetScale() const;
 	// 拡大率取得（ローカル
-	Vector3 GetLocalScale();
+	Vector3 GetLocalScale() const;
 	// 拡大率設定
 	void SetScale(const Vector3& scale);
 	// 拡大率設定

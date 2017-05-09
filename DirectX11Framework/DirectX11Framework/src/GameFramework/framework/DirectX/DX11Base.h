@@ -13,6 +13,7 @@
 #include	"../Resource/Texture/Texture.h"
 #include	"../Camera/Camera.h"
 #include	"../Resource/Mesh/Mesh.h"
+#include	"../Light/Light.h"
 
 
 #pragma comment(lib, "d3d11.lib")
@@ -45,6 +46,7 @@ protected:
 	ResourceManager<Texture>	m_TexManager;
 	ResourceManager<Mesh>		m_MeshManager;
 	Camera*				m_pCamera;
+	Light*				m_pLight;
 	///////////////////////////////////////
 
 #pragma endregion

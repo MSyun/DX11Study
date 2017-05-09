@@ -10,7 +10,7 @@
 #include	"../Vector/Vector2/Vector2.h"
 #include	"../Vector/Vector3/Vector3.h"
 #include	"../Vector/Vector4/Vector4.h"
-
+#include	"../Quaternion/Quaternion.h"
 
 
 /* ラジアンを角度に変換
@@ -24,6 +24,10 @@ float ToDegree(const float radian);
 // return	: 変換したいラジアン
 */
 float ToRadian(const float degree);
+
+
+/////////////////////////////////////////////////////////////
+// Vec3
 
 /* 内積
 // pL	: 左辺値
@@ -56,6 +60,20 @@ float Vec3Length(const Vector3* pV);
 */
 void Vec3Normalize(Vector3* pOut, const Vector3* pV);
 
+/* 3Dベクトルに行列を反映
+// pOut	: 演算結果
+// pV	: 反映されるベクトル
+// pM	: 反映する行列
+*/
+void Vec3TransformCoord(
+	Vector3* pOut,
+	const Vector3* pV,
+	const Matrix* pM);
+
+
+/////////////////////////////////////////////////////////////
+// Vec4
+
 /* 4Dベクトルに行列を反映
 // pOut	: 演算結果
 // pV	: 反映されるベクトル
@@ -66,15 +84,9 @@ void Vec4TransformCoord(
 	const Vector4* pV,
 	const Matrix* pM);
 
-/* 3Dベクトルに行列を反映
-// pOut	: 演算結果
-// pV	: 反映されるベクトル
-// pM	: 反映する行列
-*/
-void Vec3TransformCoord(
-	Vector3* pOut,
-	const Vector3* pV,
-	const Matrix* pM);
+
+/////////////////////////////////////////////////////////////
+// Matrix
 
 /* 単位行列の生成
 // pMat	: 生成する元の行列
@@ -195,4 +207,31 @@ void MatrixPerspectiveFovLH(
 void MatrixRotationAxis(
 	Matrix4x4* pMat,
 	Vector3* pV,
+	float Angle);
+
+/* クォータニオンから回転行列を作成する
+// pOut	: 作成した行列
+// pQ	: 処理の基になるクォータニオン
+*/
+void MatrixRotationQuaternion(
+	Matrix* pOut,
+	const Quaternion* pQ);
+
+
+/////////////////////////////////////////////////////////////
+// Quaternion
+
+/* クォータニオンを初期化
+// pOut	: 初期化したいクォータニオン
+*/
+void QuaternionIdentity(Quaternion* pOut);
+
+/* 任意の軸を回転軸としてクォータニオンを回転させる
+// pOut		: 格納したいクォータニオン
+// pV		: 軸の角度を識別するベクトル
+// Angle	: 回転の角度
+*/
+void QuaternionRotationAxis(
+	Quaternion* pOut,
+	const Vector3* pV,
 	float Angle);

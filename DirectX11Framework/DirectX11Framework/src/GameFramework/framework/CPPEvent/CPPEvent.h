@@ -35,48 +35,26 @@ private:
 public:
 #pragma region method
 
-	CPPEvent() {};
-	virtual ~CPPEvent() {
-		RemoveAllListener();
-	};
+	CPPEvent();
+	virtual ~CPPEvent();
 
 	// ŠÖ”‚ğ“o˜^
-	void AddListener(function<void(Args...)> func) {
-		m_lstListener.push_back(Delegate<void, Args...>::Create(func));
-	};
+	void AddListener(function<void(Args...)> func);
 
 	// ŠÖ”‚ğŠJ•ú
-	void RemoveListener(function<void(Args...)> func) {
-		for (auto it = m_lstListener.begin(); it != m_lstListener.end(); ++it) {
-			if (!(*it)->CheckSame(func))
-				continue;
-
-			delete (*it);
-			(*it) = NULL;
-			return;
-		}
-	}
+	void RemoveListener(function<void(Args...)> func);
 
 	// “o˜^Ï‚İ‚ÌŠÖ”‚ğ‚·‚×‚ÄŠJ•ú
-	void RemoveAllListener() {
-		for (auto it = m_lstListener.begin(); it != m_lstListener.end(); ++it) {
-			delete *it;
-			*it = NULL;
-		}
-		m_lstListener.clear();
-	};
+	void RemoveAllListener();
 
 	// ŠÖ”‚ÌŒÂ”‚ğ•Ô‚·
-	int GetListenerCount() {
-		return m_lstListener.size();
-	};
+	int GetListenerCount();
 
 	// “o˜^Ï‚İ‚ÌŠÖ”‚ğÀs
-	void Invoke(Args... args) {
-		for (auto it = m_lstListener.begin(); it != m_lstListener.end(); ++it) {
-			(*it)->Invoke(args...);
-		}
-	};
+	void Invoke(Args... args);
 
 #pragma endregion
 };
+
+
+#include	"CPPEvent.inl"

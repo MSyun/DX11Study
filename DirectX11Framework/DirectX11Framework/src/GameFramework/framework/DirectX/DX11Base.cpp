@@ -28,7 +28,6 @@ struct SIMPLESHADER_CONSTANT_BUFFER {
 	Vector4	vEye;
 };
 
-Vector4 g_Light = Vector4(0.0f, 0.5f, -1.0f, 0.0f);
 
 
 ///////////////////////
@@ -358,11 +357,15 @@ void DX11Base::CreatePolygon() {
 		&m_pVertexBuffer,
 		&stride,
 		&offset);
-	g_Light.normalize();
 
-	m_pTexture = GetResourceManager<Texture>()->Create("Sprite.jpg");
+	m_pTexture = GetResourceManager<Texture>()->Create("data/Texture/Sprite.jpg");
 	m_pCamera = NEW Camera;
-//	m_pMesh = GetResourceManager<Mesh>()->Create("data/Mesh/x-wing.fbx");
+	m_pCamera->GetTransform()->SetPos(0.0f, 1.0f, -2.0f);
+	m_pCamera->GetTransform()->Rotate(-25.0f, 0.0f, 0.0f);
+	//	m_pMesh = GetResourceManager<Mesh>()->Create("data/Mesh/x-wing.fbx");
+	m_pLight = NEW Light;
+	m_pLight->GetTransform()->SetPos(0.0f, 1.0f, -2.0f);
+	m_pLight->GetTransform()->Rotate(-20.0f, 0.0f, 0.0f);
 }
 
 
@@ -398,7 +401,7 @@ void DX11Base::Draw() {
 	Matrix mWorld;
 	// ワールドトランスフォーム（絶対座標変換）
 	static float an = 0.0f;
-	an += (1.0f / 1000.0f);
+	an += (1.0f / 2000.0f);
 	MatrixRotationY(&mWorld, an);
 
 	// カメラ
@@ -423,7 +426,7 @@ void DX11Base::Draw() {
 		// カラーを渡す
 		cb.vDiffuse = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 		// ライトベクトルを渡す
-		cb.vLightDir = g_Light;
+		cb.vLightDir = m_pLight->GetDirection4();
 		// カメラの位置（視点）をシェーダに渡す
 		cb.vEye = Vector4(pos.x, pos.y, pos.z, 0.0f);
 
@@ -457,6 +460,7 @@ void DX11Base::Draw() {
 //									*/
 HRESULT DX11Base::Release() {
 	SAFE_DELETE(m_pCamera);
+	SAFE_DELETE(m_pLight);
 
 	SAFE_RELEASE(m_pRasterizerState);
 	SAFE_RELEASE(m_pConstantBuffer);
