@@ -1,222 +1,188 @@
 // メッシュ
-// 2017.05. 2	: プログラム作成
+// 2017.05.12	: プログラム作成
 // author		: SyunMizuno
 
 
+
 #include	"Mesh.h"
+#include	"../../Graphic/Graphics.h"
+#include	"../../Time/Time.h"
+
 #include	"../../Debug/Debug.h"
-#include	"../../Utility/System/SystemUtility.h"
+#include	"../Texture/Texture.h"
+#include	"../Manager/ResourceManager.h"
+#include	"../../Path/Path.h"
+
+struct SIMPLESHADER_CONSTANT_BUFFER {
+	Matrix	mWorld;
+	Matrix	mWVP;
+	Vector4	vLightDir;
+	Vector4	vDiffuse;
+	Vector4	vEye;
+};
 
 
 
-/*									//
-//			コンストラクタ			//
-//									*/
+
+
 Mesh::Mesh() :
-	m_Indexes(nullptr),
-	m_IndexCount(0),
-	m_VertexBuffer(nullptr),
-	m_IndexBuffer(nullptr)
+	m_pMeshData(nullptr),
+	m_pVertex(nullptr),
+	m_pVertexBuffer(nullptr),
+	m_pIndexBuffer(nullptr)
 {
-	m_MeshName.clear();
-	m_Polygon.clear();
 }
 
-/*									//
-//			デストラクタ			//
-//									*/
+
 Mesh::~Mesh() {
 	Delete();
 }
 
-
-/*									//
-//			リソースを作成			//
-//									*/
-bool Mesh::Create(const string name) {
-	Delete();
-
-	// 読み込み
-	FbxManager* manager = FbxManager::Create();
-	FbxImporter* impoter = FbxImporter::Create(manager, "");
-	if (!impoter->Initialize(name.c_str())) {
-		Debug::LogError("読み込み失敗");
-		return false;
+bool Mesh::Create(const string fileName) {
+	m_pMeshData = NEW Pmd(fileName);
+	m_pVertex = NEW SimpleVertex[m_pMeshData->vert_count];
+	for (int i = 0; i < m_pMeshData->vert_count; ++i) {
+		m_pVertex[i].Pos = m_pMeshData->vertex[i].pos;
+		m_pVertex[i].Normal = m_pMeshData->vertex[i].normal_vec;
+		m_pVertex[i].Tex = m_pMeshData->vertex[i].uv;
 	}
-	FbxScene* scene = FbxScene::Create(manager, "");
-	impoter->Import(scene);
-	impoter->Destroy();
 
-	// 
-	FbxNode* pRootNode = scene->GetRootNode();
-	RecursiveNode(pRootNode);
+	// テクスチャ読み込み
+	this->LoadTexture(fileName);
+
+	// 頂点
+	D3D11_BUFFER_DESC bd;
+	bd.Usage = D3D11_USAGE_DEFAULT;
+	bd.ByteWidth = sizeof(SimpleVertex) * m_pMeshData->vert_count;
+	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bd.CPUAccessFlags = 0;
+	bd.MiscFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA InitData;
+	InitData.pSysMem = m_pVertex;
+	auto device = GetDevice();
+	HRESULT hr = device->CreateBuffer(&bd, &InitData, &m_pVertexBuffer);
+	if (FAILED(hr))	return false;
+
+	// インデックス
+	D3D11_BUFFER_DESC Ibd;
+	Ibd.Usage = D3D11_USAGE_DEFAULT;
+	Ibd.ByteWidth = sizeof(unsigned short) * m_pMeshData->face_vert_count;
+	Ibd.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	Ibd.CPUAccessFlags = 0;
+	Ibd.MiscFlags = 0;
+	Ibd.StructureByteStride = sizeof(unsigned short);
+
+	D3D11_SUBRESOURCE_DATA InData;
+	InData.pSysMem = m_pMeshData->face_vert_index;
+	hr = device->CreateBuffer(&Ibd, &InData, &m_pIndexBuffer);
+	if (FAILED(hr))	return false;
+
+	// コンスタントバッファ―作成
+	D3D11_BUFFER_DESC cb;
+	cb.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	cb.ByteWidth = sizeof(SIMPLESHADER_CONSTANT_BUFFER);
+	cb.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	cb.MiscFlags = 0;
+	cb.StructureByteStride = 0;
+	cb.Usage = D3D11_USAGE_DYNAMIC;
+
+	hr = GetDevice()->CreateBuffer(&cb, NULL, &m_pConstantBuffer);
+	if (FAILED(hr))	return false;
 
 	return true;
 }
 
 
-/*									//
-//			リソースを削除			//
-//									*/
+void Mesh::LoadTexture(const string& fileName) {
+	string dir = Path::GetDirectoryName(fileName);
+
+	TCHAR szCurDir[_MAX_PATH];
+	GetCurrentDirectory(_MAX_PATH, szCurDir);
+	SetCurrentDirectory(dir.c_str());
+
+	for (int i = 0; i < m_pMeshData->material_count; ++i) {
+		string name(m_pMeshData->material[i].texfile_name);
+		if (name.empty())
+			continue;
+
+		GetResourceManager<Texture>()->Create(name);
+	}
+
+	SetCurrentDirectory(szCurDir);
+}
+
 void Mesh::Delete() {
-	m_MeshName.clear();
-	SAFE_DELETE_ARRAY(m_Indexes);
-	m_IndexCount = 0;
-	SAFE_RELEASE(m_VertexBuffer);
-	SAFE_RELEASE(m_IndexBuffer);
-	for (auto it = m_Polygon.begin(); it != m_Polygon.end(); ++it) {
-		SAFE_DELETE((*it).Material);
-		SAFE_DELETE((*it).Texture);
-	}
-
-	SAFE_DELETE_ARRAY(m_IndexAry);
+	SAFE_DELETE_ARRAY(m_pVertex);
+	SAFE_DELETE(m_pMeshData);
 }
 
 
-void Mesh::RecursiveNode(FbxNode* pNode) {
-	FbxNodeAttribute* pAttr = pNode->GetNodeAttribute();
-	if (pAttr) {
-		FbxNodeAttribute::EType type = pAttr->GetAttributeType();
-		switch (type) {
-		case FbxNodeAttribute::eNull:
-			break;
+void Mesh::Draw(Camera* camera, Light* light) {
+	auto context = Graphics::GetDevice();
 
-		case FbxNodeAttribute::eMesh:
-			MeshAnalyze((FbxMesh*)pAttr);	// メッシュを作成
-			break;
+	static float angle = 0.0f;
+	angle += Time::GetDeltaTime();
+	Matrix mWorld, mRot;
+	MatrixRotationY(&mRot, angle);
+	MatrixScaling(&mWorld, 0.07f, 0.07f, 0.07f);
+	mWorld *= mRot;
 
-		case FbxNodeAttribute::eCamera:
-			//		GetCamera(pAttr);
-			break;
-		}
-	}
+	Vector3 pos = camera->GetTransform()->GetPos();
 
-	int childNodeNum = pNode->GetChildCount();
-	for (int i = 0; i < childNodeNum; ++ i) {
-		FbxNode* pChild = pNode->GetChild(i);
+	D3D11_MAPPED_SUBRESOURCE pData;
+	SIMPLESHADER_CONSTANT_BUFFER cb;
+	HRESULT hr;
 
-		RecursiveNode(pChild);
-	}
-}
+	UINT stride = sizeof(SimpleVertex);
+	UINT offset = 0;
+	Graphics::GetDevice()->IASetVertexBuffers(
+		0,
+		1,
+		&m_pVertexBuffer,
+		&stride,
+		&offset);
+	Graphics::GetDevice()->IASetIndexBuffer(
+		m_pIndexBuffer,
+		DXGI_FORMAT_R16_UINT,
+		0);
 
-
-void Mesh::MeshAnalyze(FbxMesh* pMesh) {
-	m_MeshName			= pMesh->GetName();					// メッシュ名
-	m_PolygonNum		= pMesh->GetPolygonCount();			// 総ポリゴン数
-	m_PolygonVertexNum	= pMesh->GetPolygonVertexCount();	// ポリゴン頂点インデックス数
-	m_IndexAry			= NEW int[m_PolygonVertexNum];		// ポリゴン頂点インデックス配列
-	memcpy(m_IndexAry, pMesh->GetPolygonVertices(), sizeof(int) * m_PolygonVertexNum);
-
-	// ポリゴンの設定
-	for (int i = 0; i < m_PolygonNum; ++i) {
-		POLYGON_INFO* polygon = NEW POLYGON_INFO;
-		polygon->VertexNum = pMesh->GetPolygonSize(i);	// ポリゴンの頂点数
-		polygon->Vertexes = NEW VERTEX_INFO[polygon->VertexNum];
-		polygon->VertexIndex = NEW int[polygon->VertexNum];
-		// 頂点の設定
-		for (int n = 0; n < polygon->VertexNum; ++n) {
-			// ポリゴンiを構成するn番目の頂点のインデックス番号
-			polygon->VertexIndex[n] = pMesh->GetPolygonVertex(i, n);
-			continue;
-		}
-	}
-
-	// 頂点情報の解析
-	AnalyzeCoordinate(pMesh);
-
-	// 法線の解析
-	AnalyzeNormal(pMesh);
-
-	// UVの解析
-	AnalyzeUV(pMesh);
-
-	// マテリアルの解析
-	AnalyzeMaterial(pMesh);
-}
+	MatrixTranspose(&cb.mWorld, &cb.mWorld);
+	Matrix m = mWorld * camera->GetView() * camera->GetProj();
+	MatrixTranspose(&m, &m);
 
 
-void Mesh::AnalyzeCoordinate(FbxMesh* pMesh) {
-	m_ControlNum = pMesh->GetControlPointsCount();	// 頂点数
-	m_vControlAry = NEW Vector4[m_ControlNum];
-
-	// コピー
-	FbxVector4* src = pMesh->GetControlPoints();		// 頂点座標配列
-	for (int i = 0; i < m_ControlNum; ++i) {
-		for (int n = 0; n < 4; ++n) {
-			m_vControlAry[i].e[n] = (float)src[i][n];
-		}
-	}
-}
-
-
-void Mesh::AnalyzeNormal(FbxMesh* pMesh) {
-	int layerNum = pMesh->GetLayerCount();
-	for (int i = 0; i < layerNum; ++i) {
-		FbxLayer* layer = pMesh->GetLayer(i);
-		FbxLayerElementNormal* normalElem = layer->GetNormals();
-		if (!normalElem) {
-			continue;
+	hr = context->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
+	if (FAILED(hr))	return;
+	int cnt_idx = 0;	// インデックスカウンター
+	for (int i = 0; i < m_pMeshData->material_count; ++i) {
+		for (int j = 0; j < m_pMeshData->material[i].face_vert_count; ++j) {
+			int pos_vec = m_pMeshData->face_vert_index[cnt_idx];
+			++cnt_idx;
+			cb.mWorld = mWorld;
+			cb.mWVP = m;
+//			cb.vDiffuse = m_pMeshData->material[pos_vec].diffuse;
+			cb.vDiffuse = m_pMeshData->material[i].diffuse;
+			cb.vLightDir = light->GetDirection4();
+			cb.vEye = Vector4(pos.x, pos.y, pos.z, 1.0f);
+			memcpy_s(pData.pData, pData.RowPitch, (void*)(&cb), sizeof(cb));
+			context->Unmap(m_pConstantBuffer, 0);
 		}
 
-		// 法線の数・インデックス
-		m_NormalNum = normalElem->GetDirectArray().GetCount();
-		int indexNum = normalElem->GetIndexArray().GetCount();
-		m_pNormalAry = new Vector4[m_NormalNum];
-
-		// マッピングモード・リファレンスモード取得
-		FbxLayerElement::EMappingMode mappingMode = normalElem->GetMappingMode();
-		FbxLayerElement::EReferenceMode refMode = normalElem->GetReferenceMode();
-
-		if (mappingMode == FbxLayerElement::eByPolygonVertex) {
-			if (refMode == FbxLayerElement::eDirect) {
-				// 直接取得
-				for (int n = 0; n < m_NormalNum; ++n) {
-					for(int l = 0; l < 4; ++l)
-						m_pNormalAry[i].e[l] = (float)normalElem->GetDirectArray().GetAt(i)[l];
-				}
-			}
-		} else
-		if (mappingMode == FbxLayerElement::eByControlPoint) {
-			if (refMode == FbxLayerElement::eDirect) {
-				// 直接取得
-				for (int n = 0; n < m_NormalNum; ++n) {
-					for (int l = 0; l < 4; ++l)
-						m_pNormalAry[i].e[l] = (float)normalElem->GetDirectArray().GetAt(i)[l];
-				}
-			}
+		string texName(m_pMeshData->material[i].texfile_name);
+		if (texName != "") {
+			Texture* texture = GetResourceManager<Texture>()->Get(texName);
+			auto samp = texture->GetSample();
+			auto tex = texture->GetTexture();
+			context->PSSetSamplers(0, 1, &samp);
+			context->PSSetShaderResources(0, 1, &tex);
 		}
-
-		break;
 	}
-}
+	// このコンスタントバッファーを使うシェーダの登録
+	context->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	context->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
+	context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-void Mesh::AnalyzeUV(FbxMesh* pMesh) {
-	UVAnalyzer* uvAnalyze = NEW UVAnalyzer;
-	if (uvAnalyze->Analyze(pMesh)) {
-		m_UV.push_back(uvAnalyze);
-	}
-}
-
-
-void Mesh::AnalyzeMaterial(FbxMesh* pMesh) {
-	FbxNode* node = pMesh->GetNode();
-	if (!node)
-		return;
-
-	// マテリアルの数
-	m_MaterialNum = node->GetMaterialCount();
-	if (m_MaterialNum == 0)
-		return;
-
-	// マテリアル情報を取得
-	for (int i = 0; i < m_MaterialNum; ++i) {
-		FbxSurfaceMaterial* material = node->GetMaterial(i);
-		if (!material)	continue;
-
-		// マテリアルの解析
-		MaterialAnalyzer* matAnalyzer = new MaterialAnalyzer;
-		m_Material.push_back(matAnalyzer);
-		matAnalyzer->Analyze(material);
-	}
+	context->DrawIndexed(m_pMeshData->face_vert_count, 0, 0);
 }

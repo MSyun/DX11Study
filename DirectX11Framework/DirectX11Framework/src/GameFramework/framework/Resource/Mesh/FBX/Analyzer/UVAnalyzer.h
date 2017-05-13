@@ -7,8 +7,8 @@
 #pragma once
 
 #include	<fbxsdk.h>
-#include	"../../../Convert/Convert.h"
-#include	"../../../Utility/System/SystemUtility.h"
+#include	"../../../../Convert/Convert.h"
+#include	"../../../../Utility/System/SystemUtility.h"
 
 
 class UVAnalyzer {

@@ -5,7 +5,8 @@
 
 #include	"Texture.h"
 #include	"../../Utility/System/SystemUtility.h"
-
+#include	"../../Path/Path.h"
+#include	"../../Debug/Debug.h"
 
 
 /*									//
@@ -33,6 +34,17 @@ Texture::~Texture() {
 bool Texture::Create(const string name) {
 	Delete();
 
+	// 拡張子を抽出
+	string extension = Path::GetExtension(name);
+	if (extension == "tga") {
+		Debug::Log("拡張子が " + extension + " でした");
+		return true;
+	}
+
+	if (extension == "sph") {
+		return true;
+	}
+
 	// テクスチャ―作成
 	HRESULT hr = D3DX11CreateShaderResourceViewFromFile(
 		GetDevice(),
@@ -41,10 +53,10 @@ bool Texture::Create(const string name) {
 		NULL,
 		&m_pTexture,
 		NULL);
-	if (SUCCEEDED(hr))
-		return true;
+	if (FAILED(hr))
+		return false;
 
-	return false;
+	return true;
 }
 
 

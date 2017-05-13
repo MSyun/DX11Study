@@ -192,9 +192,10 @@ void DX11Base::CreateViewport() {
 void DX11Base::CreateRasterize() {
 	D3D11_RASTERIZER_DESC rdc;
 	ZeroMemory(&rdc, sizeof(rdc));
-	rdc.CullMode = D3D11_CULL_NONE;
+	rdc.CullMode = D3D11_CULL_BACK;
 	rdc.FillMode = D3D11_FILL_SOLID;
-	rdc.FrontCounterClockwise = TRUE;
+	rdc.DepthClipEnable = FALSE;
+	rdc.FrontCounterClockwise = FALSE;
 
 	IResource::GetDevice()->CreateRasterizerState(&rdc, &m_pRasterizerState);
 	Graphics::GetDevice()->RSSetState(m_pRasterizerState);

@@ -8,7 +8,7 @@
 #pragma once
 
 #include	<fbxsdk.h>
-#include	"../../../Convert/Convert.h"
+#include	"../../../../Convert/Convert.h"
 #include	<string>
 using namespace std;
 

@@ -1,0 +1,5 @@
+cbuffer Material : register(b2) {
+	float4 Diffuse;		// ŠgŽU”½ŽËŒõ
+	float4 Ambient;		// ŠÂ‹«Œõ
+	float4 Specular;	// ‹¾–Ê”½ŽËŒõ
+};

@@ -7,6 +7,9 @@
 
 
 
+/*									//
+//			コンストラクタ			//
+//									*/
 template<class T>
 ResourceManager<T>::ResourceManager() :
 	m_bHelper(true)
@@ -16,6 +19,9 @@ ResourceManager<T>::ResourceManager() :
 }
 
 
+/*									//
+//			デストラクタ			//
+//									*/
 template<class T>
 ResourceManager<T>::~ResourceManager() {
 	if (!m_bHelper)	return;
@@ -32,6 +38,9 @@ ResourceManager<T>::~ResourceManager() {
 }
 
 
+/*									//
+//				作成				//
+//									*/
 template<class T>
 T* ResourceManager<T>::Create(const string name) {
 	if (name.empty()) {
@@ -60,6 +69,9 @@ T* ResourceManager<T>::Create(const string name) {
 }
 
 
+/*									//
+//				削除				//
+//									*/
 template<class T>
 bool ResourceManager<T>::Delete(const string name) {
 	// 検索
@@ -81,6 +93,9 @@ bool ResourceManager<T>::Delete(const string name) {
 }
 
 
+/*									//
+//				取得				//
+//									*/
 template<class T>
 T* ResourceManager<T>::Get(const string name) {
 	// 検索
@@ -94,6 +109,9 @@ T* ResourceManager<T>::Get(const string name) {
 }
 
 
+/*									//
+//			補助機能設定			//
+//									*/
 template<class T>
 void ResourceManager<T>::SetHelper(bool helper) {
 	const type_info& id = typeid(T);
@@ -104,6 +122,9 @@ void ResourceManager<T>::SetHelper(bool helper) {
 }
 
 
+/*									//
+//			マネージャの取得		//
+//									*/
 template<class T>
 inline ResourceManager<T>* GetResourceManager() {
 	return ResourceManager<T>::Instance();

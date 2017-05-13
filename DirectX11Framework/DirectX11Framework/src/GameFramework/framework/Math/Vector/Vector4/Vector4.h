@@ -19,7 +19,7 @@ public:
 	};
 
 public:
-	Vector4() {};
+	Vector4();
 	Vector4(float x, float y, float z, float w);
 	Vector4(const float* val);
 	Vector4(const float& val);

@@ -24,16 +24,16 @@ public:
 	Delegate();
 	virtual ~Delegate();
 
-	// 登録関数実行
+	/* 登録関数実行	*/
 	virtual void Invoke(Args... args);
 
-	// 自身と同じかチェック
+	/* 自身と同じかチェック */
 	bool CheckSame(std::function<Return(Args...)> func);
 
-	// 関数の設定
+	/* 関数の設定 */
 	void Set(std::function<Return(Args...)> func);
 
-	// 作成
+	/* 作成 */
 	static IDelegate<Args...>* Create(std::function<Return(Args...)> func);
 
 #pragma endregion

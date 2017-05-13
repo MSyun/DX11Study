@@ -11,6 +11,8 @@
 #include	"../framework/Scene/ManagerWin/SceneManagerWin.h"
 #include	"../framework/Resource/Manager/ResourceManager.h"
 #include	"../framework/Resource/Texture/Texture.h"
+#include	"../framework/Resource/Mesh/Mesh.h"
+#include	"../framework/Resource/Shader/Base/Shader.h"
 #include	"../framework/Time/Time.h"
 
 
@@ -23,8 +25,8 @@ protected:
 	SceneBase*			m_pCurScene;
 	SceneManagerWin*	m_pSceneManager;
 	ResourceManager<Texture>*	m_pTexManager;
-//	ResourceManager<Mesh>		m_pMeshManager;
-//	ResourceManager<Shader>		m_pShaderManager;
+	ResourceManager<Mesh>*		m_pMeshManager;
+	ResourceManager<Shader>*	m_pShaderManager;
 
 #pragma endregion
 
