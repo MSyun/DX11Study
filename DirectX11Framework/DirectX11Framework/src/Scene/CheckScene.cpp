@@ -5,25 +5,14 @@
 
 #include	"CheckScene.h"
 #include	"../GameFramework/framework/Graphic/Graphics.h"
-#include	"../GameFramework/framework/Convert/Convert.h"
-#include	<d3dcompiler.h>
-#include	<tchar.h>
 #include	"../GameFramework/framework/Time/Time.h"
+#include	"../GameFramework/framework/Resource/Manager/ResourceManager.h"
 
 struct SimpleVertex {
 	Point3 Pos;
 	Vector3 Normal;
 	Vector2 Tex;
 };
-
-struct SIMPLESHADER_CONSTANT_BUFFER {
-	Matrix	mWorld;
-	Matrix	mWVP;
-	Vector4	vLightDir;
-	Vector4	vDiffuse;
-	Vector4	vEye;
-};
-
 
 CheckScene::CheckScene() :
 	m_pVertexBuffer(nullptr),
@@ -73,12 +62,9 @@ void CheckScene::Draw() {
 	Vector3 pos = m_pCamera->GetTransform()->GetPos();
 
 	// 使用するシェーダの登録
-	context->VSSetShader(m_pShader->GetVertexShader(), NULL, 0);
-	context->PSSetShader(m_pShader->GetPixelShader(), NULL, 0);
+	m_pShader->Begin();
 	// シェーダのコンスタントバッファーに各種データを渡す
-	D3D11_MAPPED_SUBRESOURCE pData;
-	SIMPLESHADER_CONSTANT_BUFFER cb;
-	HRESULT hr;
+	auto cb = m_pShader->GetBuffer()->GetSetting();
 
 	UINT stride = sizeof(SimpleVertex);
 	UINT offset = 0;
@@ -89,31 +75,30 @@ void CheckScene::Draw() {
 		&stride,
 		&offset);
 
-	auto constantBuffer = m_pShader->GetConstantBuffer();
-	hr = context->Map(constantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
-	if (SUCCEEDED(hr)) {
-		cb.mWorld = mWorld;
-		MatrixTranspose(&cb.mWorld, &cb.mWorld);
-		// ワールド、カメラ、射影行列を渡す
-		Matrix m = mWorld * m_pCamera->GetView() * m_pCamera->GetProj();
-		MatrixTranspose(&m, &m);
-		cb.mWVP = m;
-		// カラーを渡す
-		cb.vDiffuse = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		// ライトベクトルを渡す
-		cb.vLightDir = m_pLight->GetDirection4();
-		// カメラの位置（視点）をシェーダに渡す
-		cb.vEye = Vector4(pos.x, pos.y, pos.z, 0.0f);
+	m_pShader->GetBuffer()->BeginPass();
 
-		memcpy_s(pData.pData, pData.RowPitch, (void*)(&cb), sizeof(cb));
-		context->Unmap(constantBuffer, 0);
-	}
-	// このコンスタントバッファーを使うシェーダの登録
-	context->VSSetConstantBuffers(0, 1, &constantBuffer);
-	context->PSSetConstantBuffers(0, 1, &constantBuffer);
+	cb->mWorld = mWorld;
+	MatrixTranspose(&cb->mWorld, &cb->mWorld);
+	// ワールド、カメラ、射影行列を渡す
+	Matrix m = mWorld * m_pCamera->GetView() * m_pCamera->GetProj();
+	MatrixTranspose(&m, &m);
+	cb->mWVP = m;
+	// ライトベクトルを渡す
+	cb->vLightDir = m_pLight->GetDirection4();
+	// カメラの位置（視点）をシェーダに渡す
+	cb->vEye = Vector4(pos.x, pos.y, pos.z, 0.0f);
 
-	// 頂点インプットレイアウトをセット
-	context->IASetInputLayout(m_pShader->GetVertexLayout());
+	m_pShader->GetBuffer()->EndPass();
+
+	auto MatBuff = m_pShader->GetBuffMat();
+	MatBuff->BeginPass();
+	MatBuff->Diffuse(Vector3(1.0f, 1.0f, 1.0f));
+	MatBuff->Ambient(Vector3(1.0f, 1.0f, 1.0f));
+	MatBuff->Alpha(1.0f);
+	MatBuff->Emissive(Vector3(0.0f, 0.0f, 0.0f));
+	MatBuff->Shininess(5);
+	MatBuff->EndPass();
+
 	// プリミティブ・トポロジーをセット
 	context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
@@ -124,9 +109,11 @@ void CheckScene::Draw() {
 	context->PSSetShaderResources(0, 1, &tex);
 
 	// プリミティブをレンダリング
-	//context->Draw(4, 0);
+	context->Draw(4, 0);
+	GetGraphics()->SetBlend(BlendType::BLEND_NORMAL);
+	m_pMesh->Draw(m_pCamera, m_pLight, m_pShader);
 
-	m_pMesh->Draw(m_pCamera, m_pLight);
+	m_pShader->End();
 }
 
 
@@ -164,10 +151,10 @@ void CheckScene::CreatePolygon() {
 		&offset);
 
 	m_pTexture = GetResourceManager<Texture>()->Create("data/Texture/Sprite.jpg");
-	m_pCamera = NEW Camera;
-	m_pCamera->GetTransform()->SetPos(0.0f, 1.0f, -4.0f);
-//	m_pCamera->GetTransform()->Rotate(-25.0f, 0.0f, 0.0f);
-	m_pLight = NEW Light;
-	m_pLight->GetTransform()->SetPos(0.0f, 1.0f, -2.0f);
-	m_pLight->GetTransform()->Rotate(-20.0f, 0.0f, 0.0f);
+	m_pCamera = new Camera;
+	m_pCamera->GetTransform()->SetPos(0.0f, 2.0f, -4.0f);
+	m_pCamera->GetTransform()->Rotate(-25.0f, 0.0f, 0.0f);
+	m_pLight = new Light;
+	m_pLight->GetTransform()->SetPos(0.0f, 2.0f, -4.0f);
+	m_pLight->GetTransform()->Rotate(-25.0f, 0.0f, 0.0f);
 }

@@ -25,21 +25,21 @@ Pmd::Pmd(const string filename) :
 		fread(&vert_count, sizeof(vert_count), 1, hFP);
 
 		// 頂点データ読み込み
-		vertex = NEW t_vertex[vert_count];
+		vertex = new t_vertex[vert_count];
 		fread(vertex, 38, vert_count, hFP);
 
 		// 面頂点リスト読み込み
 		fread(&face_vert_count, sizeof(face_vert_count), 1, hFP);
 
 		// 面頂点リストデータ読み込み
-		face_vert_index = NEW unsigned short[face_vert_count];
+		face_vert_index = new unsigned short[face_vert_count];
 		fread(face_vert_index, 2, face_vert_count, hFP);
 
 		// マテリアル数
 		fread(&material_count, sizeof(material_count), 1, hFP);
 
 		// 面データ読み込み
-		material = NEW t_material[material_count];
+		material = new t_material[material_count];
 		fread(material, sizeof(t_material), material_count, hFP);
 
 		fclose(hFP);

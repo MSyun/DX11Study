@@ -2,7 +2,6 @@
 // 2017.04.24	: ƒvƒƒOƒ‰ƒ€ì¬
 // author		: SyunMizuno
 
-
 #pragma once
 
 #include	"../Base/IResource.h"

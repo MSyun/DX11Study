@@ -10,7 +10,17 @@
 #include	"../Object/3DObject/Object3D.h"
 
 
+
+
+
 class Light	:	public	Object3D {
+public:
+	typedef enum _eLIGHT_COLOR {
+		LIGHT_DIFFUSE,
+		LIGHT_AMBIENT,
+		LIGHT_SPECULAR,
+	} LIGHT_COLOR;
+
 protected:
 #pragma region variable
 
@@ -22,7 +32,9 @@ protected:
 	float	m_fNear;		// 前方クリップ
 	float	m_fFar;			// 後方クリップ
 
-	Color	m_vColor;		// ライトの色
+	Color	m_Diffuse;		// 拡散反射光
+	Color	m_Ambient;		// 環境光
+	Color	m_Specular;		// 鏡面反射光
 
 #pragma endregion
 
@@ -66,9 +78,9 @@ public:
 
 	/* ライトの色の設定
 	*/
-	void SetColor(float r, float g, float b, float a);
-	void SetColor(float col);
-	void SetColor(const Color& col);
+	void SetColor(LIGHT_COLOR type, float r, float g, float b, float a);
+	void SetColor(LIGHT_COLOR type, float col);
+	void SetColor(LIGHT_COLOR type, const Color& col);
 
 	/* 方向ベクトルの取得 */
 	Vector3 GetDirection3();
@@ -81,5 +93,5 @@ public:
 	Matrix GetProj() const;
 
 	/* ライトの色の取得 */
-	Color GetColor() const;
+	Color GetColor(LIGHT_COLOR type) const;
 };

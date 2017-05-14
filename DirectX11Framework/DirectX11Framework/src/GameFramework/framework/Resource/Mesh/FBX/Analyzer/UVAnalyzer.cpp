@@ -31,7 +31,7 @@ bool UVAnalyzer::Analyze(FbxMesh* mesh) {
 		int UVNum = elem->GetDirectArray().GetCount();
 		int indexNum = elem->GetIndexArray().GetCount();
 		m_UVInfo.Size = UVNum > indexNum ? UVNum : indexNum;
-		m_UVInfo.Buffer = NEW Vector2[m_UVInfo.Size];
+		m_UVInfo.Buffer = new Vector2[m_UVInfo.Size];
 
 		// マッピングモード・リファレンスモード別のUV取得
 		FbxLayerElement::EMappingMode	mappingMode = elem->GetMappingMode();
@@ -80,7 +80,7 @@ bool UVAnalyzer::SetPropertyUV(FbxLayerElementUV* elem, UVInfo& uvInfo) {
 	int UVNum = elem->GetDirectArray().GetCount();
 	int indexNum = elem->GetIndexArray().GetCount();
 	m_UVInfo.Size = UVNum > indexNum ? UVNum : indexNum;
-	m_UVInfo.Buffer = NEW Vector2[m_UVInfo.Size];
+	m_UVInfo.Buffer = new Vector2[m_UVInfo.Size];
 
 	// マッピングモード・リファレンスモード別のUV取得
 	FbxLayerElement::EMappingMode	mappingMode = elem->GetMappingMode();

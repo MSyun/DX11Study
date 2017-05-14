@@ -9,7 +9,6 @@
 
 #include	"../GameFramework/framework/Scene/Base/SceneBase.h"
 
-#include	"../GameFramework/framework/Resource/Manager/ResourceManager.h"
 #include	"../GameFramework/framework/Camera/Camera.h"
 #include	"../GameFramework/framework/Light/Light.h"
 #include	"../GameFramework/framework/Resource/Texture/Texture.h"

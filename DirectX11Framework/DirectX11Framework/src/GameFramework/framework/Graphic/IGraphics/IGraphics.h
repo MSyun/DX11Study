@@ -34,28 +34,6 @@ typedef enum {
 
 __interface IGraphics {
 public:
-//#pragma region View
-//	// ビュー行列の設定
-//	virtual void SetView(const Matrix& view);
-//	// ビュー行列の取得
-//	virtual Matrix GetView();
-//#pragma endregion
-//
-//#pragma region Projection
-//	// プロジェクション行列の設定
-//	virtual void SetProjection(const Matrix& proj);
-//	// プロジェクション行列の取得
-//	virtual Matrix GetProjection();
-//#pragma endregion
-//
-//#pragma region Alpha Blend
-//	// αブレンドを使用するか設定
-//	virtual void SetAlphaBlendEnable(bool flg);
-//	// αブレンドの設定を取得
-//	// true. 使用中 : false. 未使用
-//	virtual bool GetAlphaBlendEnable();
-//#pragma endregion
-//
 //#pragma region Z Enable
 //	// Zバッファを使用するか設定
 //	virtual void SetZEnable(bool flg);

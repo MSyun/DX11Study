@@ -168,6 +168,7 @@
     <ClCompile Include="src\GameFramework\framework\Collision\Collision.cpp" />
     <ClCompile Include="src\GameFramework\framework\Debug\Debug.cpp" />
     <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Graphic\Blend\GraphicBlend.cpp" />
     <ClCompile Include="src\GameFramework\framework\Graphic\Graphics.cpp" />
     <ClCompile Include="src\GameFramework\framework\Input\Input.cpp" />
     <ClCompile Include="src\GameFramework\framework\Light\Light.cpp" />
@@ -180,11 +181,20 @@
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.cpp" />
     <ClCompile Include="src\GameFramework\framework\Object\3DObject\Object3D.cpp" />
     <ClCompile Include="src\GameFramework\framework\Object\Object.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Path\Path.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Base\IResource.cpp" />
-    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Analyzer\MaterialAnalyzer.cpp" />
-    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Analyzer\UVAnalyzer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\MaterialAnalyzer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UVAnalyzer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\CreateFbxMesh.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Mesh.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\Base\Shader.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Texture\Texture.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Texture\Tga\Tga.cpp" />
     <ClCompile Include="src\GameFramework\framework\Save\Factory\SaveFactory.cpp" />
     <ClCompile Include="src\GameFramework\framework\Save\Manager\SaveManagerBase.cpp" />
     <ClCompile Include="src\GameFramework\framework\Save\Obj\SaveObjBase.cpp" />
@@ -216,6 +226,7 @@
     <ClInclude Include="src\GameFramework\framework\Delegate\IDelegate.h" />
     <ClInclude Include="src\GameFramework\framework\DirectX\DX11Base.h" />
     <ClInclude Include="src\GameFramework\framework\DirectX\DXBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Graphic\Blend\GraphicBlend.h" />
     <ClInclude Include="src\GameFramework\framework\Graphic\Graphics.h" />
     <ClInclude Include="src\GameFramework\framework\Graphic\IGraphics\IGraphics.h" />
     <ClInclude Include="src\GameFramework\framework\Input\Input.h" />
@@ -230,12 +241,22 @@
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.h" />
     <ClInclude Include="src\GameFramework\framework\Object\3DObject\Object3D.h" />
     <ClInclude Include="src\GameFramework\framework\Object\Object.h" />
+    <ClInclude Include="src\GameFramework\framework\Path\Path.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Base\IResource.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Manager\ResourceManager.h" />
-    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Analyzer\MaterialAnalyzer.h" />
-    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Analyzer\UVAnalyzer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\MaterialAnalyzer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UVAnalyzer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\FBX\CreateFbxMesh.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Mesh.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\Base\Shader.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\ITypeShader.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Texture\Texture.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Texture\Tga\Tga.h" />
     <ClInclude Include="src\GameFramework\framework\Save\Factory\SaveFactory.h" />
     <ClInclude Include="src\GameFramework\framework\Save\Manager\SaveManagerBase.h" />
     <ClInclude Include="src\GameFramework\framework\Save\Obj\SaveObjBase.h" />
@@ -252,18 +273,19 @@
     <ClInclude Include="src\Scene\CheckScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Material.hlslh" />
+    <None Include="src\GameFramework\framework\CPPEvent\CPPEvent.inl" />
+    <None Include="src\GameFramework\framework\Delegate\Delegate.inl" />
+    <None Include="src\GameFramework\framework\Resource\Manager\ResourceManager.inl" />
+    <None Include="Vertex.hlslh" />
+  </ItemGroup>
+  <ItemGroup>
     <FxCompile Include="Lambert.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
     </FxCompile>
     <FxCompile Include="Phong.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Material.hlslh" />
-    <None Include="src\GameFramework\framework\CPPEvent\CPPEvent.inl" />
-    <None Include="src\GameFramework\framework\Delegate\Delegate.inl" />
-    <None Include="src\GameFramework\framework\Resource\Manager\ResourceManager.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

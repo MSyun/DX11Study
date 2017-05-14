@@ -42,7 +42,8 @@ public:
 	// マテリアル
 	unsigned long material_count;	// 材質数
 	struct t_material {
-		Vector4 diffuse;
+		Vector3 diffuse;
+		float alpha;
 		float specularity;
 		Vector3 specular;	// 光沢色
 		Vector3 ambient;	// 環境色

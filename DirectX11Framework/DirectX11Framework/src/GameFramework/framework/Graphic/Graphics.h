@@ -9,12 +9,14 @@
 #include	<D3DX11.h>
 #include	"IGraphics/IGraphics.h"
 #include	"../Singleton/Singleton.h"
+#include	"Blend/GraphicBlend.h"
 
 
 
 class Graphics	:	public	IGraphics,	public	Singleton<Graphics> {
 private:
 	static ID3D11DeviceContext*	m_pDeviceContext;
+	static GraphicBlend m_Blend;
 
 public:
 	Graphics();
@@ -23,14 +25,12 @@ public:
 	static ID3D11DeviceContext* GetDevice();
 	static void SetDevice(ID3D11DeviceContext* _dev);
 
-//#pragma region Alpha Blend
-//	// αブレンドを使用するか設定
-//	virtual void SetAlphaBlendEnable(bool flg);
-//	// αブレンドの設定を取得
-//	// true. 使用中 : false. 未使用
-//	virtual bool GetAlphaBlendEnable();
-//#pragma endregion
-//
+	// ブレンドを設定
+	static void SetBlend(BlendType type);
+
+	// 透過を設定
+	static void SetAlphaEnable(const bool alpha);
+
 //#pragma region Z Enable
 //	// Zバッファを使用するか設定
 //	virtual void SetZEnable(bool flg);

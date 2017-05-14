@@ -18,7 +18,9 @@ Light::Light() :
 	m_fAspect((float)Screen::GetWidth() / (float)Screen::GetHeight()),
 	m_fNear(1.0f),
 	m_fFar(10.0f),
-	m_vColor(1.0f, 1.0f, 1.0f, 1.0f)
+	m_Diffuse(1.0f, 1.0f, 1.0f, 1.0f),
+	m_Ambient(1.0f, 1.0f, 1.0f, 1.0f),
+	m_Specular(1.0f, 1.0f, 1.0f, 1.0f)
 {
 	MatrixIdentity(&m_mtxView);
 	MatrixIdentity(&m_mtxProj);
@@ -117,21 +119,67 @@ void Light::SetFar(const float _far) {
 /*									//
 //				êFÇê›íË			//
 //									*/
-void Light::SetColor(float r, float g, float b, float a) {
-	m_vColor.r = r;
-	m_vColor.g = g;
-	m_vColor.b = b;
-	m_vColor.a = a;
+void Light::SetColor(LIGHT_COLOR type,  float r, float g, float b, float a) {
+	switch (type) {
+	case LIGHT_COLOR::LIGHT_DIFFUSE:
+		m_Diffuse.r = r;
+		m_Diffuse.g = g;
+		m_Diffuse.b = b;
+		m_Diffuse.a = a;
+		break;
+
+	case LIGHT_COLOR::LIGHT_AMBIENT:
+		m_Ambient.r = r;
+		m_Ambient.g = g;
+		m_Ambient.b = b;
+		m_Ambient.a = a;
+		break;
+
+	case LIGHT_COLOR::LIGHT_SPECULAR:
+		m_Specular.r = r;
+		m_Specular.g = g;
+		m_Specular.b = b;
+		m_Specular.a = a;
+		break;
+	}
 }
 
-void Light::SetColor(float col) {
-	m_vColor.r = col;
-	m_vColor.g = col;
-	m_vColor.b = col;
+void Light::SetColor(LIGHT_COLOR type,  float col) {
+	switch (type) {
+	case LIGHT_COLOR::LIGHT_DIFFUSE:
+		m_Diffuse.r = col;
+		m_Diffuse.g = col;
+		m_Diffuse.b = col;
+		break;
+
+	case LIGHT_COLOR::LIGHT_AMBIENT:
+		m_Ambient.r = col;
+		m_Ambient.g = col;
+		m_Ambient.b = col;
+		break;
+
+	case LIGHT_COLOR::LIGHT_SPECULAR:
+		m_Specular.r = col;
+		m_Specular.g = col;
+		m_Specular.b = col;
+		break;
+	}
 }
 
-void Light::SetColor(const Color& col) {
-	m_vColor = col;
+void Light::SetColor(LIGHT_COLOR type,  const Color& col) {
+	switch (type) {
+	case LIGHT_COLOR::LIGHT_DIFFUSE:
+		m_Diffuse = col;
+		break;
+
+	case LIGHT_COLOR::LIGHT_AMBIENT:
+		m_Ambient = col;
+		break;
+
+	case LIGHT_COLOR::LIGHT_SPECULAR:
+		m_Specular = col;
+		break;
+	}
 }
 
 
@@ -171,6 +219,15 @@ Matrix Light::GetProj() const {
 /*									//
 //				êFÇéÊìæ			//
 //									*/
-Color Light::GetColor() const {
-	return m_vColor;
+Color Light::GetColor(LIGHT_COLOR type) const {
+	switch (type) {
+	case LIGHT_COLOR::LIGHT_DIFFUSE:
+		return m_Diffuse;
+
+	case LIGHT_COLOR::LIGHT_AMBIENT:
+		return m_Ambient;
+
+	case LIGHT_COLOR::LIGHT_SPECULAR:
+		return m_Specular;
+	}
 }

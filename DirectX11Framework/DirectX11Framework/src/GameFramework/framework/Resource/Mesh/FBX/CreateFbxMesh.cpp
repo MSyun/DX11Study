@@ -103,15 +103,15 @@ void CreateFbxMesh::MeshAnalyze(FbxMesh* pMesh) {
 	m_MeshName = pMesh->GetName();					// メッシュ名
 	m_PolygonNum = pMesh->GetPolygonCount();			// 総ポリゴン数
 	m_PolygonVertexNum = pMesh->GetPolygonVertexCount();	// ポリゴン頂点インデックス数
-	m_IndexAry = NEW int[m_PolygonVertexNum];		// ポリゴン頂点インデックス配列
+	m_IndexAry = new int[m_PolygonVertexNum];		// ポリゴン頂点インデックス配列
 	memcpy(m_IndexAry, pMesh->GetPolygonVertices(), sizeof(int) * m_PolygonVertexNum);
 
 	// ポリゴンの設定
 	for (int i = 0; i < m_PolygonNum; ++i) {
-		POLYGON_INFO* polygon = NEW POLYGON_INFO;
+		POLYGON_INFO* polygon = new POLYGON_INFO;
 		polygon->VertexNum = pMesh->GetPolygonSize(i);	// ポリゴンの頂点数
-		polygon->Vertexes = NEW VERTEX_INFO[polygon->VertexNum];
-		polygon->VertexIndex = NEW int[polygon->VertexNum];
+		polygon->Vertexes = new VERTEX_INFO[polygon->VertexNum];
+		polygon->VertexIndex = new int[polygon->VertexNum];
 		// 頂点の設定
 		for (int n = 0; n < polygon->VertexNum; ++n) {
 			// ポリゴンiを構成するn番目の頂点のインデックス番号
@@ -136,7 +136,7 @@ void CreateFbxMesh::MeshAnalyze(FbxMesh* pMesh) {
 
 void CreateFbxMesh::AnalyzeCoordinate(FbxMesh* pMesh) {
 	m_ControlNum = pMesh->GetControlPointsCount();	// 頂点数
-	m_vControlAry = NEW Vector4[m_ControlNum];
+	m_vControlAry = new Vector4[m_ControlNum];
 
 	// コピー
 	FbxVector4* src = pMesh->GetControlPoints();		// 頂点座標配列
@@ -191,7 +191,7 @@ void CreateFbxMesh::AnalyzeNormal(FbxMesh* pMesh) {
 
 
 void CreateFbxMesh::AnalyzeUV(FbxMesh* pMesh) {
-	UVAnalyzer* uvAnalyze = NEW UVAnalyzer;
+	UVAnalyzer* uvAnalyze = new UVAnalyzer;
 	if (uvAnalyze->Analyze(pMesh)) {
 		m_UV.push_back(uvAnalyze);
 	}

@@ -8,25 +8,20 @@
 
 #include	"../../Base/IResource.h"
 #include	"../../../Convert/Convert.h"
+#include	"../TypeShader/VertexShader/VertexShader.h"
+#include	"../TypeShader/PixelShader/PixelShader.h"
+
+#include	"../ConstantBuffer/Base/ConstantBuffer.h"
+#include	"../ConstantBuffer/Material/ConstantBufferMaterial.h"
 
 
 
 class Shader	:	public	IResource {
 private:
-	struct SIMPLESHADER_CONSTANT_BUFFER {
-		Matrix	mWorld;
-		Matrix	mWVP;
-		Vector4	vLightDir;
-		Vector4	vDiffuse;
-		Vector4	vEye;
-	};
-
-
-	ID3D11InputLayout*	m_pVertexLayout;
-	ID3D11VertexShader*	m_pVertexShader;
-	ID3D11PixelShader*	m_pPixelShader;
-
-	ID3D11Buffer*		m_pConstantBuffer;
+	ShaderCollection::VertexShader* m_pVS;
+	ShaderCollection::PixelShader* m_pPS;
+	ShaderCollection::Buffer::ConstantBuffer* m_pBuffer;
+	ShaderCollection::Buffer::ConstantBufferMaterial* m_pMatBuff;
 
 public:
 	Shader();
@@ -35,27 +30,23 @@ public:
 	bool Create(const string name) override;
 	void Delete() override;
 
-	ID3D11InputLayout* GetVertexLayout() { return m_pVertexLayout; }
-	ID3D11VertexShader* GetVertexShader() { return m_pVertexShader; }
-	ID3D11PixelShader* GetPixelShader() { return m_pPixelShader; }
-	ID3D11Buffer* GetConstantBuffer() { return m_pConstantBuffer; }
+	void Begin();
+	void End();
 
-private:
-	/* 頂点シェーダ作成
-	// fileName	: ファイル名
+	ShaderCollection::Buffer::ConstantBuffer* GetBuffer();
+	ShaderCollection::Buffer::ConstantBufferMaterial* GetBuffMat();
+};
+
+namespace ShaderCollection {
+	/* シェーダファイルからブロブの生成
+	// pFileName		: ファイル名
+	// pFunctionName	: 関数名
+	// pProfile			: バージョン
+	// return			: 生成したブロブ
 	*/
-	bool CreateVertexShader(const string fileName);
-
-	/* ピクセルシェーダ作成
-	// fileName	: ファイル名
-	*/
-	bool CreatePixelShader(const string fileName);
-
-	/* 頂点インプットレイアウト作成
-	// pCompiled	: 頂点ブロブ
-	*/
-	bool CreateInputLayout(ID3DBlob* pCompiled);
-
-	/* コンスタントバッファー作成 */
-	bool CreateConstantBuffer();
+	bool CompileFromFileToBlob(
+		LPCSTR pFileName,
+		LPCSTR pFunctionName,
+		LPCSTR pProfile,
+		ID3DBlob** ppBlob);
 };

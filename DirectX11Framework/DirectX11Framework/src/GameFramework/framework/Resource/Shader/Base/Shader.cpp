@@ -7,183 +7,99 @@
 #include	<tchar.h>
 #include	<D3DX11.h>
 #include	"../../../Utility/System/SystemUtility.h"
+#include	"../../../Debug/Debug.h"
+#include	"../../../Graphic/Graphics.h"
 
 
 
 Shader::Shader() :
-	m_pVertexShader(nullptr),
-	m_pPixelShader(nullptr)
+	m_pVS(nullptr),
+	m_pPS(nullptr),
+	m_pBuffer(nullptr),
+	m_pMatBuff(nullptr)
 {
 
 }
 
 Shader::~Shader() {
-
+	Delete();
 }
 
 bool Shader::Create(const string name) {
-	if (!CreateVertexShader(name))
-		return false;
+	m_pVS = new ShaderCollection::VertexShader(
+		name.c_str(),
+		"VS",
+		"vs_5_0");
 
-	if (!CreatePixelShader(name))
-		return false;
+	m_pPS = new ShaderCollection::PixelShader(
+		name.c_str(),
+		"PS",
+		"ps_5_0");
 
-	if (!CreateConstantBuffer())
-		return false;
+	m_pBuffer = new ShaderCollection::Buffer::ConstantBuffer;
+	m_pMatBuff = new ShaderCollection::Buffer::ConstantBufferMaterial;
+
+	m_pBuffer->Create();
+	m_pMatBuff->Create();
 
 	return true;
 }
 
 void Shader::Delete() {
-	SAFE_RELEASE(m_pConstantBuffer);
-	SAFE_RELEASE(m_pPixelShader);
-	SAFE_RELEASE(m_pVertexShader);
-	SAFE_RELEASE(m_pVertexLayout);
+	SAFE_DELETE(m_pMatBuff);
+	SAFE_DELETE(m_pBuffer);
+	SAFE_DELETE(m_pPS);
+	SAFE_DELETE(m_pVS);
+}
+
+void Shader::Begin() {
+	m_pVS->Begin();
+	m_pPS->Begin();
+}
+
+void Shader::End() {
+	m_pVS->End();
+	m_pPS->End();
+}
+
+ShaderCollection::Buffer::ConstantBuffer* Shader::GetBuffer() {
+	return m_pBuffer;
+}
+
+ShaderCollection::Buffer::ConstantBufferMaterial* Shader::GetBuffMat() {
+	return m_pMatBuff;
 }
 
 
-/*									//
-//			頂点シェーダ作成		//
-//									*/
-bool Shader::CreateVertexShader(const string fileName) {
-	ID3DBlob* pCompiledShader = nullptr;
-	ID3DBlob* pErrors = nullptr;
-	HRESULT hr;
+namespace ShaderCollection {
+	/*									//
+	//	シェーダファイルからブロブの生成//
+	//									*/
+	bool CompileFromFileToBlob(
+		LPCSTR pFileName,
+		LPCSTR pFunctionName,
+		LPCSTR pProfile,
+		ID3DBlob** ppBlob)
+	{
+		ID3DBlob* pErrors = nullptr;
+		HRESULT hr = D3DX11CompileFromFile(
+			pFileName,
+			nullptr,
+			nullptr,
+			pFunctionName,
+			pProfile,
+			0,
+			0,
+			nullptr,
+			ppBlob,
+			&pErrors,
+			nullptr);
+		if (FAILED(hr)) {
+			Debug::LogError((LPCTSTR)pErrors->GetBufferPointer());
+			return false;
+		}
+		SAFE_RELEASE(pErrors);
 
-	hr = D3DX11CompileFromFile(
-		fileName.c_str(),
-		NULL,
-		NULL,
-		"VS",
-		"vs_5_0",
-		0,
-		0,
-		NULL,
-		&pCompiledShader,
-		&pErrors,
-		NULL);
-	if (FAILED(hr)) {
-		MessageBox(0, (LPCTSTR)pErrors->GetBufferPointer(), _T("ERROR"), MB_OK);
-		goto MISS;
+		return true;
 	}
-	SAFE_RELEASE(pErrors);
-
-	hr = GetDevice()->CreateVertexShader(
-		pCompiledShader->GetBufferPointer(),
-		pCompiledShader->GetBufferSize(),
-		NULL,
-		&m_pVertexShader);
-	if (FAILED(hr)) {
-		MessageBox(0, "バーテックスシェーダ作成失敗", _T("ERROR"), MB_OK);
-		goto MISS;
-	}
-
-	if (!CreateInputLayout(pCompiledShader))
-		goto MISS;
-
-	SAFE_RELEASE(pCompiledShader);
-
-	return true;
-
-
-MISS:
-	SAFE_RELEASE(pCompiledShader);
-	SAFE_RELEASE(pErrors);
-
-	return false;
-}
-
-
-/*									//
-//	頂点インプットレイアウト作成	//
-//									*/
-bool Shader::CreateInputLayout(ID3DBlob* pCompiled) {
-	// 頂点インプットレイアウトを定義
-	D3D11_INPUT_ELEMENT_DESC layout[] = {
-		{ "POSITION",	0,	DXGI_FORMAT_R32G32B32_FLOAT,	0,	0,	D3D11_INPUT_PER_VERTEX_DATA,	0 },
-		{ "NORMAL",		0,	DXGI_FORMAT_R32G32B32_FLOAT,	0,	12,	D3D11_INPUT_PER_VERTEX_DATA,	0 },
-		{ "TEXCOORD",	0,	DXGI_FORMAT_R32G32_FLOAT,		0,	24,	D3D11_INPUT_PER_VERTEX_DATA,	0 },
-	};
-	UINT numElements = sizeof(layout) / sizeof(layout[0]);
-
-	// 頂点インプットレイアウトを作成
-	HRESULT hr = GetDevice()->CreateInputLayout(
-		layout,
-		numElements,
-		pCompiled->GetBufferPointer(),
-		pCompiled->GetBufferSize(),
-		&m_pVertexLayout);
-	if (FAILED(hr))
-		return false;
-
-	return true;
-}
-
-
-/*									//
-//		ピクセルシェーダ作成		//
-//									*/
-bool Shader::CreatePixelShader(const string fileName) {
-	ID3DBlob* pCompiledShader = nullptr;
-	ID3DBlob* pErrors = nullptr;
-	HRESULT hr;
-
-	hr = D3DX11CompileFromFile(
-		fileName.c_str(),
-		NULL,
-		NULL,
-		"PS",
-		"ps_5_0",
-		0,
-		0,
-		NULL,
-		&pCompiledShader,
-		&pErrors,
-		NULL);
-	if (FAILED(hr)) {
-		MessageBox(0, (LPCTSTR)pErrors->GetBufferPointer(), _T("ERROR"), MB_OK);
-		goto MISS;
-	}
-	SAFE_RELEASE(pErrors);
-
-	hr = GetDevice()->CreatePixelShader(
-		pCompiledShader->GetBufferPointer(),
-		pCompiledShader->GetBufferSize(),
-		NULL,
-		&m_pPixelShader);
-	if (FAILED(hr)) {
-		SAFE_RELEASE(pCompiledShader);
-		MessageBox(0, "ピクセルシェーダ作成失敗", _T("ERROR"), MB_OK);
-		goto MISS;
-	}
-	SAFE_RELEASE(pCompiledShader);
-
-	return true;
-
-
-MISS:
-	SAFE_RELEASE(pCompiledShader);
-	SAFE_RELEASE(pErrors);
-
-	return false;
-}
-
-
-/*									//
-//	コンスタントバッファー作成		//
-//									*/
-bool Shader::CreateConstantBuffer() {
-	D3D11_BUFFER_DESC cbuffer;
-	cbuffer.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	cbuffer.ByteWidth = sizeof(SIMPLESHADER_CONSTANT_BUFFER);
-	cbuffer.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	cbuffer.MiscFlags = 0;
-	cbuffer.StructureByteStride = 0;
-	cbuffer.Usage = D3D11_USAGE_DYNAMIC;
-
-	HRESULT hr = GetDevice()->CreateBuffer(&cbuffer, NULL, &m_pConstantBuffer);
-	if (FAILED(hr))
-		return false;
-
-	return true;
 }

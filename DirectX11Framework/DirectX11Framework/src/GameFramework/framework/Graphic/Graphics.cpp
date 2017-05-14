@@ -4,6 +4,7 @@
 
 
 #include	"Graphics.h"
+#include	"../Resource/Base/IResource.h"
 
 
 ID3D11DeviceContext* Graphics::m_pDeviceContext = nullptr;
@@ -39,4 +40,16 @@ ID3D11DeviceContext* Graphics::GetDevice() {
 //									*/
 void Graphics::SetDevice(ID3D11DeviceContext* _dev) {
 	m_pDeviceContext = _dev;
+}
+
+
+/*									//
+//			ÉuÉåÉìÉhÇÃê›íË			//
+//									*/
+void Graphics::SetBlend(BlendType type) {
+	m_Blend.Set(type, IResource::GetDevice(), GetDevice());
+}
+
+void Graphics::SetAlphaEnable(const bool alpha) {
+	m_Blend.SetAlphaEnable(alpha, IResource::GetDevice(), GetDevice());
 }

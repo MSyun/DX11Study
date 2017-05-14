@@ -37,11 +37,12 @@ bool Texture::Create(const string name) {
 	// 拡張子を抽出
 	string extension = Path::GetExtension(name);
 	if (extension == "tga") {
-		Debug::Log("拡張子が " + extension + " でした");
+		Debug::Log("拡張子が " + extension + " なので生成できません");
 		return true;
 	}
 
 	if (extension == "sph") {
+		Debug::Log("拡張子が " + extension + " なので生成できません");
 		return true;
 	}
 
