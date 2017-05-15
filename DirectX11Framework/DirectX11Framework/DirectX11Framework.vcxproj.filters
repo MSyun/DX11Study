@@ -64,30 +64,6 @@
     <Filter Include="ソース ファイル\GameFramework\framework\Utility\System">
       <UniqueIdentifier>{9b9384b5-84f2-46a3-9c84-0677f59d50db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math">
-      <UniqueIdentifier>{d9c6687f-f9fd-45fc-ae37-de6c18f03731}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Matrix">
-      <UniqueIdentifier>{13378320-98c2-4085-85c7-6a462f4bfd43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Matrix\Matrix4x4">
-      <UniqueIdentifier>{4e86f176-6d6e-480f-86c4-43a90154b58a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector">
-      <UniqueIdentifier>{c4431143-5b8a-47d0-ae40-bd7e2c9997b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector2">
-      <UniqueIdentifier>{2c5d9074-0858-41bb-ac30-e2e36703e406}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector3">
-      <UniqueIdentifier>{fc3f6f59-6f37-4d27-b1e6-c110b8d16ac2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector4">
-      <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Funcs">
-      <UniqueIdentifier>{fc34edfa-8e72-495a-8251-8bbeb32f04cc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\GameFramework\framework\Resource">
       <UniqueIdentifier>{f729ccba-9a10-4a62-a41b-dd2cc52c7e51}</UniqueIdentifier>
     </Filter>
@@ -169,12 +145,6 @@
     <Filter Include="ソース ファイル\GameFramework\framework\Light">
       <UniqueIdentifier>{e8ec288f-60d2-4a47-a1d6-854315dc5401}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Quaternion">
-      <UniqueIdentifier>{b65ea478-b81d-4efe-a502-378d2b0d1ce9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\EulerAngle">
-      <UniqueIdentifier>{4ac33e95-2341-48ef-8712-00272aba5f1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader">
       <UniqueIdentifier>{c6604532-f9d8-4209-951c-c5e1463715c0}</UniqueIdentifier>
     </Filter>
@@ -243,6 +213,48 @@
     </Filter>
     <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light">
       <UniqueIdentifier>{78cb09aa-9ba5-4efa-9063-61786ee30169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D\Quad">
+      <UniqueIdentifier>{de0da0c3-1937-46ee-9a37-2e63d642b437}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D\Quad\QuadPolygon">
+      <UniqueIdentifier>{d7e674ce-3c00-4fe6-8566-56acbb96de7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Camera\Manager">
+      <UniqueIdentifier>{9dda35dd-dc2e-41f8-b712-82c6208d1282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math">
+      <UniqueIdentifier>{d9c6687f-f9fd-45fc-ae37-de6c18f03731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Matrix">
+      <UniqueIdentifier>{13378320-98c2-4085-85c7-6a462f4bfd43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Matrix\Matrix4x4">
+      <UniqueIdentifier>{4e86f176-6d6e-480f-86c4-43a90154b58a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector">
+      <UniqueIdentifier>{c4431143-5b8a-47d0-ae40-bd7e2c9997b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector2">
+      <UniqueIdentifier>{2c5d9074-0858-41bb-ac30-e2e36703e406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector3">
+      <UniqueIdentifier>{fc3f6f59-6f37-4d27-b1e6-c110b8d16ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector4">
+      <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Funcs">
+      <UniqueIdentifier>{fc34edfa-8e72-495a-8251-8bbeb32f04cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\Quaternion">
+      <UniqueIdentifier>{b65ea478-b81d-4efe-a502-378d2b0d1ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Math\EulerAngle">
+      <UniqueIdentifier>{4ac33e95-2341-48ef-8712-00272aba5f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D\Manager">
+      <UniqueIdentifier>{07a2227b-d28d-4714-ae8d-59dfcc32feb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +410,18 @@
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.cpp">
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Object\3DObject\Quad\QuadPolygon\QuadPolygon.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad\QuadPolygon</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Object\3DObject\Quad\Quad.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Camera\Manager\CameraManager.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Camera\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Object\3DObject\Manager\Object3DManager.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -589,6 +613,18 @@
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.h">
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Object\3DObject\Quad\QuadPolygon\QuadPolygon.h">
+      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad\QuadPolygon</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Object\3DObject\Quad\Quad.h">
+      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Camera\Manager\CameraManager.h">
+      <Filter>ソース ファイル\GameFramework\framework\Camera\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Object\3DObject\Manager\Object3DManager.h">
+      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

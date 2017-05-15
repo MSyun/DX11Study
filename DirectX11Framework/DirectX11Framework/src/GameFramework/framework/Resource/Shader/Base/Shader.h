@@ -17,6 +17,8 @@
 
 
 
+
+
 class Shader	:	public	IResource {
 private:
 	ShaderCollection::VertexShader* m_pVS;

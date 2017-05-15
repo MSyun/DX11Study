@@ -14,6 +14,8 @@
 #include	"../framework/Resource/Mesh/Mesh.h"
 #include	"../framework/Resource/Shader/Base/Shader.h"
 #include	"../framework/Time/Time.h"
+#include	"../framework/Camera/Manager/CameraManager.h"
+#include	"../framework/Object/3DObject/Manager/Object3DManager.h"
 
 
 
@@ -27,6 +29,8 @@ protected:
 	ResourceManager<Texture>*	m_pTexManager;
 	ResourceManager<Mesh>*		m_pMeshManager;
 	ResourceManager<Shader>*	m_pShaderManager;
+	CameraManager*				m_pCameraManager;
+	Object3DManager*			m_pObject3DManager;
 
 #pragma endregion
 

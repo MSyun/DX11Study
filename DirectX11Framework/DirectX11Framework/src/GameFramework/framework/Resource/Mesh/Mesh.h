@@ -8,11 +8,6 @@
 #include	"../Base/IResource.h"
 #include	"Pmd/Pmd.h"
 
-// 緊急の一時的
-#include	"../../Camera/Camera.h"
-#include	"../../Light/Light.h"
-#include	"../Shader/Base/Shader.h"
-
 
 class Mesh	:	public	IResource {
 private:
@@ -34,8 +29,8 @@ public:
 	bool Create(const string fileName) override;
 	void Delete() override;
 
-	// 後でここの機能を外へ
-	void Draw(Camera* camera, Light* light, Shader* shader);
+	void Draw(Matrix* mat);
+	void LateDraw(Matrix* mat);
 
 private:
 	void LoadTexture(const string& fileName);

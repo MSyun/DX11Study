@@ -9,22 +9,19 @@
 
 #include	"../GameFramework/framework/Scene/Base/SceneBase.h"
 
-#include	"../GameFramework/framework/Camera/Camera.h"
 #include	"../GameFramework/framework/Light/Light.h"
 #include	"../GameFramework/framework/Resource/Texture/Texture.h"
-#include	"../GameFramework/framework/Resource/Mesh/Mesh.h"
+#include	"../GameFramework/framework/Object/3DObject/Object3D.h"
 #include	"../GameFramework/framework/Resource/Shader/Base/Shader.h"
+#include	"../GameFramework/framework/Object/3DObject/Quad/Quad.h"
 
 
 class CheckScene	:	public	SceneBase {
 private:
-	ID3D11Buffer*		m_pVertexBuffer;
-
-	Texture*			m_pTexture;
-	Mesh*				m_pMesh;
-	Shader*				m_pShader;
-	Camera*				m_pCamera;
-	Light*				m_pLight;
+	Object3D*	m_pObj;
+	Shader*	m_pShader;
+	Light*	m_pLight;
+	Quad*	m_pQuad;
 
 public:
 	CheckScene();
@@ -39,6 +36,4 @@ public:
 protected:
 	bool Init() final;
 	void Release() final;
-
-	void CreatePolygon();
 };

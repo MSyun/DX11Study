@@ -6,12 +6,13 @@
 
 #include	"Mesh.h"
 #include	"../../Graphic/Graphics.h"
+#include	"../../Camera/Manager/CameraManager.h"
 #include	"../../Time/Time.h"
 
-#include	"../../Debug/Debug.h"
 #include	"../Texture/Texture.h"
 #include	"../Manager/ResourceManager.h"
 #include	"../../Path/Path.h"
+#include	"../Shader/Base/Shader.h"
 
 
 /*									//
@@ -141,8 +142,10 @@ void Mesh::Delete() {
 }
 
 
-void Mesh::Draw(Camera* camera, Light* light, Shader* shader) {
+void Mesh::Draw(Matrix* mat) {
 	auto context = Graphics::GetDevice();
+
+	Shader* shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
 
 	static float angle = 0.0f;
 	angle += Time::GetDeltaTime();
@@ -151,6 +154,7 @@ void Mesh::Draw(Camera* camera, Light* light, Shader* shader) {
 	MatrixScaling(&mWorld, 0.1f, 0.1f, 0.1f);
 	mWorld *= mRot;
 
+	Camera* camera = GetCameraManager()->CurrentCamera();
 	Vector3 pos = camera->GetTransform()->GetPos();
 
 	auto cb = shader->GetBuffer()->GetSetting();
@@ -204,4 +208,8 @@ void Mesh::Draw(Camera* camera, Light* light, Shader* shader) {
 	context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	context->DrawIndexed(m_pMeshData->face_vert_count, 0, 0);
+}
+
+void Mesh::LateDraw(Matrix* mat) {
+
 }

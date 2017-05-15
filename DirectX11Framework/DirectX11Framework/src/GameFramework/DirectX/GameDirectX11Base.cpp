@@ -19,7 +19,9 @@ GameDirectX11Base::GameDirectX11Base(Application* app) :
 	m_pSceneManager(nullptr),
 	m_pTexManager(nullptr),
 	m_pMeshManager(nullptr),
-	m_pShaderManager(nullptr)
+	m_pShaderManager(nullptr),
+	m_pCameraManager(nullptr),
+	m_pObject3DManager(nullptr)
 {
 }
 
@@ -67,10 +69,14 @@ HRESULT GameDirectX11Base::Release() {
 //			ƒAƒvƒŠ‚Ì‰ğ•ú			//
 //									*/
 HRESULT GameDirectX11Base::ReleaseApp() {
+	SAFE_DELETE(m_pCameraManager);
 	SAFE_DELETE(m_pShaderManager);
 	SAFE_DELETE(m_pMeshManager);
 	SAFE_DELETE(m_pTexManager);
 	SAFE_DELETE(m_pSceneManager);
+
+	SAFE_DELETE(m_pObject3DManager);
+
 
 	return S_OK;
 }
@@ -100,10 +106,12 @@ HRESULT GameDirectX11Base::Init() {
 HRESULT GameDirectX11Base::InitApp() {
 	Input::Init(m_pApp->GetHWND());
 
+	m_pObject3DManager = new Object3DManager;
 	m_pSceneManager = new SceneManagerWins;
 	m_pTexManager = new ResourceManager<Texture>;
 	m_pMeshManager = new ResourceManager<Mesh>;
 	m_pShaderManager = new ResourceManager<Shader>;
+	m_pCameraManager = new CameraManager;
 
 	return S_OK;
 }

@@ -124,9 +124,9 @@ unsigned _stdcall ChangeSceneThread(void* pThreadParam) {
 //	コンストラクタ
 ////////////////////////////////////////////////////////////////////////////
 SceneManagerWin::SceneManagerWin() {
-	m_Loading		= NULL;			// ロードシーン
+	m_Loading		= nullptr;			// ロードシーン
 	m_nLoadingFlag	= LOADING_NO;	// ロードフラグ
-	m_hThread		= NULL;			// スレッドハンドル
+	m_hThread		= nullptr;			// スレッドハンドル
 	m_bLoadSuc		= true;			// ロード成功
 	m_uLoadWaitTime	= 10;			// ロード開始ウェイト時間
 	m_uLoadRate		= 0;			// 読み込み率
@@ -180,7 +180,7 @@ bool SceneManagerWin::RegistLoadingScene(SceneBase* pScene) {
 	if (m_Loading) {
 		m_Loading->ReleaseMain();
 		delete m_Loading;
-		m_Loading = NULL;
+		m_Loading = nullptr;
 	}
 
 	m_Loading = pScene;
@@ -200,7 +200,7 @@ void SceneManagerWin::DeleteLoadingScene(void) {
 
 	m_Loading->ReleaseMain();
 	delete m_Loading;
-	m_Loading = NULL;
+	m_Loading = nullptr;
 }
 
 
@@ -246,7 +246,7 @@ SceneBase* SceneManagerWin::GetScene() {
 			CloseHandle(m_hThread);	// スレッドを閉じる
 			// 読み込み失敗
 			if (!m_bLoadSuc) {
-				return NULL;
+				return nullptr;
 			}
 			// フラグを変更
 			m_nLoadingFlag = LOADING_MAX;
@@ -274,7 +274,7 @@ SceneBase* SceneManagerWin::GetScene() {
 		if (it == m_MapScene.end()) {
 			m_nCommand = SCENEMANAGER_NO;
 			Debug::LogError("シーン名" + m_TmpSceneName + "は存在しません");
-			return NULL;
+			return nullptr;
 		}
 
 		// 成功確認
@@ -328,7 +328,7 @@ SceneBase* SceneManagerWin::GetScene() {
 		// 失敗時の処理
 		if (!bSuccess) {
 			Debug::LogError("シーンの変更に失敗しました");
-			return NULL;
+			return nullptr;
 		}
 	}
 
@@ -359,12 +359,12 @@ bool SceneManagerWin::ChangeLoadScene(SceneBase* pScene) {
 	if (pScene->GetMakeFlg() && pScene != GetTopScene()) {
 		if (!m_Stack.empty()) {
 			m_hThread = (HANDLE)_beginthreadex(
-				NULL,				// SECURITY_ATTRIBUTESへのポインタorNULL
+				nullptr,				// SECURITY_ATTRIBUTESへのポインタorNULL
 				0,					// スタックサイズ
 				ReleaseSceneThread,	// スレッド関数のアドレス
 				GetTopScene(),		// スレッドに渡す引数
 				0,					// 0（すぐ実行）、CREATE_SUSPENDED（一時停止）
-				NULL);				// スレッド識別子。NULLでも可
+				nullptr);				// スレッド識別子。NULLでも可
 			m_Stack.pop();
 		}
 		if (!pScene->ReStart()) {
@@ -381,23 +381,23 @@ bool SceneManagerWin::ChangeLoadScene(SceneBase* pScene) {
 			Data->cScene = pScene;
 			// スレッド開始
 			m_hThread = (HANDLE)_beginthreadex(
-				NULL,				// SECURITY_ATTRIBUTESへのポインタorNULL
+				nullptr,				// SECURITY_ATTRIBUTESへのポインタorNULL
 				0,					// スタックサイズ
 				ChangeSceneThread,	// スレッド関数のアドレス
 				Data,				// スレッドに渡す引数
 				0,					// 0（すぐ実行）、CREATE_SUSPENDED（一時停止）
-				NULL);				// スレッド識別子。NULLでも可
+				nullptr);				// スレッド識別子。NULLでも可
 			m_Stack.pop();
 		} else {
 			// 空の場合
 			// スレッド開始
 			m_hThread = (HANDLE)_beginthreadex(
-				NULL,				// SECURITY_ATTRIBUTESへのポインタorNULL
+				nullptr,				// SECURITY_ATTRIBUTESへのポインタorNULL
 				0,					// スタックサイズ
 				InitSceneThread,	// スレッド関数のアドレス
 				pScene,				// スレッドに渡す引数
 				0,					// 0（すぐ実行）、CREATE_SUSPENDED（一時停止）
-				NULL);				// スレッド識別子。NULLでも可
+				nullptr);				// スレッド識別子。NULLでも可
 		}
 	}
 
@@ -426,12 +426,12 @@ void SceneManagerWin::PopLoadScene(void) {
 
 	//----- スレッド開始
 	m_hThread = (HANDLE)_beginthreadex(
-		NULL,				// SECURITY_ATTRIBUTESへのポインタorNULL
+		nullptr,				// SECURITY_ATTRIBUTESへのポインタorNULL
 		0,					// スタックサイズ
 		ReleaseSceneThread,	// スレッド関数のアドレス
 		pScene,				// スレッドに渡す引数
 		0,					// 0（すぐ実行）、CREATE_SUSPENDED（一時停止）
-		NULL);				// スレッド識別子。NULLでも可
+		nullptr);				// スレッド識別子。NULLでも可
 
 	m_Stack.pop();
 }
@@ -466,12 +466,12 @@ bool SceneManagerWin::PushLoadScene(SceneBase* pScene) {
 		m_nLoadingFlag = LOADING_NOW;
 		//----- スレッド開始
 		m_hThread = (HANDLE)_beginthreadex(
-			NULL,				// SECURITY_ATTRIBUTESへのポインタorNULL
+			nullptr,				// SECURITY_ATTRIBUTESへのポインタorNULL
 			0,					// スタックサイズ
 			InitSceneThread,	// スレッド関数のアドレス
 			pScene,				// スレッドに渡す引数
 			0,					// 0（すぐ実行）、CREATE_SUSPENDED（一時停止）
-			NULL);				// スレッド識別子。NULLでも可
+			nullptr);				// スレッド識別子。NULLでも可
 	}
 
 	m_Stack.push(pScene);
