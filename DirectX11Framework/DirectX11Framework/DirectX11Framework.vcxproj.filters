@@ -396,6 +396,9 @@
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.cpp">
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Material</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.h">
@@ -584,6 +587,9 @@
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.h">
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Material</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.h">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\GameFramework\framework\Delegate\Delegate.inl">
@@ -599,6 +605,9 @@
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
     </None>
     <None Include="Material.hlslh">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
+    </None>
+    <None Include="Light.hlslh">
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
     </None>
   </ItemGroup>

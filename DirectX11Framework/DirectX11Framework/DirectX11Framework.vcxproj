@@ -190,6 +190,7 @@
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\Base\Shader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\Base\Shader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\ITypeShader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.h" />
@@ -273,6 +275,7 @@
     <ClInclude Include="src\Scene\CheckScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Light.hlslh" />
     <None Include="Material.hlslh" />
     <None Include="src\GameFramework\framework\CPPEvent\CPPEvent.inl" />
     <None Include="src\GameFramework\framework\Delegate\Delegate.inl" />

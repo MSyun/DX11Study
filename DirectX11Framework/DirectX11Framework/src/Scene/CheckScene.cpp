@@ -63,6 +63,20 @@ void CheckScene::Draw() {
 
 	// 使用するシェーダの登録
 	m_pShader->Begin();
+
+	// ライト
+	auto LightBuff = m_pShader->GetBuffLight();
+	LightBuff->BeginPass();
+	Color col;
+	col = m_pLight->GetColor(Light::LIGHT_DIFFUSE);
+	LightBuff->Diffuse(Vector3(col.r, col.g, col.b));
+	col = m_pLight->GetColor(Light::LIGHT_AMBIENT);
+	LightBuff->Ambient(Vector3(col.r, col.g, col.b));
+	col = m_pLight->GetColor(Light::LIGHT_SPECULAR);
+	LightBuff->Specular(Vector3(col.r, col.g, col.b));
+	LightBuff->Direction(m_pLight->GetDirection4());
+	LightBuff->EndPass();
+
 	// シェーダのコンスタントバッファーに各種データを渡す
 	auto cb = m_pShader->GetBuffer()->GetSetting();
 
@@ -83,8 +97,6 @@ void CheckScene::Draw() {
 	Matrix m = mWorld * m_pCamera->GetView() * m_pCamera->GetProj();
 	MatrixTranspose(&m, &m);
 	cb->mWVP = m;
-	// ライトベクトルを渡す
-	cb->vLightDir = m_pLight->GetDirection4();
 	// カメラの位置（視点）をシェーダに渡す
 	cb->vEye = Vector4(pos.x, pos.y, pos.z, 0.0f);
 

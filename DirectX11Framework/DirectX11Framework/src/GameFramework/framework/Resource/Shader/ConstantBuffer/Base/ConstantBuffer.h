@@ -16,7 +16,6 @@ namespace ShaderCollection {
 		struct SIMPLESHADER_CONSTANT_BUFFER {
 			Matrix	mWorld;
 			Matrix	mWVP;
-			Vector4	vLightDir;
 			Vector4	vEye;
 		};
 

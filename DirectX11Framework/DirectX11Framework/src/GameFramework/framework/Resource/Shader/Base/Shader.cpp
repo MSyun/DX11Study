@@ -16,7 +16,8 @@ Shader::Shader() :
 	m_pVS(nullptr),
 	m_pPS(nullptr),
 	m_pBuffer(nullptr),
-	m_pMatBuff(nullptr)
+	m_pMatBuff(nullptr),
+	m_pLightBuff(nullptr)
 {
 
 }
@@ -38,14 +39,17 @@ bool Shader::Create(const string name) {
 
 	m_pBuffer = new ShaderCollection::Buffer::ConstantBuffer;
 	m_pMatBuff = new ShaderCollection::Buffer::ConstantBufferMaterial;
+	m_pLightBuff = new ShaderCollection::Buffer::ConstantBufferLight;
 
 	m_pBuffer->Create();
 	m_pMatBuff->Create();
+	m_pLightBuff->Create();
 
 	return true;
 }
 
 void Shader::Delete() {
+	SAFE_DELETE(m_pLightBuff);
 	SAFE_DELETE(m_pMatBuff);
 	SAFE_DELETE(m_pBuffer);
 	SAFE_DELETE(m_pPS);
@@ -68,6 +72,10 @@ ShaderCollection::Buffer::ConstantBuffer* Shader::GetBuffer() {
 
 ShaderCollection::Buffer::ConstantBufferMaterial* Shader::GetBuffMat() {
 	return m_pMatBuff;
+}
+
+ShaderCollection::Buffer::ConstantBufferLight* Shader::GetBuffLight() {
+	return m_pLightBuff;
 }
 
 

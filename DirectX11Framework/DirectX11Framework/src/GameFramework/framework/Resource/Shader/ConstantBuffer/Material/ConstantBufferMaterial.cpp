@@ -36,21 +36,21 @@ namespace ShaderCollection {
 		}
 
 		void ConstantBufferMaterial::Diffuse(const float3& diffuse) {
-			m_material.Diffuse.x = diffuse.x;
-			m_material.Diffuse.y = diffuse.y;
-			m_material.Diffuse.z = diffuse.z;
+			m_material.Diffuse.r = diffuse.r;
+			m_material.Diffuse.g = diffuse.g;
+			m_material.Diffuse.b = diffuse.b;
 		}
 
 		void ConstantBufferMaterial::Ambient(const float3& ambient) {
-			m_material.Ambient.x = ambient.x;
-			m_material.Ambient.y = ambient.y;
-			m_material.Ambient.z = ambient.z;
+			m_material.Ambient.r = ambient.r;
+			m_material.Ambient.g = ambient.g;
+			m_material.Ambient.b = ambient.b;
 		}
 
 		void ConstantBufferMaterial::Emissive(const float3& emissive) {
-			m_material.Emissive.x = emissive.x;
-			m_material.Emissive.y = emissive.y;
-			m_material.Emissive.z = emissive.z;
+			m_material.Emissive.r = emissive.r;
+			m_material.Emissive.g = emissive.g;
+			m_material.Emissive.b = emissive.b;
 		}
 
 		void ConstantBufferMaterial::Alpha(const float alpha) {
@@ -61,9 +61,9 @@ namespace ShaderCollection {
 		}
 
 		void ConstantBufferMaterial::Specular(const float3& specular) {
-			m_material.Specular.x = specular.x;
-			m_material.Specular.y = specular.y;
-			m_material.Specular.z = specular.z;
+			m_material.Specular.r = specular.r;
+			m_material.Specular.g = specular.g;
+			m_material.Specular.b = specular.b;
 		}
 
 		void ConstantBufferMaterial::Shininess(const float shininess) {

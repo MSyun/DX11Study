@@ -13,6 +13,7 @@
 
 #include	"../ConstantBuffer/Base/ConstantBuffer.h"
 #include	"../ConstantBuffer/Material/ConstantBufferMaterial.h"
+#include	"../ConstantBuffer/Light/ConstantBufferLight.h"
 
 
 
@@ -22,6 +23,7 @@ private:
 	ShaderCollection::PixelShader* m_pPS;
 	ShaderCollection::Buffer::ConstantBuffer* m_pBuffer;
 	ShaderCollection::Buffer::ConstantBufferMaterial* m_pMatBuff;
+	ShaderCollection::Buffer::ConstantBufferLight* m_pLightBuff;
 
 public:
 	Shader();
@@ -35,6 +37,7 @@ public:
 
 	ShaderCollection::Buffer::ConstantBuffer* GetBuffer();
 	ShaderCollection::Buffer::ConstantBufferMaterial* GetBuffMat();
+	ShaderCollection::Buffer::ConstantBufferLight* GetBuffLight();
 };
 
 namespace ShaderCollection {

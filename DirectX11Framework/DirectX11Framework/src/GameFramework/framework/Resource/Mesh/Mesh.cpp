@@ -178,7 +178,6 @@ void Mesh::Draw(Camera* camera, Light* light, Shader* shader) {
 	for (unsigned int i = 0; i < m_pMeshData->material_count; ++i) {
 		for (unsigned int j = 0; j < m_pMeshData->material[i].face_vert_count; ++j) {
 			shader->GetBuffer()->BeginPass();
-			cb->vLightDir = light->GetDirection4();
 			cb->vEye = Vector4(pos.x, pos.y, pos.z, 1.0f);
 			shader->GetBuffer()->EndPass();
 		}
