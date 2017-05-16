@@ -14,7 +14,8 @@
 #include	"../ConstantBuffer/Base/ConstantBuffer.h"
 #include	"../ConstantBuffer/Material/ConstantBufferMaterial.h"
 #include	"../ConstantBuffer/Light/ConstantBufferLight.h"
-
+#include	"../ConstantBuffer/Mesh/ConstantBufferMesh.h"
+#include	"../ConstantBuffer/Frame/ConstantBufferFrame.h"
 
 
 
@@ -23,9 +24,12 @@ class Shader	:	public	IResource {
 private:
 	ShaderCollection::VertexShader* m_pVS;
 	ShaderCollection::PixelShader* m_pPS;
-	ShaderCollection::Buffer::ConstantBuffer* m_pBuffer;
+	ShaderCollection::Buffer::ConstantBufferFrame* m_pFrameBuff;
 	ShaderCollection::Buffer::ConstantBufferMaterial* m_pMatBuff;
 	ShaderCollection::Buffer::ConstantBufferLight* m_pLightBuff;
+	ShaderCollection::Buffer::ConstantBufferMesh* m_pMeshBuff;
+
+	D3D11_BUFFER_DESC m_BufferDesc;
 
 public:
 	Shader();
@@ -37,9 +41,10 @@ public:
 	void Begin();
 	void End();
 
-	ShaderCollection::Buffer::ConstantBuffer* GetBuffer();
+	ShaderCollection::Buffer::ConstantBufferFrame* GetBuffFrame();
 	ShaderCollection::Buffer::ConstantBufferMaterial* GetBuffMat();
 	ShaderCollection::Buffer::ConstantBufferLight* GetBuffLight();
+	ShaderCollection::Buffer::ConstantBufferMesh* GetBuffMesh();
 };
 
 namespace ShaderCollection {

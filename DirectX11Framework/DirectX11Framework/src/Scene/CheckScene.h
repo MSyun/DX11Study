@@ -18,10 +18,10 @@
 
 class CheckScene	:	public	SceneBase {
 private:
-	Object3D*	m_pObj;
+	Light* m_pLight;
 	Shader*	m_pShader;
-	Light*	m_pLight;
 	Quad*	m_pQuad;
+	Object3D* m_pObj;
 
 public:
 	CheckScene();

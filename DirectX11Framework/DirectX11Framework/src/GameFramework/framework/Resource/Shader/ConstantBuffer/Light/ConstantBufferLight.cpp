@@ -8,22 +8,19 @@
 #include	"../../../../Graphic/Graphics.h"
 #include	"../../../../Utility/Math/MathUtility.h"
 
+#include	"../Mesh/ConstantBufferMesh.h"
+
 
 namespace ShaderCollection {
 	namespace Buffer {
 
-		ConstantBufferLight::ConstantBufferLight()
+		ConstantBufferLight::ConstantBufferLight() :
+			ConstantBuffer(3)
 		{
 		}
 
 		ConstantBufferLight::~ConstantBufferLight()
 		{
-		}
-
-		void ConstantBufferLight::BeginPass() {
-			HRESULT hr = Graphics::GetDevice()->Map(m_pBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
-			if (FAILED(hr))
-				return;
 		}
 
 		void ConstantBufferLight::EndPass() {
@@ -64,10 +61,11 @@ namespace ShaderCollection {
 			m_light.Direction = direction;
 		}
 
-		bool ConstantBufferLight::Create() {
+		bool ConstantBufferLight::Create(D3D11_BUFFER_DESC* desc) {
 			if (!CreateConstantBuffer(
+				desc,
 				&m_pBuffer,
-				sizeof(SIMPLESHADER_CONSTANT_BUFFER)))
+				sizeof(LIGHT_CONSTANT_BUFFER)))
 				return false;
 
 			return true;

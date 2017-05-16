@@ -13,10 +13,10 @@
 namespace ShaderCollection {
 	namespace Buffer {
 
-		ConstantBuffer::ConstantBuffer() :
-			m_pBuffer(nullptr)
+		ConstantBuffer::ConstantBuffer(int resourceNum) :
+			m_pBuffer(nullptr),
+			m_ResourceNumber(resourceNum)
 		{
-//			Create();
 		}
 
 		ConstantBuffer::~ConstantBuffer() {
@@ -40,45 +40,23 @@ namespace ShaderCollection {
 			Graphics::GetDevice()->Map(m_pBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
 		}
 
-		void ConstantBuffer::EndPass() {
-			auto context = Graphics::GetDevice();
-			memcpy_s(pData.pData, pData.RowPitch, (void*)(&m_type), sizeof(m_type));
-			context->Unmap(m_pBuffer, 0);
-
-			context->VSSetConstantBuffers(0, 1, &m_pBuffer);
-			context->PSSetConstantBuffers(0, 1, &m_pBuffer);
-		}
-
-		SIMPLESHADER_CONSTANT_BUFFER* ConstantBuffer::GetSetting() {
-			return &m_type;
-		}
-
-		bool ConstantBuffer::Create() {
-			if (!CreateConstantBuffer(
-				&m_pBuffer,
-				sizeof(SIMPLESHADER_CONSTANT_BUFFER)))
-				return false;
-
-			return true;
-		}
-
 
 		/*									//
-		//	コンスタントバッファー作成		//
+		//		コンスタントバッファー作成	//
 		//									*/
 		bool CreateConstantBuffer(
+			D3D11_BUFFER_DESC* desc,
 			ID3D11Buffer** ppBuffer,
 			size_t size)
 		{
-			D3D11_BUFFER_DESC cbuffer;
-			cbuffer.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-			cbuffer.ByteWidth = size;
-			cbuffer.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-			cbuffer.MiscFlags = 0;
-			cbuffer.StructureByteStride = 0;
-			cbuffer.Usage = D3D11_USAGE_DYNAMIC;
+			desc->BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+			desc->ByteWidth = size;
+			desc->CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+			desc->MiscFlags = 0;
+			desc->StructureByteStride = 0;
+			desc->Usage = D3D11_USAGE_DYNAMIC;
 
-			HRESULT hr = IResource::GetDevice()->CreateBuffer(&cbuffer, nullptr, ppBuffer);
+			HRESULT hr = IResource::GetDevice()->CreateBuffer(desc, nullptr, ppBuffer);
 			if (FAILED(hr))
 				return false;
 

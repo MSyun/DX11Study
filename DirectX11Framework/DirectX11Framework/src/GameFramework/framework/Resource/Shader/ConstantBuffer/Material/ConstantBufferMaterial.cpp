@@ -8,22 +8,20 @@
 #include	"../../../../Graphic/Graphics.h"
 #include	"../../../../Utility/Math/MathUtility.h"
 
+#include	"../Mesh/ConstantBufferMesh.h"
+
+
 
 namespace ShaderCollection {
 	namespace Buffer {
 
-		ConstantBufferMaterial::ConstantBufferMaterial()
+		ConstantBufferMaterial::ConstantBufferMaterial() :
+			ConstantBuffer(2)
 		{
 		}
 
 		ConstantBufferMaterial::~ConstantBufferMaterial()
 		{
-		}
-
-		void ConstantBufferMaterial::BeginPass() {
-			HRESULT hr = Graphics::GetDevice()->Map(m_pBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData);
-			if (FAILED(hr))
-				return;
 		}
 
 		void ConstantBufferMaterial::EndPass() {
@@ -70,10 +68,11 @@ namespace ShaderCollection {
 			m_material.Specular.w = shininess;
 		}
 
-		bool ConstantBufferMaterial::Create() {
+		bool ConstantBufferMaterial::Create(D3D11_BUFFER_DESC* desc) {
 			if (!CreateConstantBuffer(
+				desc,
 				&m_pBuffer,
-				sizeof(SIMPLESHADER_CONSTANT_BUFFER)))
+				sizeof(MATERIAL_CONSTANT_BUFFER)))
 				return false;
 
 			return true;

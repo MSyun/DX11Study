@@ -10,6 +10,13 @@
 
 
 class Mesh	:	public	IResource {
+public:
+	typedef enum {
+		CHECK_ALL = 0,
+		CHECK_ALPHA,
+		CHECK_NOALPHA,
+	} _eAlphaCheck;
+
 private:
 	struct SimpleVertex {
 		Point3 Pos;
@@ -29,11 +36,11 @@ public:
 	bool Create(const string fileName) override;
 	void Delete() override;
 
-	void Draw(Matrix* mat);
-	void LateDraw(Matrix* mat);
+	void Draw(Matrix* mat, _eAlphaCheck type = CHECK_ALL);
 
 private:
 	void LoadTexture(const string& fileName);
 	bool CreateVertex();
 	bool CreateIndex();
+	bool CheckAlpha(_eAlphaCheck type, float alpha);
 };

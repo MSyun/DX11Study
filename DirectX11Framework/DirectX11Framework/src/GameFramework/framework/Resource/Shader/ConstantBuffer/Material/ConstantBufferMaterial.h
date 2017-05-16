@@ -24,15 +24,12 @@ namespace ShaderCollection {
 
 		class ConstantBufferMaterial	:	public	ConstantBuffer {
 		private:
-			// シェーダ内のレジスタ番号に合わせる事
-			const int m_ResourceNumber = 2;
 			MATERIAL_CONSTANT_BUFFER m_material;
 
 		public:
 			ConstantBufferMaterial();
 			virtual ~ConstantBufferMaterial();
 
-			void BeginPass() override;
 			void EndPass() override;
 
 			void Diffuse(const float3& diffuse);
@@ -43,7 +40,7 @@ namespace ShaderCollection {
 			void Shininess(const float shininess);
 
 		//protected:
-			virtual bool Create() override;
+			virtual bool Create(D3D11_BUFFER_DESC* desc) override;
 		};
 	}
 }

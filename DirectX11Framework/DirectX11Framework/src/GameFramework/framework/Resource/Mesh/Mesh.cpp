@@ -142,22 +142,14 @@ void Mesh::Delete() {
 }
 
 
-void Mesh::Draw(Matrix* mat) {
+void Mesh::Draw(Matrix* mat, _eAlphaCheck type) {
 	auto context = Graphics::GetDevice();
 
 	Shader* shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
 
-	static float angle = 0.0f;
-	angle += Time::GetDeltaTime();
-	Matrix mWorld, mRot;
-	MatrixRotationY(&mRot, angle);
-	MatrixScaling(&mWorld, 0.1f, 0.1f, 0.1f);
-	mWorld *= mRot;
-
 	Camera* camera = GetCameraManager()->CurrentCamera();
 	Vector3 pos = camera->GetTransform()->GetPos();
 
-	auto cb = shader->GetBuffer()->GetSetting();
 	auto MatBuff = shader->GetBuffMat();
 
 	UINT stride = sizeof(SimpleVertex);
@@ -173,26 +165,29 @@ void Mesh::Draw(Matrix* mat) {
 		DXGI_FORMAT_R16_UINT,
 		0);
 
-	cb->mWorld = mWorld;
-	MatrixTranspose(&cb->mWorld, &cb->mWorld);
-	Matrix m = mWorld * camera->GetView() * camera->GetProj();
+	auto MeshBuff = shader->GetBuffMesh();
+	MeshBuff->BeginPass();
+	Matrix m;
+	m = *mat;
 	MatrixTranspose(&m, &m);
-	cb->mWVP = m;
+	MeshBuff->World(m);
+	m = *mat * camera->GetView() * camera->GetProj();
+	MatrixTranspose(&m, &m);
+	MeshBuff->WVP(m);
+	MeshBuff->EndPass();
+
+	auto FrameBuff = shader->GetBuffFrame();
+	FrameBuff->BeginPass();
+	FrameBuff->EyePos(Vector4(pos.x, pos.y, pos.z, 1.0f));
+	FrameBuff->EndPass();
 
 	for (unsigned int i = 0; i < m_pMeshData->material_count; ++i) {
-		for (unsigned int j = 0; j < m_pMeshData->material[i].face_vert_count; ++j) {
-			shader->GetBuffer()->BeginPass();
-			cb->vEye = Vector4(pos.x, pos.y, pos.z, 1.0f);
-			shader->GetBuffer()->EndPass();
-		}
+		//for (unsigned int j = 0; j < m_pMeshData->material[i].face_vert_count; ++j) {
 
-		string texName(m_pMeshData->material[i].texfile_name);
-		if (texName != "") {
-			Texture* texture = GetResourceManager<Texture>()->Get(texName);
-			auto samp = texture->GetSample();
-			auto tex = texture->GetTexture();
-			context->PSSetSamplers(0, 1, &samp);
-			context->PSSetShaderResources(0, 1, &tex);
+		//}
+
+		if (!CheckAlpha(type, m_pMeshData->material[i].alpha)) {
+			continue;
 		}
 
 		MatBuff->BeginPass();
@@ -203,6 +198,19 @@ void Mesh::Draw(Matrix* mat) {
 		MatBuff->Specular(m_pMeshData->material[i].specular);
 		MatBuff->Shininess(m_pMeshData->material[i].specularity);
 		MatBuff->EndPass();
+
+		string texName(m_pMeshData->material[i].texfile_name);
+		if (texName != "") {
+			Texture* texture = GetResourceManager<Texture>()->Get(texName);
+			auto samp = texture->GetSample();
+			auto tex = texture->GetTexture();
+			context->PSSetSamplers(0, 1, &samp);
+			context->PSSetShaderResources(0, 1, &tex);
+		}
+
+		//context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		//context->DrawIndexed(m_pMeshData->material[i].face_vert_count * 3, 0, 0);
 	}
 
 	context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -210,6 +218,21 @@ void Mesh::Draw(Matrix* mat) {
 	context->DrawIndexed(m_pMeshData->face_vert_count, 0, 0);
 }
 
-void Mesh::LateDraw(Matrix* mat) {
+bool Mesh::CheckAlpha(_eAlphaCheck type, float alpha) {
+	switch (type) {
+	case CHECK_ALL:
+		return true;
 
+	case CHECK_ALPHA:
+		if (alpha < 1.0f)
+			return true;
+		break;
+
+	case CHECK_NOALPHA:
+		if (alpha >= 1.0f)
+			return true;
+		break;
+	};
+
+	return false;
 }

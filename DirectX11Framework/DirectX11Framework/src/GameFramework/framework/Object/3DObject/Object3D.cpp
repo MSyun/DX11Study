@@ -68,7 +68,7 @@ void Object3D::DrawAll() {
 	if (!GetActive())	return;
 
 	Draw();
-	if (m_pMesh)		m_pMesh->Draw(&m_pTransform->GetWorld());
+	if (m_pMesh)		m_pMesh->Draw(&m_pTransform->GetWorld(), Mesh::CHECK_NOALPHA);
 
 	vector<Transform*>* childs = m_pTransform->GetChilds();
 	for (auto it = childs->begin(); it != childs->end(); ++it) {
@@ -79,7 +79,7 @@ void Object3D::LateDrawAll() {
 	if (!GetActive())	return;
 
 	LateDraw();
-	if (m_pMesh)		m_pMesh->LateDraw(&m_pTransform->GetWorld());
+	if (m_pMesh)		m_pMesh->Draw(&m_pTransform->GetWorld(), Mesh::CHECK_ALPHA);
 
 	vector<Transform*>* childs = m_pTransform->GetChilds();
 	for (auto it = childs->begin(); it != childs->end(); ++it) {

@@ -164,6 +164,12 @@
     <ClCompile Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.cpp" />
     <ClCompile Include="src\GameFramework\framework\Application\Application.cpp" />
     <ClCompile Include="src\GameFramework\framework\Application\DirectX\DXApplication.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Archives\Archives.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Archives\Mesh\ArchivesMeshBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Archives\Shader\ArchivesShaderBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Archives\Sound\ArchivesSoundBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Archives\Tag\ArchivesTagBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Archives\Texture\ArchivesTextureBase.cpp" />
     <ClCompile Include="src\GameFramework\framework\Camera\Camera.cpp" />
     <ClCompile Include="src\GameFramework\framework\Camera\Manager\CameraManager.cpp" />
     <ClCompile Include="src\GameFramework\framework\Collision\Collision.cpp" />
@@ -194,8 +200,10 @@
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\Base\Shader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Texture\Texture.cpp" />
@@ -207,6 +215,9 @@
     <ClCompile Include="src\GameFramework\framework\Scene\ManagerWin\SceneManagerWin.cpp" />
     <ClCompile Include="src\GameFramework\framework\Scene\Manager\SceneManager.cpp" />
     <ClCompile Include="src\GameFramework\framework\Screen\Screen.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Sound\SoundBase.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Sound\SoundManager.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Sound\Wave\WaveLoader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Time\Time.cpp" />
     <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp" />
     <ClCompile Include="src\GameFramework\Transform\Transform.cpp" />
@@ -221,6 +232,13 @@
     <ClInclude Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.h" />
     <ClInclude Include="src\GameFramework\framework\Application\Application.h" />
     <ClInclude Include="src\GameFramework\framework\Application\DirectX\DXApplication.h" />
+    <ClInclude Include="src\GameFramework\framework\Archives\Archives.h" />
+    <ClInclude Include="src\GameFramework\framework\Archives\Base\IArchivesType.h" />
+    <ClInclude Include="src\GameFramework\framework\Archives\Mesh\ArchivesMeshBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Archives\Shader\ArchivesShaderBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Archives\Sound\ArchivesSoundBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Archives\Tag\ArchivesTagBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Archives\Texture\ArchivesTextureBase.h" />
     <ClInclude Include="src\GameFramework\framework\Camera\Camera.h" />
     <ClInclude Include="src\GameFramework\framework\Camera\Manager\CameraManager.h" />
     <ClInclude Include="src\GameFramework\framework\Collision\cell.h" />
@@ -260,8 +278,10 @@
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\Base\Shader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\ITypeShader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.h" />
@@ -276,6 +296,9 @@
     <ClInclude Include="src\GameFramework\framework\Scene\Manager\SceneManager.h" />
     <ClInclude Include="src\GameFramework\framework\Screen\Screen.h" />
     <ClInclude Include="src\GameFramework\framework\Singleton\Singleton.h" />
+    <ClInclude Include="src\GameFramework\framework\Sound\SoundBase.h" />
+    <ClInclude Include="src\GameFramework\framework\Sound\SoundManager.h" />
+    <ClInclude Include="src\GameFramework\framework\Sound\Wave\WaveLoader.h" />
     <ClInclude Include="src\GameFramework\framework\Time\Time.h" />
     <ClInclude Include="src\GameFramework\framework\Utility\Math\MathUtility.h" />
     <ClInclude Include="src\GameFramework\framework\Utility\System\SystemUtility.h" />
@@ -283,14 +306,19 @@
     <ClInclude Include="src\Scene\CheckScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Color.hlslh" />
     <None Include="Light.hlslh" />
     <None Include="Material.hlslh" />
+    <None Include="src\GameFramework\framework\Archives\Base\IArchivesType.inl" />
     <None Include="src\GameFramework\framework\CPPEvent\CPPEvent.inl" />
     <None Include="src\GameFramework\framework\Delegate\Delegate.inl" />
     <None Include="src\GameFramework\framework\Resource\Manager\ResourceManager.inl" />
     <None Include="Vertex.hlslh" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="Fog.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
+    </FxCompile>
     <FxCompile Include="Lambert.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VS</EntryPointName>
     </FxCompile>

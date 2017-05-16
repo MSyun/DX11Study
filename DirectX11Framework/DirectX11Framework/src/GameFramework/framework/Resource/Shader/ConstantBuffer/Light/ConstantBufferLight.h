@@ -20,15 +20,12 @@ namespace ShaderCollection {
 
 		class ConstantBufferLight	:	public	ConstantBuffer {
 		private:
-			// シェーダ内のレジスタ番号に合わせる事
-			const int m_ResourceNumber = 1;
 			LIGHT_CONSTANT_BUFFER m_light;
 
 		public:
 			ConstantBufferLight();
 			virtual ~ConstantBufferLight();
 
-			void BeginPass() override;
 			void EndPass() override;
 
 			void Diffuse(const float3& diffuse);
@@ -37,7 +34,7 @@ namespace ShaderCollection {
 			void Alpha(const float alpha);
 			void Direction(const float4& direction);
 
-			virtual bool Create() override;
+			virtual bool Create(D3D11_BUFFER_DESC* desc) override;
 		};
 	}
 }

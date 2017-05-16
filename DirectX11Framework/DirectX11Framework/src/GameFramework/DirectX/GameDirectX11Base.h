@@ -16,6 +16,7 @@
 #include	"../framework/Time/Time.h"
 #include	"../framework/Camera/Manager/CameraManager.h"
 #include	"../framework/Object/3DObject/Manager/Object3DManager.h"
+#include	"../framework/Archives/Archives.h"
 
 
 
@@ -31,6 +32,7 @@ protected:
 	ResourceManager<Shader>*	m_pShaderManager;
 	CameraManager*				m_pCameraManager;
 	Object3DManager*			m_pObject3DManager;
+	Archives					m_Archives;
 
 #pragma endregion
 

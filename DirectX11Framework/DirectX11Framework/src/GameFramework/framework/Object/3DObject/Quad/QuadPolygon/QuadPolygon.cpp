@@ -75,29 +75,29 @@ void QuadPolygon::Draw(Matrix* world) {
 		&stride,
 		&offset);
 
-	// シェーダのコンスタントバッファーに各種データを渡す
-	auto cb = shader->GetBuffer()->GetSetting();
-
-	shader->GetBuffer()->BeginPass();
-
-	cb->mWorld = *world;
-	MatrixTranspose(&cb->mWorld, &cb->mWorld);
-	// ワールド、カメラ、射影行列を渡す
-	Matrix m = *world * camera->GetView() * camera->GetProj();
+	auto MeshBuff = shader->GetBuffMesh();
+	MeshBuff->BeginPass();
+	Matrix m = *world;
 	MatrixTranspose(&m, &m);
-	cb->mWVP = m;
-	// カメラの位置（視点）をシェーダに渡す
-	cb->vEye = Vector4(pos.x, pos.y, pos.z, 0.0f);
+	MeshBuff->World(m);
+	// ワールド、カメラ、射影行列を渡す
+	m = *world * camera->GetView() * camera->GetProj();
+	MatrixTranspose(&m, &m);
+	MeshBuff->WVP(m);
+	MeshBuff->EndPass();
 
-	shader->GetBuffer()->EndPass();
+	auto FrameBuff = shader->GetBuffFrame();
+	FrameBuff->BeginPass();
+	FrameBuff->EyePos(Vector4(pos.x, pos.y, pos.z, 0.0f));
+	FrameBuff->EndPass();
 
 	auto MatBuff = shader->GetBuffMat();
 	MatBuff->BeginPass();
 	MatBuff->Diffuse(Vector3(1.0f, 1.0f, 1.0f));
-	MatBuff->Ambient(Vector3(1.0f, 1.0f, 1.0f));
+	MatBuff->Ambient(Vector3(0.2f, 0.2f, 0.2f));
 	MatBuff->Alpha(1.0f);
 	MatBuff->Emissive(Vector3(0.0f, 0.0f, 0.0f));
-	MatBuff->Shininess(1);
+	MatBuff->Shininess(2);
 	MatBuff->EndPass();
 
 	// プリミティブ・トポロジーをセット

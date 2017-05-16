@@ -13,32 +13,22 @@
 namespace ShaderCollection {
 	namespace Buffer {
 
-		struct SIMPLESHADER_CONSTANT_BUFFER {
-			Matrix	mWorld;
-			Matrix	mWVP;
-			Vector4	vEye;
-		};
-
-
 		class ConstantBuffer {
 		protected:
+			int m_ResourceNumber;
 			ID3D11Buffer*	m_pBuffer;
-			SIMPLESHADER_CONSTANT_BUFFER m_type;
 
 			D3D11_MAPPED_SUBRESOURCE pData;
 
 		public:
-			ConstantBuffer();
+			ConstantBuffer(int resourceNum = -1);
 			virtual ~ConstantBuffer();
 
 			//		void Update(const void* srcPtr);
 			virtual void BeginPass();
-			virtual void EndPass();
+			virtual void EndPass() = 0;
 
-			SIMPLESHADER_CONSTANT_BUFFER* GetSetting();
-
-		//protected:
-			virtual bool Create();
+			virtual bool Create(D3D11_BUFFER_DESC* desc) = 0;
 		};
 
 
@@ -47,6 +37,7 @@ namespace ShaderCollection {
 		// size		:
 		*/
 		bool CreateConstantBuffer(
+			D3D11_BUFFER_DESC* desc,
 			ID3D11Buffer** ppBuffer,
 			size_t size);
 

@@ -112,6 +112,11 @@ HRESULT GameDirectX11Base::InitApp() {
 	m_pMeshManager = new ResourceManager<Mesh>;
 	m_pShaderManager = new ResourceManager<Shader>;
 	m_pCameraManager = new CameraManager;
+	m_Archives.ShaderCreate<ArchivesCollection::ArchivesShaderBase>();
+	m_Archives.MeshCreate<ArchivesCollection::ArchivesMeshBase>();
+	m_Archives.TexCreate<ArchivesCollection::ArchivesTextureBase>();
+	m_Archives.SoundCreate<ArchivesCollection::ArchivesSoundBase>();
+	m_Archives.TagCreate<ArchivesCollection::ArchivesTagBase>();
 
 	return S_OK;
 }

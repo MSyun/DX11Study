@@ -256,6 +256,42 @@
     <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D\Manager">
       <UniqueIdentifier>{07a2227b-d28d-4714-ae8d-59dfcc32feb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Sound">
+      <UniqueIdentifier>{68ac76d5-bd09-4ab0-a1b5-20c89e38d302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Sound\Wave">
+      <UniqueIdentifier>{b3ff79ac-f454-4da9-9fa7-cd7267353184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Archives">
+      <UniqueIdentifier>{ee24354d-058a-4a7e-9ff1-c22e448b5cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Texture">
+      <UniqueIdentifier>{cf6c0523-9818-4bf9-8f20-330fca2f05d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Tag">
+      <UniqueIdentifier>{c230f8f2-d185-4ba1-88a6-87e5826aa44f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Mesh">
+      <UniqueIdentifier>{011303fe-4690-4af7-84e1-81afe5794759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Shader">
+      <UniqueIdentifier>{1ab210d0-1ba0-4a4f-97b7-c3fcf82dbc6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Sound">
+      <UniqueIdentifier>{71e3f46d-8941-48f3-99cb-c4926facfe21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Base">
+      <UniqueIdentifier>{851d4f22-3735-4d26-8f68-a7ffbbe8fd27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\Fog">
+      <UniqueIdentifier>{4f1a2863-1b2c-4dac-8f25-68c2e1ef465c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh">
+      <UniqueIdentifier>{abd73b5f-8a7a-44cc-b08a-81566fab2440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame">
+      <UniqueIdentifier>{7a25b383-4ff7-4625-8f6e-d9527b2151fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -422,6 +458,39 @@
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Object\3DObject\Manager\Object3DManager.cpp">
       <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Sound\SoundBase.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Sound\SoundManager.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Sound\Wave\WaveLoader.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Sound\Wave</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Archives\Sound\ArchivesSoundBase.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Archives\Shader\ArchivesShaderBase.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Archives\Tag\ArchivesTagBase.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Tag</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Archives\Mesh\ArchivesMeshBase.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Archives\Texture\ArchivesTextureBase.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Archives\Archives.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Archives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.cpp">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -626,6 +695,42 @@
     <ClInclude Include="src\GameFramework\framework\Object\3DObject\Manager\Object3DManager.h">
       <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Sound\SoundBase.h">
+      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Sound\SoundManager.h">
+      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Sound\Wave\WaveLoader.h">
+      <Filter>ソース ファイル\GameFramework\framework\Sound\Wave</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Archives\Sound\ArchivesSoundBase.h">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Archives\Shader\ArchivesShaderBase.h">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Archives\Base\IArchivesType.h">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Archives\Tag\ArchivesTagBase.h">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Tag</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Archives\Mesh\ArchivesMeshBase.h">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Archives\Texture\ArchivesTextureBase.h">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Archives\Archives.h">
+      <Filter>ソース ファイル\GameFramework\framework\Archives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.h">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.h">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\GameFramework\framework\Delegate\Delegate.inl">
@@ -646,6 +751,12 @@
     <None Include="Light.hlslh">
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
     </None>
+    <None Include="src\GameFramework\framework\Archives\Base\IArchivesType.inl">
+      <Filter>ソース ファイル\GameFramework\framework\Archives\Base</Filter>
+    </None>
+    <None Include="Color.hlslh">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Phong.hlsl">
@@ -653,6 +764,9 @@
     </FxCompile>
     <FxCompile Include="Lambert.hlsl">
       <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Lambert</Filter>
+    </FxCompile>
+    <FxCompile Include="Fog.hlsl">
+      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Fog</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

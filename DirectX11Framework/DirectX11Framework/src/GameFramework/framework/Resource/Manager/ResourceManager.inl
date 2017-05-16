@@ -114,7 +114,6 @@ T* ResourceManager<T>::Get(const string name) {
 //									*/
 template<class T>
 void ResourceManager<T>::SetHelper(bool helper) {
-	const type_info& id = typeid(T);
 	string swit = (helper ? "ON" : "OFF");
 	Debug::Log("ResourceManager<" + string(typeid(T).name()) + ">‚Ì•â•‹@”\ F " + swit);
 

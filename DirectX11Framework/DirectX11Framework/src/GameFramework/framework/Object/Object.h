@@ -6,7 +6,7 @@
 #pragma once
 
 
-//#include	"../CPPEvent/CPPEvent.h"
+#include	"../CPPEvent/CPPEvent.h"
 #include	"../Utility/System/SystemUtility.h"
 #include	<string>
 using namespace std;
@@ -24,7 +24,7 @@ private:
 	bool	m_bDestroy;
 	bool	m_bInit;
 
-	//CPPEvent<>*	m_onDestroyEvent;
+	CPPEvent<>*	m_onDestroyEvent;
 
 #pragma endregion
 
@@ -64,7 +64,7 @@ public:
 	virtual void Destroy();
 	bool GetDestroy();
 	void OnDestroy();
-	//CPPEvent<>* GetOnDestroy();
+	CPPEvent<>* GetOnDestroy();
 #pragma endregion
 
 #pragma region DontDestroyOnLoad

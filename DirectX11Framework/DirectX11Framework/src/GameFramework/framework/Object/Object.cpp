@@ -16,12 +16,12 @@ Object::Object() :
 	m_bDestroy(false),
 	m_bInit(false)
 {
-	//m_onDestroyEvent = new CPPEvent<>;
+	m_onDestroyEvent = new CPPEvent<>;
 }
 
 
 Object::~Object() {
-	//SAFE_DELETE(m_onDestroyEvent);
+	SAFE_DELETE(m_onDestroyEvent);
 }
 
 
@@ -102,11 +102,11 @@ bool Object::GetDestroy() {
 	return m_bDestroy;
 }
 void Object::OnDestroy() {
-	//m_onDestroyEvent->Invoke();
+	m_onDestroyEvent->Invoke();
 }
-//CPPEvent<>* Object::GetOnDestroy() {
-//	return m_onDestroyEvent;
-//}
+CPPEvent<>* Object::GetOnDestroy() {
+	return m_onDestroyEvent;
+}
 #pragma endregion
 
 
