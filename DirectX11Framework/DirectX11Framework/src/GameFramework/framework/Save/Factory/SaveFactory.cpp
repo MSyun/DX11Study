@@ -7,14 +7,20 @@
 #include	"SaveFactory.h"
 
 
+namespace MSLib {
 
-ISaveObjBase* SaveFactory::Create(int classID) {
-	ISaveObjBase* Obj = nullptr;
+	ISaveObjBase* SaveFactory::Create(int classID) {
+		ISaveObjBase* Obj = nullptr;
 
-	switch (classID) {
-	default:
-		break;
-	};
+		switch (classID) {
+		case 0:
+			break;
 
-	return Obj;
+		default:
+			break;
+		};
+
+		return Obj;
+	}
+
 }

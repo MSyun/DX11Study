@@ -6,17 +6,19 @@
 #include	"ArchivesTagBase.h"
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	ArchivesTagBase::ArchivesTagBase() {
-		Create();
-	}
+		ArchivesTagBase::ArchivesTagBase() {
+			Create();
+		}
 
-	ArchivesTagBase::~ArchivesTagBase() {
-	}
+		ArchivesTagBase::~ArchivesTagBase() {
+		}
 
-	void ArchivesTagBase::Create() {
-		Add("Default", 0);
-	}
+		void ArchivesTagBase::Create() {
+			Add("Default", 0);
+		}
 
-}
+	};
+};

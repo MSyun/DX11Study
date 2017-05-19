@@ -10,39 +10,42 @@
 #include	<list>
 
 
+namespace MSLib {
 
-typedef struct {
-	Object3D*	pObject;
-} _3DOBJECT;
+	typedef struct {
+		Object3D*	pObject;
+	} _3DOBJECT;
 
 
-class Object3DManager	:	public	Singleton<Object3DManager> {
-protected:
-	list<_3DOBJECT*>	m_lstObject;
+	class Object3DManager : public	Singleton<Object3DManager> {
+	protected:
+		list<_3DOBJECT*>	m_lstObject;
 
-	bool	m_bHelper;
+		bool	m_bHelper;
 
-public:
-	Object3DManager();
-	virtual ~Object3DManager();
+	public:
+		Object3DManager();
+		virtual ~Object3DManager();
 
-	/* åüçı */
-	Object3D* Find(const string name);
-	Object3D* FindWithTag(const byte tag);
+		/* åüçı */
+		Object3D* Find(const string& name);
+		Object3D* FindWithTag(const byte tag);
 
-	void Add(Object3D* obj);
-	void AllClear();
-	void Delete(Object3D* obj);
+		void Add(Object3D* obj);
+		void AllClear();
+		void Delete(Object3D* obj);
 
-	void Update();
-	void LateUpdate();
+		void Update();
+		void LateUpdate();
 
-	void Draw();
-	void LateDraw();
+		void Draw();
+		void LateDraw();
 
-	void CheckDestroy();
-	void SetHelper(bool helper);
+		void CheckDestroy();
+		void SetHelper(bool helper);
+	};
+
+
+	Object3DManager* GetObject3DManager();
+
 };
-
-
-Object3DManager* GetObject3DManager();

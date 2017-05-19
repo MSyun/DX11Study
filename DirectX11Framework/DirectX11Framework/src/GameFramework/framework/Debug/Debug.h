@@ -23,34 +23,36 @@
 */
 
 
-using namespace std;
 
+namespace MSLib {
 
-class Debug {
-public:
+	class Debug {
+	public:
 #pragma region method
 
-	Debug();
-	~Debug();
+		Debug();
+		~Debug();
 
 #pragma region Log
-	// エディター上にログを表示
-	static void Log(const string& message);
-	static void Log(const Vector2& val);
-	static void Log(const Vector3& val);
-	static void Log(const Vector4& val);
-	static void Log(const Quaternion& qua);
+		// エディター上にログを表示
+		static void Log(const std::string& message);
+		static void Log(const Vector2& val);
+		static void Log(const Vector3& val);
+		static void Log(const Vector4& val);
+		static void Log(const Quaternion& qua);
 #pragma endregion
 
-	// エラーログの表示
-	// エディターがここで止まるのでF10で場所を確認してください
-	static void LogError(const string& message);
+		// エラーログの表示
+		// エディターがここで止まるのでF10で場所を確認してください
+		static void LogError(const std::string& message);
 
-	// デバイスロスト
-	static HRESULT InvalidateDeviceObjects();
+		// デバイスロスト
+		static HRESULT InvalidateDeviceObjects();
 
-	// デバイスリセット
-	static HRESULT RestoreDeviceObjects();
+		// デバイスリセット
+		static HRESULT RestoreDeviceObjects();
 
 #pragma endregion
+	};
+
 };

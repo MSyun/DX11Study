@@ -10,41 +10,46 @@
 #include	"../ITypeShader.h"
 
 
-namespace ShaderCollection {
-	class VertexShader	:	public	ITypeShader {
-	private:
-		ID3D11VertexShader*	m_pVertexShader;
-		ID3D11InputLayout*	m_pInputLayout;
+namespace MSLib {
+	namespace ShaderCollection {
 
-	public:
-		VertexShader(
-			LPCSTR pFileName,
-			LPCSTR pFunction,
-			LPCSTR pVersion);
-		virtual ~VertexShader();
+		class VertexShader : public	ITypeShader {
+		private:
+			
+			ID3D11VertexShader*	m_pVertexShader;
+			ID3D11InputLayout*	m_pInputLayout;
 
-		void Begin() override;
-		void End() override;
-	};
+		public:
+			VertexShader(
+				LPCSTR pFileName,
+				LPCSTR pFunction,
+				LPCSTR pVersion);
+			virtual ~VertexShader();
 
-	namespace VS {
-		/* 頂点シェーダ作成
-		// pFileName		: ファイル名
-		// pFunction		: 関数
-		// pVersion			: バージョン
-		// ppVertexShader	: 頂点シェーダ
-		// ppInputLayout	: 入力レイアウト
-		// return			: true. 成功 , false. 失敗
-		*/
-		bool CreateVertexShader(
-			LPCSTR pFileName,
-			LPCSTR pFunction,
-			LPCSTR pVersion,
-			ID3D11VertexShader** ppVertexShader,
-			ID3D11InputLayout** ppInputLayout);
+			void Begin() override;
+			void End() override;
+		};
 
-		bool CreateInputLayout(
-			ID3DBlob* pCompiled,
-			ID3D11InputLayout** ppInputLayout);
+		namespace VS {
+			/* 頂点シェーダ作成
+			// pFileName		: ファイル名
+			// pFunction		: 関数
+			// pVersion			: バージョン
+			// ppVertexShader	: 頂点シェーダ
+			// ppInputLayout	: 入力レイアウト
+			// return			: true. 成功 , false. 失敗
+			*/
+			bool CreateVertexShader(
+				LPCSTR pFileName,
+				LPCSTR pFunction,
+				LPCSTR pVersion,
+				ID3D11VertexShader** ppVertexShader,
+				ID3D11InputLayout** ppInputLayout);
+
+			bool CreateInputLayout(
+				ID3DBlob* pCompiled,
+				ID3D11InputLayout** ppInputLayout);
+		}
+
 	}
 }

@@ -179,6 +179,7 @@
     <ClCompile Include="src\GameFramework\framework\Graphic\Graphics.cpp" />
     <ClCompile Include="src\GameFramework\framework\Input\Input.cpp" />
     <ClCompile Include="src\GameFramework\framework\Light\Light.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Light\Manager\LightManager.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Funcs\MathFuncs.cpp" />
     <ClCompile Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.cpp" />
@@ -192,6 +193,9 @@
     <ClCompile Include="src\GameFramework\framework\Object\3DObject\Quad\QuadPolygon\QuadPolygon.cpp" />
     <ClCompile Include="src\GameFramework\framework\Object\Object.cpp" />
     <ClCompile Include="src\GameFramework\framework\Path\Path.cpp" />
+    <None Include="src\GameFramework\framework\Pool\Pool.inl">
+      <FileType>CppCode</FileType>
+    </None>
     <ClCompile Include="src\GameFramework\framework\Resource\Base\IResource.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\MaterialAnalyzer.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UVAnalyzer.cpp" />
@@ -255,6 +259,7 @@
     <ClInclude Include="src\GameFramework\framework\Graphic\IGraphics\IGraphics.h" />
     <ClInclude Include="src\GameFramework\framework\Input\Input.h" />
     <ClInclude Include="src\GameFramework\framework\Light\Light.h" />
+    <ClInclude Include="src\GameFramework\framework\Light\Manager\LightManager.h" />
     <ClInclude Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.h" />
     <ClInclude Include="src\GameFramework\framework\Math\Funcs\MathFuncs.h" />
     <ClInclude Include="src\GameFramework\framework\Math\MathDefine.h" />
@@ -269,6 +274,7 @@
     <ClInclude Include="src\GameFramework\framework\Object\3DObject\Quad\QuadPolygon\QuadPolygon.h" />
     <ClInclude Include="src\GameFramework\framework\Object\Object.h" />
     <ClInclude Include="src\GameFramework\framework\Path\Path.h" />
+    <ClInclude Include="src\GameFramework\framework\Pool\Pool.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Base\IResource.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Manager\ResourceManager.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\MaterialAnalyzer.h" />

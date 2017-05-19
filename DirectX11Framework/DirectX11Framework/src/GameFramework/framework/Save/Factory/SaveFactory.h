@@ -10,14 +10,18 @@
 #include	"../Obj/SaveObjBase.h"
 
 
-typedef enum {
-	SAVE_FACT_MAX,
-}_SAVE_FACTORY;
+namespace MSLib {
+
+	typedef enum {
+		SAVE_FACT_MAX,
+	}_SAVE_FACTORY;
 
 
-class SaveFactory {
-public:
-	SaveFactory() {}
-	virtual ~SaveFactory() {}
-	static ISaveObjBase* Create(int classID);
-};
+	class SaveFactory {
+	public:
+		SaveFactory() {}
+		virtual ~SaveFactory() {}
+		static ISaveObjBase* Create(int classID);
+	};
+
+}

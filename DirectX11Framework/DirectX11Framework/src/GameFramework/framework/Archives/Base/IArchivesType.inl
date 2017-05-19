@@ -16,7 +16,7 @@ IArchivesType<T>::~IArchivesType() {
 }
 
 template<typename T>
-T IArchivesType<T>::Find(const string name) {
+T IArchivesType<T>::Find(const std::string& name) {
 	auto it = m_Archives.find(name);
 	if (it == m_Archives.end()) {
 		T val = 0;
@@ -26,6 +26,6 @@ T IArchivesType<T>::Find(const string name) {
 }
 
 template<typename T>
-void IArchivesType<T>::Add(string key, T regist) {
-	m_Archives.insert(pair<string, T>(key, regist));
+void IArchivesType<T>::Add(const std::string& key, T regist) {
+	m_Archives.insert(std::pair<std::string, T>(key, regist));
 }

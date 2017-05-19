@@ -11,63 +11,54 @@
 #include	"xaudio2.h"
 #include	<map>
 #include	<string>
-
 #include	"../Save/Obj/SaveObjBase.h"
 
-using namespace std;
 
+namespace MSLib {
+	namespace Sound {
 
-class	SoundBase : public	ISaveObjBase {
-protected:
-#pragma region struct
+		class	SoundBase : public	ISaveObjBase {
+		protected:
+			// サウンド構造体
+			struct _tSound {
+				IXAudio2SourceVoice*	pSource;
+				BYTE*					pDataAudio;
+				DWORD					dwSizeAudio;
+			};
 
-	// サウンド構造体
-	struct _tSound {
-		IXAudio2SourceVoice*	pSource;
-		BYTE*					pDataAudio;
-		DWORD					dwSizeAudio;
-	};
+			// サウンド
+			std::map< std::string, _tSound* >	m_mapSound;
 
-#pragma endregion
+			// 音量
+			float	m_fVolum;
 
-#pragma region variable
+			// セーブオブジェクト
+			static DATARECORD m_DataRecord[];
 
-	// サウンド
-	map< string, _tSound* >	m_mapSound;
+		public:
+			SoundBase();
+			virtual ~SoundBase();
 
-	// 音量
-	float	m_fVolum;
+			// 読み込み
+			HRESULT Load(
+				const std::string	FileName,
+				const std::string	name,
+				IXAudio2*		ppXaudio2);
+			void Delete(const std::string name);					// 削除
+			HRESULT Play(const std::string name, int loop = 0);	// 再生
+			void Stop(const std::string name);					// 停止
+			void Stop();									// 全停止
+			void SetVolum(float volum);						// ボリューム設定
+			float GetVolum();								// ボリューム取得
 
-	// セーブオブジェクト
-	static DATARECORD m_DataRecord[];
+			// セーブデータ
+			virtual DATARECORD* GetDataRecord() { return m_DataRecord; }
+			virtual int GetClassID();
 
-#pragma endregion
+		protected:
+			// 解放
+			void Release(_tSound* sound);
+		};
 
-public:
-#pragma region method
-
-	SoundBase();
-	virtual ~SoundBase();
-
-	// 読み込み
-	HRESULT Load(
-		const string	FileName,
-		const string	name,
-		IXAudio2*		ppXaudio2);
-	void Delete(const string name);					// 削除
-	HRESULT Play(const string name, int loop = 0);	// 再生
-	void Stop(const string name);					// 停止
-	void Stop();									// 全停止
-	void SetVolum(float volum);						// ボリューム設定
-	float GetVolum();								// ボリューム取得
-
-	// セーブデータ
-	virtual DATARECORD* GetDataRecord() { return m_DataRecord; }
-	virtual int GetClassID();
-
-#pragma endregion
-
-protected:
-	// 解放
-	void Release(_tSound* sound);
-};
+	}
+}

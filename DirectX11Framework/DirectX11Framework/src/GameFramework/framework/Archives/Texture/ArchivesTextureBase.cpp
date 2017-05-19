@@ -6,17 +6,20 @@
 #include	"ArchivesTextureBase.h"
 
 
-namespace ArchivesCollection {
 
-	ArchivesTextureBase::ArchivesTextureBase() {
-		Create();
-	}
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	ArchivesTextureBase::~ArchivesTextureBase() {
-	}
+		ArchivesTextureBase::ArchivesTextureBase() {
+			Create();
+		}
 
-	void ArchivesTextureBase::Create() {
-//		Add("TitleLogo", "data/TEXTURE/TitleLogo/TitleLogo.png");
-	}
+		ArchivesTextureBase::~ArchivesTextureBase() {
+		}
 
-}
+		void ArchivesTextureBase::Create() {
+			//		Add("TitleLogo", "data/TEXTURE/TitleLogo/TitleLogo.png");
+		}
+
+	};
+};

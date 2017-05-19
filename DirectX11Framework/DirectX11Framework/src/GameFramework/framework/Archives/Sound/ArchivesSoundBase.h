@@ -8,15 +8,17 @@
 #include	"../Base/IArchivesType.h"
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	class ArchivesSoundBase : public	IArchivesType<string> {
-	public:
-		ArchivesSoundBase();
-		virtual ~ArchivesSoundBase();
+		class ArchivesSoundBase : public	IArchivesType<std::string> {
+		public:
+			ArchivesSoundBase();
+			virtual ~ArchivesSoundBase();
 
-	protected:
-		virtual void Create() override;
+		protected:
+			virtual void Create() override;
+		};
+
 	};
-
-}
+};

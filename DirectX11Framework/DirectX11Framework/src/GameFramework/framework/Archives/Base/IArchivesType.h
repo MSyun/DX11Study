@@ -8,36 +8,37 @@
 
 #include	<map>
 #include	<string>
-using namespace std;
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	template<typename T>
-	class IArchivesType {
-	protected:
-		map<string, T>	m_Archives;
+		template<typename T>
+		class IArchivesType {
+		protected:
+			std::map<std::string, T>	m_Archives;
 
-	public:
-		IArchivesType();
-		virtual ~IArchivesType();
+		public:
+			IArchivesType();
+			virtual ~IArchivesType();
 
-		/* 検索
-		// name		: 検索名
-		// return	: 成果物
-		*/
-		T Find(const string name);
+			/* 検索
+			// name		: 検索名
+			// return	: 成果物
+			*/
+			T Find(const std::string& name);
 
-	protected:
-		virtual void Create() = 0 {}
+		protected:
+			virtual void Create() = 0 {}
 
-		/* 追加
-		// key		: 検索キー
-		// regist	: 追加
-		*/
-		void Add(string key, T regist);
-	};
+			/* 追加
+			// key		: 検索キー
+			// regist	: 追加
+			*/
+			void Add(const std::string& key, T regist);
+		};
 
 #include	"IArchivesType.inl"
 
-}
+	};
+};

@@ -12,18 +12,18 @@
 #include	<vector>
 #include	<fstream>
 
-using namespace std;
 
+namespace MSLib {
 
-class	ISaveObjBase;
-struct	DATARECORD;
+	class	ISaveObjBase;
+	struct	DATARECORD;
 
-enum SAVE_FLAG {
-	SAVE_OK,
-	LOAD_OK,
-	NO_SAVEFILE,
-	CONNECT_OK,
-};
+	enum SAVE_FLAG {
+		SAVE_OK,
+		LOAD_OK,
+		NO_SAVEFILE,
+		CONNECT_OK,
+	};
 
 #define	NO_ELEM		(-1)
 #define	TYPE_END	(0)		// 終了
@@ -40,40 +40,30 @@ enum SAVE_FLAG {
 #define	DATA_BASE( TABLEPTR )							{	TYPE_BASE,	((__int64)TABLEPTR),						0										}
 
 
-class	SaveManagerBase {
-protected:
-#pragma region variable
+	class	SaveManagerBase {
+	protected:
+		std::vector<ISaveObjBase*>	m_ObjList;
+		std::fstream	m_fs;
 
-	vector<ISaveObjBase*>	m_ObjList;
-	fstream	m_fs;
+	public:
+		SaveManagerBase(void) {};
+		virtual ~SaveManagerBase(void) {};
 
-#pragma endregion
+		/////////////////////////////////////////////////////////
+		// 外で使用するのはここだけ
+		int Save(const std::string& filename);		// セーブ
+		int Load(const std::string& filename);		// ロード
+		void AddSaveData(ISaveObjBase* pobj);	// セーブオブジェクト追加
+		/////////////////////////////////////////////////////////
 
-public:
-#pragma region method
+		int Write(DATARECORD* list, ISaveObjBase* pobj);
+		int Read(DATARECORD* list, ISaveObjBase* pobj);
+		int ConnectPtr(DATARECORD* list, ISaveObjBase* pobj);	// オブジェクトのポインタを結合
 
-	SaveManagerBase(void) {};
-	virtual ~SaveManagerBase(void) {};
+	protected:
+		int LoadSkip();									// 読み込みデータを1つスキップ
+		int ElemFromPtr(void* pos);						// ポインタを要素番号に変換
+		virtual ISaveObjBase* CreateObj(int classID);	// オブジェクト生成
+	};
 
-	/////////////////////////////////////////////////////////
-	// 外で使用するのはここだけ
-	int Save(const string filename);		// セーブ
-	int Load(const string filename);		// ロード
-	void AddSaveData(ISaveObjBase* pobj);	// セーブオブジェクト追加
-	/////////////////////////////////////////////////////////
-
-	int Write(DATARECORD* list, ISaveObjBase* pobj);
-	int Read(DATARECORD* list, ISaveObjBase* pobj);
-	int ConnectPtr(DATARECORD* list, ISaveObjBase* pobj);	// オブジェクトのポインタを結合
-
-#pragma endregion
-
-protected:
-#pragma region conceal method
-
-	int LoadSkip();									// 読み込みデータを1つスキップ
-	int ElemFromPtr(void* pos);						// ポインタを要素番号に変換
-	virtual ISaveObjBase* CreateObj(int classID);	// オブジェクト生成
-
-#pragma endregion
-};
+}

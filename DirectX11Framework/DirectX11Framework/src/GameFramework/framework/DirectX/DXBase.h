@@ -10,30 +10,34 @@
 #include	"../Application/Application.h"
 
 
-/*							//
-//		DirectX用ベース		//
-//							*/
-class	IDXBase {
-protected:
-	Application*	m_pApp;
+namespace MSLib {
 
-public:
-	IDXBase(Application* app) : m_pApp(app) {}
-	virtual ~IDXBase() {};
+	/*							//
+	//		DirectX用ベース		//
+	//							*/
+	class	IDXBase {
+	protected:
+		Application*	m_pApp;
 
-	// 初期化
-	virtual HRESULT Init() { return S_OK; };
+	public:
+		explicit IDXBase(Application* app) : m_pApp(app) {}
+		virtual ~IDXBase() {};
 
-	// ステップ関数
-	virtual HRESULT Step() = 0;
+		// 初期化
+		virtual HRESULT Init() { return S_OK; };
 
-	// 終了処理
-	virtual HRESULT Release() { return S_OK; }
+		// ステップ関数
+		virtual HRESULT Step() = 0;
 
-	virtual HRESULT ChangeWindowSize() { return S_OK; }	// サイズの変更
-	virtual void ChangeDisplayMode() {}	// モードの変更
+		// 終了処理
+		virtual HRESULT Release() { return S_OK; }
 
-protected:
-	virtual HRESULT InvalidateDeviceObjects() { return S_OK; };	// OnLostDevice
-	virtual HRESULT RestoreDeviceObjects() { return S_OK; };	// OnResetDevice
+		virtual HRESULT ChangeWindowSize() { return S_OK; }	// サイズの変更
+		virtual void ChangeDisplayMode() {}	// モードの変更
+
+	protected:
+		virtual HRESULT InvalidateDeviceObjects() { return S_OK; };	// OnLostDevice
+		virtual HRESULT RestoreDeviceObjects() { return S_OK; };	// OnResetDevice
+	};
+
 };

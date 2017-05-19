@@ -12,36 +12,29 @@
 		シーンはこのクラスを継承すること
 		コンストラクタ、デストラクタでInit,Releaseを呼び出さないこと
 */
-class SceneBase {
-private:
-#pragma region variable
 
-	bool m_bMakeFlg;	// Initが呼び出されたか
+namespace MSLib {
 
-#pragma endregion
+	class SceneBase {
+	private:
+		bool m_bMakeFlg;	// Initが呼び出されたか
 
-protected:
-#pragma region conceal method
+	protected:
+		// リソース系はここ
+		virtual bool Init() = 0;
+		virtual void Release() = 0;
 
-	// リソース系はここ
-	virtual bool Init() = 0;
-	virtual void Release() = 0;
+	public:
+		virtual void Update() = 0;
+		virtual void Draw() = 0;
+		virtual bool ReStart() { return true; }
 
-#pragma endregion
+		virtual bool InitMain() { m_bMakeFlg = true;	if (!Init()) { return false; } return true; }
+		virtual void ReleaseMain() { m_bMakeFlg = false;	Release(); }
 
-public:
-#pragma region method
+		SceneBase() { m_bMakeFlg = false; }
+		virtual ~SceneBase() {}
+		bool GetMakeFlg(void) { return m_bMakeFlg; }	// SceneManagerクラスで使用
+	};
 
-	virtual void Update() = 0;
-	virtual void Draw() = 0;
-	virtual bool ReStart() { return true; }
-
-	virtual bool InitMain() { m_bMakeFlg = true;	if (!Init()) { return false; } return true; }
-	virtual void ReleaseMain() { m_bMakeFlg = false;	Release(); }
-
-	SceneBase() { m_bMakeFlg = false; }
-	virtual ~SceneBase() {}
-	bool GetMakeFlg(void) { return m_bMakeFlg; }	// SceneManagerクラスで使用
-
-#pragma endregion
-};
+}

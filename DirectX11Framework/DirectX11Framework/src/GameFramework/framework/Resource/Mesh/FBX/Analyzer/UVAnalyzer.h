@@ -11,45 +11,49 @@
 #include	"../../../../Utility/System/SystemUtility.h"
 
 
-class UVAnalyzer {
-public:
+namespace MSLib {
+
+	class UVAnalyzer {
+	public:
 #pragma region struct
 
-	struct UVInfo {
-		int			Size;
-		Vector2*	Buffer;
+		struct UVInfo {
+			int			Size;
+			Vector2*	Buffer;
 
-		UVInfo() : Size(0), Buffer(0) {}
-		~UVInfo() {
-			SAFE_DELETE_ARRAY(Buffer);
-		}
-	};
+			UVInfo() : Size(0), Buffer(0) {}
+			~UVInfo() {
+				SAFE_DELETE_ARRAY(Buffer);
+			}
+		};
 
 #pragma endregion
 
-protected:
+	protected:
 #pragma region variable
 
-	UVInfo m_UVInfo;
-	UVInfo m_DiffuseUV;
-	UVInfo m_SpecularUV;
-	UVInfo m_AmbientUV;
-	UVInfo m_EmissiveUV;
+		UVInfo m_UVInfo;
+		UVInfo m_DiffuseUV;
+		UVInfo m_SpecularUV;
+		UVInfo m_AmbientUV;
+		UVInfo m_EmissiveUV;
 
 #pragma endregion
 
-public:
-	UVAnalyzer();
-	virtual ~UVAnalyzer();
+	public:
+		UVAnalyzer();
+		virtual ~UVAnalyzer();
 
-	/* UVâêÕ */
-	bool Analyze(FbxMesh* mesh);
-	bool Analyze(FbxLayer* layer);
+		/* UVâêÕ */
+		bool Analyze(FbxMesh* mesh);
+		bool Analyze(FbxLayer* layer);
 
-	int GetUVNum() const;
+		int GetUVNum() const;
 
-	UVInfo& GetUVInfo();
+		UVInfo& GetUVInfo();
 
-protected:
-	bool SetPropertyUV(FbxLayerElementUV* elem, UVInfo& uvInfo);
-};
+	protected:
+		bool SetPropertyUV(FbxLayerElementUV* elem, UVInfo& uvInfo);
+	};
+
+}

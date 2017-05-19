@@ -8,15 +8,17 @@
 #include	"../Base/IArchivesType.h"
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	class ArchivesMeshBase : public	IArchivesType<string> {
-	public:
-		ArchivesMeshBase();
-		virtual ~ArchivesMeshBase();
+		class ArchivesMeshBase : public	IArchivesType<std::string> {
+		public:
+			ArchivesMeshBase();
+			virtual ~ArchivesMeshBase();
 
-	protected:
-		virtual void Create() override;
+		protected:
+			virtual void Create() override;
+		};
+
 	};
-
-}
+};

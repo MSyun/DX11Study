@@ -8,15 +8,17 @@
 #include	"../Base/IArchivesType.h"
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	class ArchivesTagBase : public	IArchivesType<unsigned char> {
-	public:
-		ArchivesTagBase();
-		virtual ~ArchivesTagBase();
+		class ArchivesTagBase : public	IArchivesType<unsigned char> {
+		public:
+			ArchivesTagBase();
+			virtual ~ArchivesTagBase();
 
-	protected:
-		virtual void Create() override;
+		protected:
+			virtual void Create() override;
+		};
+
 	};
-
-}
+};

@@ -6,17 +6,19 @@
 #include	"ArchivesShaderBase.h"
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	ArchivesShaderBase::ArchivesShaderBase() {
-		Create();
-	}
+		ArchivesShaderBase::ArchivesShaderBase() {
+			Create();
+		}
 
-	ArchivesShaderBase::~ArchivesShaderBase() {
-	}
+		ArchivesShaderBase::~ArchivesShaderBase() {
+		}
 
-	void ArchivesShaderBase::Create() {
-		Add("Default/Phong", "Phong.hlsl");
-	}
+		void ArchivesShaderBase::Create() {
+			Add("Default/Phong", "Phong.hlsl");
+		}
 
-}
+	};
+};

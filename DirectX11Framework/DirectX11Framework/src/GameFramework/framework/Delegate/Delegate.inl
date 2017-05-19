@@ -1,19 +1,10 @@
-#pragma once
 
-
-
-/*									//
-//			コンストラクタ			//
-//									*/
 template<typename Return = void, typename... Args>
 Delegate<Return, Args...>::Delegate() {
 
 }
 
 
-/*									//
-//			デストラクタ			//
-//									*/
 template<typename Return = void, typename... Args>
 Delegate<Return, Args...>::~Delegate() {
 

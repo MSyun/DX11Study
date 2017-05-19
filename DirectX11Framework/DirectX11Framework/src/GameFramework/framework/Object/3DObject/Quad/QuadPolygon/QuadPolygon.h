@@ -2,28 +2,37 @@
 // 2017.05.15	: ÉvÉçÉOÉâÉÄçÏê¨
 // author		: SyunMizuno
 
-
 #pragma once
 
 
 #include	"../../../../Resource/Texture/Texture.h"
 #include	"../../../../Convert/Convert.h"
 
+namespace MSLib {
 
-class QuadPolygon {
-private:
-	ID3D11Buffer*	m_pVertexBuffer;
-	Texture*		m_pTexture;
+	class QuadPolygon {
+	private:
+		ID3D11Buffer*	m_pVertexBuffer;
+		Texture*		m_pTexture;
 
-public:
-	QuadPolygon();
-	virtual ~QuadPolygon();
+		Vector3 m_Diffuse;
+		float m_Alpha;
+		Vector3 m_Ambient;
+		Vector3 m_Emissive;
+		Vector3 m_Specular;
+		float m_Shininess;
 
-	bool Create();
+	public:
+		QuadPolygon();
+		virtual ~QuadPolygon();
 
-	void Delete();
+		bool Create();
 
-	void Draw(Matrix* world);
+		void Delete();
 
-	void SetTexture(Texture* tex);
+		void Draw(Matrix* world);
+
+		void SetTexture(Texture* tex);
+	};
+
 };

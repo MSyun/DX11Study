@@ -2,12 +2,10 @@
 // 2016.12.30	ƒvƒƒOƒ‰ƒ€ì¬
 // author		SyunMizuno
 
-
 #pragma once
 
 #include	<list>
 #include	"../Delegate/Delegate.h"
-using namespace std;
 
 
 /*
@@ -21,40 +19,40 @@ using namespace std;
 	AddListener(&method);
 */
 
+namespace MSLib {
 
-template<typename... Args>
-class CPPEvent {
-private:
-#pragma region variable
+	template<typename... Args>
+	class CPPEvent {
+	private:
+		std::list<IDelegate<Args...>*>	m_lstListener;
 
-	// ŠÖ”ƒ|ƒCƒ“ƒ^ƒŠƒXƒg
-	list<IDelegate<Args...>*>	m_lstListener;
+	public:
+		CPPEvent();
+		virtual ~CPPEvent();
 
-#pragma endregion
+		/* ŠÖ”‚ğ“o˜^
+		// func	: “o˜^‚·‚éŠÖ”
+		*/
+		void AddListener(std::function<void(Args...)> func);
 
-public:
-#pragma region method
+		/* ŠÖ”‚ğŠJ•ú
+		// func	: ‰ğ•ú‚·‚éŠÖ”
+		*/
+		void RemoveListener(std::function<void(Args...)> func);
 
-	CPPEvent();
-	virtual ~CPPEvent();
+		/* “o˜^Ï‚İ‚ÌŠÖ”‚ğ‚·‚×‚ÄŠJ•ú */
+		void RemoveAllListener();
 
-	// ŠÖ”‚ğ“o˜^
-	void AddListener(function<void(Args...)> func);
+		/* “o˜^Ï‚İŠÖ”‚ÌŒÂ”‚ğ•Ô‚· */
+		int GetListenerCount();
 
-	// ŠÖ”‚ğŠJ•ú
-	void RemoveListener(function<void(Args...)> func);
-
-	// “o˜^Ï‚İ‚ÌŠÖ”‚ğ‚·‚×‚ÄŠJ•ú
-	void RemoveAllListener();
-
-	// ŠÖ”‚ÌŒÂ”‚ğ•Ô‚·
-	int GetListenerCount();
-
-	// “o˜^Ï‚İ‚ÌŠÖ”‚ğÀs
-	void Invoke(Args... args);
-
-#pragma endregion
-};
+		/* “o˜^Ï‚İ‚ÌŠÖ”‚ğÀs
+		// args	: ŠÖ”‚É“n‚·ˆø”
+		*/
+		void Invoke(Args... args);
+	};
 
 
 #include	"CPPEvent.inl"
+
+};

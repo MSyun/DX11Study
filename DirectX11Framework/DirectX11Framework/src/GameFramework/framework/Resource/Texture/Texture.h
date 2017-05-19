@@ -8,54 +8,49 @@
 #include	<d3dx11.h>
 
 
+namespace MSLib {
 
-class Texture	:	public IResource {
-protected:
-#pragma region variable
+	class Texture : public IResource {
+	protected:
+		// テクスチャの設定が入ったもの
+		D3D11_SAMPLER_DESC		m_Sampler;
 
-	// テクスチャの設定が入ったもの
-	D3D11_SAMPLER_DESC		m_Sampler;
+		// 上のを加工したもの
+		ID3D11SamplerState*		m_pSampleLinear;
 
-	// 上のを加工したもの
-	ID3D11SamplerState*		m_pSampleLinear;
+		// テクスチャ
+		ID3D11ShaderResourceView*	m_pTexture;
 
-	// テクスチャ
-	ID3D11ShaderResourceView*	m_pTexture;
+	public:
+		Texture();
+		virtual ~Texture();
 
-#pragma endregion
+		/* リソースを作成
+		// name	: ファイルディレクトリ
+		*/
+		bool Create(const std::string& name) override;
 
-public:
-#pragma region method
+		/* リソースを削除 */
+		void Delete() override;
 
-	Texture();
-	virtual ~Texture();
+		/* 情報を設定
+		// samp	: サンプラーの設定
+		*/
+		void SetInfo(const D3D11_SAMPLER_DESC& samp);
 
-	/* リソースを作成
-	// name	: ファイルディレクトリ
-	*/
-	bool Create(const string name) override;
+		/* サンプルステートを取得
+		// return	; サンプラー
+		*/
+		ID3D11SamplerState* GetSample() const;
 
-	/* リソースを削除 */
-	void Delete() override;
+		/* テクスチャを取得
+		// return	: テクスチャ
+		*/
+		ID3D11ShaderResourceView* GetTexture() const;
 
-	/* 情報を設定
-	// samp	: サンプラーの設定
-	*/
-	void SetInfo(const D3D11_SAMPLER_DESC& samp);
+	protected:
+		/* デフォルトの情報を設定 */
+		void SetDefaultInfo();
+	};
 
-	/* サンプルステートを取得
-	// return	; サンプラー
-	*/
-	ID3D11SamplerState* GetSample() const;
-
-	/* テクスチャを取得
-	// return	: テクスチャ
-	*/
-	ID3D11ShaderResourceView* GetTexture() const;
-
-#pragma endregion
-
-protected:
-	/* デフォルトの情報を設定 */
-	void SetDefaultInfo();
-};
+}

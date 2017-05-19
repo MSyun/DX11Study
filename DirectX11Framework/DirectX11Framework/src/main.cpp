@@ -12,7 +12,7 @@
 //************************************************************
 // ƒOƒ[ƒoƒ‹éŒ¾
 //************************************************************
-DXApplication*		g_pApp = NULL;
+MSLib::DXApplication*		g_pApp = NULL;
 
 
 /*									//
@@ -26,7 +26,7 @@ int APIENTRY WinMain(
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	g_pApp = new DXApplication(1280, 720, true);
+	g_pApp = new MSLib::DXApplication(1280, 720, true);
 	g_pApp->RegistDXObj(new GameDirectX11(g_pApp));
 	g_pApp->Run(hInstance);
 	delete g_pApp;

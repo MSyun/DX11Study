@@ -2,27 +2,30 @@
 // 2017.05.15	: ÉvÉçÉOÉâÉÄçÏê¨
 // author		: SyunMizuno
 
-
 #pragma once
 
 #include	"../Object3D.h"
 #include	"QuadPolygon/QuadPolygon.h"
 
 
-class Quad	:	public	Object3D {
-private:
-	QuadPolygon*	m_pPolygon;
+namespace MSLib {
 
-public:
-	Quad();
-	virtual ~Quad();
+	class Quad : public	Object3D {
+	private:
+		QuadPolygon*	m_pPolygon;
 
-	QuadPolygon* GetPolygon() const;
+	public:
+		Quad();
+		virtual ~Quad();
 
-protected:
-	void Init() override;
-	void Update() override;
-	void LateUpdate() override;
-	void Draw() override;
-	void LateDraw() override;
+		QuadPolygon* GetPolygon() const;
+
+	protected:
+		void Init() override;
+		void Update() override;
+		void LateUpdate() override;
+		void Draw() override;
+		void LateDraw() override;
+	};
+
 };

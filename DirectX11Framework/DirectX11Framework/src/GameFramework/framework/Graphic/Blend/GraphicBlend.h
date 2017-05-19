@@ -2,43 +2,46 @@
 // 2017. 5.13	ÉvÉçÉOÉâÉÄçÏê¨
 // author	:	SyunMizuno
 
-
 #pragma once
 
 #include	<d3d11.h>
 
 
-typedef enum _Graphic_Blend {
-	BLEND_NORMAL,	// í èÌ
-	BLEND_MULTI,	// èÊéZ
-	BLEND_INV_MULTI,// îΩì]èÊéZ
-	BLEND_ADD,		// â¡éZ
-	BLEND_SUB,		// å∏éZ
-	BLEND_SCREEN,	// ÉXÉNÉäÅ[Éì
-} BlendType;
+namespace MSLib {
+
+	typedef enum _Graphic_Blend {
+		BLEND_NORMAL,	// í èÌ
+		BLEND_MULTI,	// èÊéZ
+		BLEND_INV_MULTI,// îΩì]èÊéZ
+		BLEND_ADD,		// â¡éZ
+		BLEND_SUB,		// å∏éZ
+		BLEND_SCREEN,	// ÉXÉNÉäÅ[Éì
+	} BlendType;
 
 
-class GraphicBlend {
-private:
-	static bool m_bAlpha;
-	static BlendType m_Blend;
+	class GraphicBlend {
+	private:
+		static bool m_bAlpha;
+		static BlendType m_Blend;
 
-public:
-	static void Set(
-		BlendType type,
-		ID3D11Device* device,
-		ID3D11DeviceContext* context);
+	public:
+		static void Set(
+			BlendType type,
+			ID3D11Device* device,
+			ID3D11DeviceContext* context);
 
-	static void SetAlphaEnable(
-		bool alpha,
-		ID3D11Device* device,
-		ID3D11DeviceContext* context);
+		static void SetAlphaEnable(
+			bool alpha,
+			ID3D11Device* device,
+			ID3D11DeviceContext* context);
 
-private:
-	static void NormalSetting(D3D11_BLEND_DESC* pDesc);
-	static void MultiSetting(D3D11_BLEND_DESC* pDesc);
-	static void InverseMultiSetting(D3D11_BLEND_DESC* pDesc);
-	static void AddSetting(D3D11_BLEND_DESC* pDesc);
-	static void SubSetting(D3D11_BLEND_DESC* pDesc);
-	static void ScreenSetting(D3D11_BLEND_DESC* pDesc);
+	private:
+		static void NormalSetting(D3D11_BLEND_DESC* pDesc);
+		static void MultiSetting(D3D11_BLEND_DESC* pDesc);
+		static void InverseMultiSetting(D3D11_BLEND_DESC* pDesc);
+		static void AddSetting(D3D11_BLEND_DESC* pDesc);
+		static void SubSetting(D3D11_BLEND_DESC* pDesc);
+		static void ScreenSetting(D3D11_BLEND_DESC* pDesc);
+	};
+
 };

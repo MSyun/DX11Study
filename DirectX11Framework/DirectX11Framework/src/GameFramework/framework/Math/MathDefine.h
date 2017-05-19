@@ -2,8 +2,11 @@
 // 2016. 4.29	:	ƒvƒƒOƒ‰ƒ€ì¬
 // author		:	SyunMizuno
 
-
 #pragma once
 
 
-const float PI = 3.141592654f;
+namespace MSLib {
+
+	const float PI = 3.141592654f;
+
+};

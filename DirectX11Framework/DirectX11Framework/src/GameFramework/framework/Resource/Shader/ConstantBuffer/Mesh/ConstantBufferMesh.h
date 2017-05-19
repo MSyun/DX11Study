@@ -2,36 +2,37 @@
 // 2017.05.16	: ÉvÉçÉOÉâÉÄçÏê¨
 // author		: SyunMizuno
 
-
 #pragma once
 
 
 #include	"../Base/ConstantBuffer.h"
 
 
-namespace ShaderCollection {
-	namespace Buffer {
+namespace MSLib {
+	namespace ShaderCollection {
+		namespace Buffer {
 
-		struct MESH_CONSTANT_BUFFER {
-			Matrix	World;
-			Matrix	WVP;
-		};
+			struct MESH_CONSTANT_BUFFER {
+				Matrix	World;
+				Matrix	WVP;
+			};
 
-		class ConstantBufferMesh : public	ConstantBuffer {
-		private:
-			MESH_CONSTANT_BUFFER m_mesh;
+			class ConstantBufferMesh : public	ConstantBuffer {
+			private:
+				MESH_CONSTANT_BUFFER m_mesh;
 
-		public:
-			ConstantBufferMesh();
-			virtual ~ConstantBufferMesh();
+			public:
+				ConstantBufferMesh();
+				virtual ~ConstantBufferMesh();
 
-			void EndPass() override;
+				void EndPass() override;
 
-			void World(const Matrix& world);
-			void WVP(const Matrix& wvp);
+				void World(const Matrix& world);
+				void WVP(const Matrix& wvp);
 
-			virtual bool Create(D3D11_BUFFER_DESC* desc) override;
-		};
+				virtual bool Create() override;
+			};
 
+		}
 	}
 }

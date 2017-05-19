@@ -14,6 +14,7 @@
 #endif
 
 
+
 #ifdef DX9
 #include	<d3dx9.h>
 #include	<d3d9.h>
@@ -21,17 +22,26 @@
 #pragma comment ( lib, "d3dx9.lib" )	// [d3d9.lib]の拡張ライブラリ
 #pragma comment ( lib, "dxguid.lib" )	// DirectXコンポーネント使用に必要
 
-typedef	D3DXMATRIX		Matrix;
-typedef	D3DXVECTOR2		Point2;
-typedef	D3DXVECTOR3		Point3;
-typedef	D3DXVECTOR4		Point4;
-typedef	D3DXVECTOR2		Vector2;
-typedef	D3DXVECTOR3		Vector3;
-typedef	D3DXVECTOR4		Vector4;
-typedef D3DXQUATERNION	Quaternion;
-typedef	D3DXCOLOR		Color;
+	typedef	D3DXMATRIX		Matrix;
+	typedef	D3DXVECTOR2		Point2;
+	typedef	D3DXVECTOR3		Point3;
+	typedef	D3DXVECTOR4		Point4;
+	typedef	D3DXVECTOR2		Vector2;
+	typedef	D3DXVECTOR3		Vector3;
+	typedef	D3DXVECTOR4		Vector4;
+	typedef D3DXQUATERNION	Quaternion;
+	typedef	D3DXCOLOR		Color;
 
-#else
+#endif
+
+#ifdef DX11
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "d3dx11.lib")
+#pragma comment(lib, "d3dCompiler.lib")
+
+#pragma warning( disable : 4005 )
+
+
 #include	"../Math/Vector/Vector2/Vector2.h"
 #include	"../Math/Vector/Vector3/Vector3.h"
 #include	"../Math/Vector/Vector4/Vector4.h"
@@ -40,3 +50,4 @@ typedef	D3DXCOLOR		Color;
 #include	"../Math/Quaternion/Quaternion.h"
 
 #endif
+

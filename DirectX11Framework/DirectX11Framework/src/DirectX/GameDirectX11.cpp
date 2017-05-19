@@ -9,7 +9,7 @@
 
 
 
-GameDirectX11::GameDirectX11(Application* app) :
+GameDirectX11::GameDirectX11(MSLib::Application* app) :
 	GameDirectX11Base(app)
 {
 }

@@ -5,49 +5,51 @@
 
 #include	"Screen.h"
 
+namespace MSLib {
 
-int		Screen::m_nWidth = -1;
-int		Screen::m_nHeight = -1;
-bool	Screen::m_bFullScreen = false;
-
-
-
-/*									//
-//				横幅取得			//
-//									*/
-int Screen::GetWidth() {
-	return m_nWidth;
-}
+	int		Screen::m_nWidth = -1;
+	int		Screen::m_nHeight = -1;
+	bool	Screen::m_bFullScreen = false;
 
 
-/*									//
-//				縦幅取得			//
-//									*/
-int Screen::GetHeight() {
-	return m_nHeight;
-}
+	/*									//
+	//				横幅取得			//
+	//									*/
+	int Screen::GetWidth() {
+		return m_nWidth;
+	}
 
 
-/*									//
-//				サイズ設定			//
-//									*/
-void Screen::SetSize(int width, int height) {
-	m_nWidth = width;
-	m_nHeight = height;
-}
+	/*									//
+	//				縦幅取得			//
+	//									*/
+	int Screen::GetHeight() {
+		return m_nHeight;
+	}
 
 
-/*									//
-//			フルスクリーン確認		//
-//									*/
-bool Screen::GetFullScreen() {
-	return m_bFullScreen;
-}
+	/*									//
+	//				サイズ設定			//
+	//									*/
+	void Screen::SetSize(int width, int height) {
+		m_nWidth = width;
+		m_nHeight = height;
+	}
 
 
-/*									//
-//			フルスクリーン設定		//
-//									*/
-void Screen::SetFullScreen(bool fullScreen) {
-	m_bFullScreen = fullScreen;
+	/*									//
+	//			フルスクリーン確認		//
+	//									*/
+	bool Screen::GetFullScreen() {
+		return m_bFullScreen;
+	}
+
+
+	/*									//
+	//			フルスクリーン設定		//
+	//									*/
+	void Screen::SetFullScreen(bool fullScreen) {
+		m_bFullScreen = fullScreen;
+	}
+
 }

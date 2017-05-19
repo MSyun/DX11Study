@@ -6,17 +6,19 @@
 #include	"ArchivesSoundBase.h"
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	ArchivesSoundBase::ArchivesSoundBase() {
-		Create();
-	}
+		ArchivesSoundBase::ArchivesSoundBase() {
+			Create();
+		}
 
-	ArchivesSoundBase::~ArchivesSoundBase() {
-	}
+		ArchivesSoundBase::~ArchivesSoundBase() {
+		}
 
-	void ArchivesSoundBase::Create() {
-		//	Add("Cursor", "data/SOUND/SE/cursor.wav");
-	}
+		void ArchivesSoundBase::Create() {
+			//	Add("Cursor", "data/SOUND/SE/cursor.wav");
+		}
 
-}
+	};
+};

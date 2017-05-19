@@ -9,44 +9,48 @@
 #include	"../../Convert/Convert.h"
 
 
-// [min, max]の範囲内までnをクランプ
-float Clamp(float val, float min, float max);
-int Clamp(int val, int min, int max);
+namespace MSLib {
+
+	// [min, max]の範囲内までnをクランプ
+	float Clamp(float val, float min, float max);
+	int Clamp(int val, int min, int max);
 
 
-// 2つのベクトルからABのなす角度θを求める
-//float AngleOf2Vector(Vector3 A, Vector3 B);
+	// 2つのベクトルからABのなす角度θを求める
+	//float AngleOf2Vector(Vector3 A, Vector3 B);
 
 
-// 壁釣りベクトル算出
-//Vector3* WallScratchVector(
-//	const Vector3& front,
-//	const Vector3& normal);
+	// 壁釣りベクトル算出
+	//Vector3* WallScratchVector(
+	//	const Vector3& front,
+	//	const Vector3& normal);
 
-/*	ベジエ曲線
-//	p0	: point1
-//	p1	: point2
-//	p2	: point3
-//	p3	: point4
-//	t	: 0.0f ～ 1.0f
-*/
-Vector2 Bezier(
-	Vector2& p0,
-	Vector2& p1,
-	Vector2& p2,
-	Vector2& p3,
-	float t);
+	/*	ベジエ曲線
+	//	p0	: point1
+	//	p1	: point2
+	//	p2	: point3
+	//	p3	: point4
+	//	t	: 0.0f ～ 1.0f
+	*/
+	Vector2 Bezier(
+		Vector2& p0,
+		Vector2& p1,
+		Vector2& p2,
+		Vector2& p3,
+		float t);
 
-/*	Catmull-Romスプライン曲線
-//	p0	: point1
-//	p1	: point2
-//	p2	: point3
-//	p3	: point4
-//	t	: 0.0f ～ 1.0f
-*/
-//Vector3 CatmullRom(
-//	Vector3& p0,
-//	Vector3& p1,
-//	Vector3& p2,
-//	Vector3& p3,
-//	float t);
+	/*	Catmull-Romスプライン曲線
+	//	p0	: point1
+	//	p1	: point2
+	//	p2	: point3
+	//	p3	: point4
+	//	t	: 0.0f ～ 1.0f
+	*/
+	//Vector3 CatmullRom(
+	//	Vector3& p0,
+	//	Vector3& p1,
+	//	Vector3& p2,
+	//	Vector3& p3,
+	//	float t);
+
+}

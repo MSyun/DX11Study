@@ -2,7 +2,6 @@
 // 2017.05.12	: プログラム作成
 // author		: SyunMizuno
 
-
 #pragma once
 
 
@@ -18,45 +17,45 @@
 #include	"../ConstantBuffer/Frame/ConstantBufferFrame.h"
 
 
+namespace MSLib {
 
+	class Shader : public	IResource {
+	private:
+		ShaderCollection::VertexShader* m_pVS;
+		ShaderCollection::PixelShader* m_pPS;
+		ShaderCollection::Buffer::ConstantBufferFrame* m_pFrameBuff;
+		ShaderCollection::Buffer::ConstantBufferMaterial* m_pMatBuff;
+		ShaderCollection::Buffer::ConstantBufferLight* m_pLightBuff;
+		ShaderCollection::Buffer::ConstantBufferMesh* m_pMeshBuff;
 
-class Shader	:	public	IResource {
-private:
-	ShaderCollection::VertexShader* m_pVS;
-	ShaderCollection::PixelShader* m_pPS;
-	ShaderCollection::Buffer::ConstantBufferFrame* m_pFrameBuff;
-	ShaderCollection::Buffer::ConstantBufferMaterial* m_pMatBuff;
-	ShaderCollection::Buffer::ConstantBufferLight* m_pLightBuff;
-	ShaderCollection::Buffer::ConstantBufferMesh* m_pMeshBuff;
+	public:
+		Shader();
+		virtual ~Shader();
 
-	D3D11_BUFFER_DESC m_BufferDesc;
+		bool Create(const std::string& name) override;
+		void Delete() override;
 
-public:
-	Shader();
-	virtual ~Shader();
+		void Begin();
+		void End();
 
-	bool Create(const string name) override;
-	void Delete() override;
+		ShaderCollection::Buffer::ConstantBufferFrame* GetBuffFrame();
+		ShaderCollection::Buffer::ConstantBufferMaterial* GetBuffMat();
+		ShaderCollection::Buffer::ConstantBufferLight* GetBuffLight();
+		ShaderCollection::Buffer::ConstantBufferMesh* GetBuffMesh();
+	};
 
-	void Begin();
-	void End();
+	namespace ShaderCollection {
+		/* シェーダファイルからブロブの生成
+		// pFileName		: ファイル名
+		// pFunctionName	: 関数名
+		// pProfile			: バージョン
+		// return			: 生成したブロブ
+		*/
+		bool CompileFromFileToBlob(
+			LPCSTR pFileName,
+			LPCSTR pFunctionName,
+			LPCSTR pProfile,
+			ID3DBlob** ppBlob);
+	};
 
-	ShaderCollection::Buffer::ConstantBufferFrame* GetBuffFrame();
-	ShaderCollection::Buffer::ConstantBufferMaterial* GetBuffMat();
-	ShaderCollection::Buffer::ConstantBufferLight* GetBuffLight();
-	ShaderCollection::Buffer::ConstantBufferMesh* GetBuffMesh();
-};
-
-namespace ShaderCollection {
-	/* シェーダファイルからブロブの生成
-	// pFileName		: ファイル名
-	// pFunctionName	: 関数名
-	// pProfile			: バージョン
-	// return			: 生成したブロブ
-	*/
-	bool CompileFromFileToBlob(
-		LPCSTR pFileName,
-		LPCSTR pFunctionName,
-		LPCSTR pProfile,
-		ID3DBlob** ppBlob);
-};
+}

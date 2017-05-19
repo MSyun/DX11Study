@@ -2,7 +2,6 @@
 // 2017.05.15	: プログラム作成
 // author		: SyunMizuno
 
-
 #pragma once
 
 
@@ -10,50 +9,56 @@
 #include	<string>
 #include	"../Camera.h"
 #include	"../../Singleton/Singleton.h"
+//#include	<memory>
 
 
-class CameraManager	:	public	Singleton<CameraManager> {
-protected:
-	map<string, Camera*>	m_MapCamera;
-	bool	m_bHelper;
+namespace MSLib {
 
-	string m_CurCameraName;
+	class CameraManager : public	Singleton<CameraManager> {
+	protected:
+		map<string, Camera*>	m_MapCamera;
+//		map<string, weak_ptr<Camera>>	m_MapCamera;
+		bool	m_bHelper;
 
-public:
-	CameraManager();
-	virtual ~CameraManager();
+		string m_CurCameraName;
 
-	/* 作成
-	// Name	:	生成するカメラの名前
-	// return	: 生成したカメラのオブジェクト
-	*/
-	Camera* Create(const string Name);
+	public:
+		CameraManager();
+		virtual ~CameraManager();
 
-	/* 削除
-	// Name	:	削除するカメラの名前
-	// return	:	true. 成功、false. 失敗
-	*/
-	bool Delete(const string Name);
+		/* 作成
+		// Name	:	生成するカメラの名前
+		// return	: 生成したカメラのオブジェクト
+		*/
+		Camera* Create(const string& Name);
 
-	/* 取得
-	// Name	:	取得するカメラの名前
-	// return	:	対応したカメラのインスタンス
-	*/
-	Camera* Get(const string Name);
+		/* 削除
+		// Name	:	削除するカメラの名前
+		// return	:	true. 成功、false. 失敗
+		*/
+		bool Delete(const string& Name);
 
-	/* セット
-	// Name	:	設定するカメラの名前
-	// return	:	true. 成功、false. 失敗
-	*/
-	bool Set(const string Name);
+		/* 取得
+		// Name	:	取得するカメラの名前
+		// return	:	対応したカメラのインスタンス
+		*/
+		Camera* Get(const string& Name);
 
-	/* 最後に使用したものを取得
-	// return	:	対応したカメラのインスタンス
-	*/
-	Camera* CurrentCamera();
+		/* セット
+		// Name	:	設定するカメラの名前
+		// return	:	true. 成功、false. 失敗
+		*/
+		bool Set(const string& Name);
 
-	/* 管理オブジェクトを自動で削除するか設定 */
-	void SetHelper(bool helper);
+		/* 最後に使用したものを取得
+		// return	:	対応したカメラのインスタンス
+		*/
+		Camera* CurrentCamera();
+
+		/* 管理オブジェクトを自動で削除するか設定 */
+		void SetHelper(bool helper);
+	};
+
+	CameraManager* GetCameraManager();
+
 };
-
-CameraManager* GetCameraManager();

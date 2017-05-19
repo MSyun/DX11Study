@@ -11,76 +11,62 @@
 
 
 
-#pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "d3dx11.lib")
-#pragma comment(lib, "d3dCompiler.lib")
+namespace MSLib {
 
+	class	DX11Base : public	IDXBase {
+	protected:
+		IDXGISwapChain*			m_pSwapChain;
+		ID3D11RenderTargetView*	m_pRenderTargetView;
+		ID3D11DepthStencilView*	m_pDepthStencilView;
+		ID3D11Texture2D*		m_pDepthStencil;
+		ID3D11RasterizerState*	m_pRasterizerState;
 
+	public:
+		explicit DX11Base(Application* app);
+		virtual ~DX11Base();
 
-class	DX11Base	:	public	IDXBase {
-protected:
-#pragma region variable
+		/* 初期化
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT Init() override;
 
-	IDXGISwapChain*			m_pSwapChain;
-	ID3D11RenderTargetView*	m_pRenderTargetView;
-	ID3D11DepthStencilView*	m_pDepthStencilView;
-	ID3D11Texture2D*		m_pDepthStencil;
-	ID3D11RasterizerState*	m_pRasterizerState;
+		/* ステップ関数
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT Step() override;
 
-#pragma endregion
+		/* 終了処理
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT Release() override;
 
-public:
-#pragma region method
+	protected:
+		/* デバイスとスワップチェーンの作成
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT CreateDeviceSwapChain();
 
-	explicit DX11Base(Application* app);
-	virtual ~DX11Base();
+		/* RenderTargetViewの作成
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT CreateRenderTargetView();
 
-	/* 初期化
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT Init() override;
+		/* 深度ステンシルビューの作成
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT CreateDepthStencilView();
 
-	/* ステップ関数
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT Step() override;
+		/* ビューポートの設定 */
+		virtual void CreateViewport();
 
-	/* 終了処理
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT Release() override;
+		/* ラスタライズの設定 */
+		virtual void CreateRasterize();
 
-#pragma endregion
+		virtual HRESULT InitApp();
+		virtual HRESULT ReleaseApp();
 
-protected:
-#pragma region conceal method
+		virtual void Update();
+		virtual void Draw();
+	};
 
-	/* デバイスとスワップチェーンの作成
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT CreateDeviceSwapChain();
-
-	/* RenderTargetViewの作成
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT CreateRenderTargetView();
-
-	/* 深度ステンシルビューの作成
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT CreateDepthStencilView();
-
-	/* ビューポートの設定 */
-	virtual void CreateViewport();
-
-	/* ラスタライズの設定 */
-	virtual void CreateRasterize();
-
-	virtual HRESULT InitApp();
-	virtual HRESULT ReleaseApp();
-
-	virtual void Update();
-	virtual void Draw();
-
-#pragma endregion
 };

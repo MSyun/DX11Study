@@ -9,25 +9,29 @@
 #include	"../Manager/SaveManagerBase.h"
 
 
-// セーブデータオフセット構造体
-struct DATARECORD {
-	char	type;	// データタイプ
-	int		offset;	// オフセット値
-	int		size;	// サイズ
-};
+namespace MSLib {
+
+	// セーブデータオフセット構造体
+	struct DATARECORD {
+		char	type;	// データタイプ
+		int		offset;	// オフセット値
+		int		size;	// サイズ
+	};
 
 
-class	SaveManagerBase;
+	class	SaveManagerBase;
 
-class	ISaveObjBase {
-	friend class SaveManagerBase;
+	class	ISaveObjBase {
+		friend class SaveManagerBase;
 
-public:
-	virtual DATARECORD* GetDataRecord() = 0;	// データ配列を取得
-	virtual int GetClassID() = 0;				// クラスIDを取得
+	public:
+		virtual DATARECORD* GetDataRecord() = 0;	// データ配列を取得
+		virtual int GetClassID() = 0;				// クラスIDを取得
 
-protected:
-	virtual int Save(SaveManagerBase* mgr);
-	virtual int Load(SaveManagerBase* mgr);
-	int ConnectPtr(SaveManagerBase* mgr);
-};
+	protected:
+		virtual int Save(SaveManagerBase* mgr);
+		virtual int Load(SaveManagerBase* mgr);
+		int ConnectPtr(SaveManagerBase* mgr);
+	};
+
+}

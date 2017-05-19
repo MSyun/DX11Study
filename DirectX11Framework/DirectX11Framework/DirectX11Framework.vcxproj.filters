@@ -16,105 +16,6 @@
     <Filter Include="ソース ファイル\GameFramework">
       <UniqueIdentifier>{90a5b9b8-514d-46f8-80fe-000862439625}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework">
-      <UniqueIdentifier>{364a7342-b42d-4310-bddd-47f4b16d3e49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\AnimationCurve">
-      <UniqueIdentifier>{a1661ec4-9e32-4ddc-b7ff-b8e2ba0550fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Application">
-      <UniqueIdentifier>{445e785d-157d-40de-9698-8d9bbe00129c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Application\DirectX">
-      <UniqueIdentifier>{1face33e-b152-40c4-af8e-336e5d39385c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Convert">
-      <UniqueIdentifier>{d360a84a-9566-4a04-a0b4-cbf42a23dcf2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\CPPEvent">
-      <UniqueIdentifier>{b6ed0d7b-fe31-48a0-bb57-615990a713ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Debug">
-      <UniqueIdentifier>{c759ec72-1a44-406b-a884-a6840ebe899d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Delegate">
-      <UniqueIdentifier>{a386f4db-b89c-43d7-972a-905551863918}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\DirectX">
-      <UniqueIdentifier>{331d32e9-75bf-4fc1-aafd-5263fe29eb8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\DirectX\Ver.11">
-      <UniqueIdentifier>{fcedbae2-9f8d-42d9-83c4-d87794984113}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Screen">
-      <UniqueIdentifier>{92856046-8c1e-4298-ba08-642f6806298f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Singleton">
-      <UniqueIdentifier>{9884ac27-f916-4a80-abc0-209c0cd37920}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Time">
-      <UniqueIdentifier>{710b30d1-ffbf-4a8d-a40c-66ab1d8fb18d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Utility">
-      <UniqueIdentifier>{67cd3926-d1a8-4096-9416-50ac249b1da4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Utility\Math">
-      <UniqueIdentifier>{96b49efa-7294-4360-8fd7-8d671cfa3bf8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Utility\System">
-      <UniqueIdentifier>{9b9384b5-84f2-46a3-9c84-0677f59d50db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource">
-      <UniqueIdentifier>{f729ccba-9a10-4a62-a41b-dd2cc52c7e51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Texture">
-      <UniqueIdentifier>{7a1fe877-004c-4af4-95a1-78ded27f4749}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Base">
-      <UniqueIdentifier>{594d4ac1-dbac-4b5f-b1bc-4d6e1415ef3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Manager">
-      <UniqueIdentifier>{1bf61612-c9f6-4796-9a40-8abde0e1f058}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Graphic">
-      <UniqueIdentifier>{69479914-833c-4a7a-bee1-c1ea79765265}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Graphic\IGraphics">
-      <UniqueIdentifier>{0f7f15b4-3339-4b37-af75-d51e8850c631}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Input">
-      <UniqueIdentifier>{c986266a-c9fa-4697-99b5-0e7c1e6f5df6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Save">
-      <UniqueIdentifier>{198a7f31-ec46-4088-95b7-d245277e373e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Save\Factory">
-      <UniqueIdentifier>{0b066fbd-5a70-4397-948e-26040d128813}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Save\Manager">
-      <UniqueIdentifier>{5c8a745e-6555-4826-96a8-a727d05c7ba3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Save\Obj">
-      <UniqueIdentifier>{0641dcc1-9710-4c02-a89c-a30d6869529b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Scene">
-      <UniqueIdentifier>{59dbbf45-d83f-4989-b64b-2d0dde2f238f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Scene\Base">
-      <UniqueIdentifier>{cc0f1ab2-cc49-45c6-bffe-38d35c059767}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Scene\Fade">
-      <UniqueIdentifier>{202206ee-b330-4701-a8c4-24224d9ad235}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Scene\Manager">
-      <UniqueIdentifier>{a014108a-bd75-45af-a2e9-cc00278be9a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Scene\ManagerWin">
-      <UniqueIdentifier>{d3703716-8bdf-4a47-a782-ab76e974d85a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Object">
-      <UniqueIdentifier>{32d6302d-dc6d-4355-a367-8c465d25cbdc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\GameFramework\DelayFunction">
       <UniqueIdentifier>{f0aa07f0-04c7-43d6-9e47-402b01836f4e}</UniqueIdentifier>
     </Filter>
@@ -123,30 +24,6 @@
     </Filter>
     <Filter Include="ソース ファイル\GameFramework\Transform">
       <UniqueIdentifier>{ebfc4858-93b0-4b71-ac94-da7420ca37ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Collision">
-      <UniqueIdentifier>{09ee6b79-e223-4126-943c-f2f40353cd83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Camera">
-      <UniqueIdentifier>{6265cd88-4970-4436-b2fb-aec92ce2b214}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D">
-      <UniqueIdentifier>{668fa619-55f7-457e-a2e1-685f2aa65061}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object2D">
-      <UniqueIdentifier>{22e2aada-13be-4b22-9e07-3cf2ccdc1845}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Object\Base">
-      <UniqueIdentifier>{744d5c1d-e20c-4853-8431-86664e218fde}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Mesh">
-      <UniqueIdentifier>{89d4ee00-8ab7-4568-83c5-fb5a87adeaac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Light">
-      <UniqueIdentifier>{e8ec288f-60d2-4a47-a1d6-854315dc5401}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader">
-      <UniqueIdentifier>{c6604532-f9d8-4209-951c-c5e1463715c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\GameFramework\DirectX">
       <UniqueIdentifier>{74d940a9-2ece-4254-8ac4-6430b907e01a}</UniqueIdentifier>
@@ -157,140 +34,275 @@
     <Filter Include="ソース ファイル\DirectX">
       <UniqueIdentifier>{420528da-46d7-4202-9471-44a31a8cccde}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Mesh\Pmd">
-      <UniqueIdentifier>{6e041d18-2337-446e-8bfa-f1602c3cfc5f}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\GameFramework\MSLib">
+      <UniqueIdentifier>{aa0be2dd-c896-4409-bbad-e5e16f46752f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Mesh\FBX">
-      <UniqueIdentifier>{3c8038a3-c6b5-4537-a52f-6fc5a226ce98}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\AnimationCurve">
+      <UniqueIdentifier>{a1661ec4-9e32-4ddc-b7ff-b8e2ba0550fb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Mesh\FBX\Analyzer">
-      <UniqueIdentifier>{f6ef3b2d-149b-4d4e-8626-a4ada371c898}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UV">
-      <UniqueIdentifier>{668118ba-cda7-44e1-b1cd-4c69f69c8066}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Mesh\FBX\Analyzer\Material">
-      <UniqueIdentifier>{b06efcc1-6c8a-4710-a17d-d6a1861fe4db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\Lambert">
-      <UniqueIdentifier>{19d47976-2bfd-4fcb-b28d-d782bdf03114}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\Phong">
-      <UniqueIdentifier>{87fcb093-4bb0-42f9-8505-96e9b8341227}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\Header">
-      <UniqueIdentifier>{1c8a6a14-64c2-4c28-a444-4807c9d8f4c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\Base">
-      <UniqueIdentifier>{d5c3be19-076e-4934-b4ce-1c75e8d0b37c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Path">
-      <UniqueIdentifier>{16703a5e-83ba-4aff-a23e-d1870107033d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Texture\Tga">
-      <UniqueIdentifier>{96e5ca16-ecb7-4131-a6ec-77049a8d04ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Graphic\Blend">
-      <UniqueIdentifier>{37a502b7-550c-46fc-8305-107c87fd0ad0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader">
-      <UniqueIdentifier>{5acf756c-78b5-467e-9307-5688afa57dae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader\VertexShader">
-      <UniqueIdentifier>{31d8c65f-bcf9-4c6f-af68-8632a914af0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader\PixelShader">
-      <UniqueIdentifier>{c92d8d69-c91a-4c23-929a-2b283b73b86c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer">
-      <UniqueIdentifier>{01f99a72-88ab-42f6-8cb4-9a82d0620e50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Base">
-      <UniqueIdentifier>{97bfe1c2-fac2-4d02-9c74-e30799825db2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Material">
-      <UniqueIdentifier>{141094bb-38dd-4a26-8b4c-ad4888d49f40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light">
-      <UniqueIdentifier>{78cb09aa-9ba5-4efa-9063-61786ee30169}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D\Quad">
-      <UniqueIdentifier>{de0da0c3-1937-46ee-9a37-2e63d642b437}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D\Quad\QuadPolygon">
-      <UniqueIdentifier>{d7e674ce-3c00-4fe6-8566-56acbb96de7e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Camera\Manager">
-      <UniqueIdentifier>{9dda35dd-dc2e-41f8-b712-82c6208d1282}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math">
-      <UniqueIdentifier>{d9c6687f-f9fd-45fc-ae37-de6c18f03731}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Matrix">
-      <UniqueIdentifier>{13378320-98c2-4085-85c7-6a462f4bfd43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Matrix\Matrix4x4">
-      <UniqueIdentifier>{4e86f176-6d6e-480f-86c4-43a90154b58a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector">
-      <UniqueIdentifier>{c4431143-5b8a-47d0-ae40-bd7e2c9997b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector2">
-      <UniqueIdentifier>{2c5d9074-0858-41bb-ac30-e2e36703e406}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector3">
-      <UniqueIdentifier>{fc3f6f59-6f37-4d27-b1e6-c110b8d16ac2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Vector\Vector4">
-      <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Funcs">
-      <UniqueIdentifier>{fc34edfa-8e72-495a-8251-8bbeb32f04cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\Quaternion">
-      <UniqueIdentifier>{b65ea478-b81d-4efe-a502-378d2b0d1ce9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Math\EulerAngle">
-      <UniqueIdentifier>{4ac33e95-2341-48ef-8712-00272aba5f1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Object\Object3D\Manager">
-      <UniqueIdentifier>{07a2227b-d28d-4714-ae8d-59dfcc32feb4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Sound">
-      <UniqueIdentifier>{68ac76d5-bd09-4ab0-a1b5-20c89e38d302}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Sound\Wave">
-      <UniqueIdentifier>{b3ff79ac-f454-4da9-9fa7-cd7267353184}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Archives">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Archives">
       <UniqueIdentifier>{ee24354d-058a-4a7e-9ff1-c22e448b5cae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Texture">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Archives\Texture">
       <UniqueIdentifier>{cf6c0523-9818-4bf9-8f20-330fca2f05d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Tag">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Archives\Tag">
       <UniqueIdentifier>{c230f8f2-d185-4ba1-88a6-87e5826aa44f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Mesh">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Archives\Mesh">
       <UniqueIdentifier>{011303fe-4690-4af7-84e1-81afe5794759}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Shader">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Archives\Shader">
       <UniqueIdentifier>{1ab210d0-1ba0-4a4f-97b7-c3fcf82dbc6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Sound">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Archives\Sound">
       <UniqueIdentifier>{71e3f46d-8941-48f3-99cb-c4926facfe21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Archives\Base">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Archives\Base">
       <UniqueIdentifier>{851d4f22-3735-4d26-8f68-a7ffbbe8fd27}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\Fog">
-      <UniqueIdentifier>{4f1a2863-1b2c-4dac-8f25-68c2e1ef465c}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Collision">
+      <UniqueIdentifier>{09ee6b79-e223-4126-943c-f2f40353cd83}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\CPPEvent">
+      <UniqueIdentifier>{b6ed0d7b-fe31-48a0-bb57-615990a713ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Convert">
+      <UniqueIdentifier>{d360a84a-9566-4a04-a0b4-cbf42a23dcf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Delegate">
+      <UniqueIdentifier>{a386f4db-b89c-43d7-972a-905551863918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Delegate\Interface">
+      <UniqueIdentifier>{baba5387-14b7-4cd8-b08e-6baa9765dead}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Input">
+      <UniqueIdentifier>{c986266a-c9fa-4697-99b5-0e7c1e6f5df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Path">
+      <UniqueIdentifier>{16703a5e-83ba-4aff-a23e-d1870107033d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Singleton">
+      <UniqueIdentifier>{9884ac27-f916-4a80-abc0-209c0cd37920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Sound">
+      <UniqueIdentifier>{68ac76d5-bd09-4ab0-a1b5-20c89e38d302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Sound\Wave">
+      <UniqueIdentifier>{b3ff79ac-f454-4da9-9fa7-cd7267353184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Sound\Manager">
+      <UniqueIdentifier>{7a6ec92d-3f06-428f-bb14-a8e412ec4e0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Screen">
+      <UniqueIdentifier>{92856046-8c1e-4298-ba08-642f6806298f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Time">
+      <UniqueIdentifier>{710b30d1-ffbf-4a8d-a40c-66ab1d8fb18d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Utility">
+      <UniqueIdentifier>{67cd3926-d1a8-4096-9416-50ac249b1da4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Utility\Math">
+      <UniqueIdentifier>{96b49efa-7294-4360-8fd7-8d671cfa3bf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Utility\System">
+      <UniqueIdentifier>{9b9384b5-84f2-46a3-9c84-0677f59d50db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Save">
+      <UniqueIdentifier>{198a7f31-ec46-4088-95b7-d245277e373e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Save\Factory">
+      <UniqueIdentifier>{0b066fbd-5a70-4397-948e-26040d128813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Save\Manager">
+      <UniqueIdentifier>{5c8a745e-6555-4826-96a8-a727d05c7ba3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Save\Obj">
+      <UniqueIdentifier>{0641dcc1-9710-4c02-a89c-a30d6869529b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Scene">
+      <UniqueIdentifier>{59dbbf45-d83f-4989-b64b-2d0dde2f238f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Scene\Base">
+      <UniqueIdentifier>{cc0f1ab2-cc49-45c6-bffe-38d35c059767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Scene\Fade">
+      <UniqueIdentifier>{202206ee-b330-4701-a8c4-24224d9ad235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Scene\Manager">
+      <UniqueIdentifier>{a014108a-bd75-45af-a2e9-cc00278be9a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Scene\ManagerWin">
+      <UniqueIdentifier>{d3703716-8bdf-4a47-a782-ab76e974d85a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource">
+      <UniqueIdentifier>{f729ccba-9a10-4a62-a41b-dd2cc52c7e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Texture">
+      <UniqueIdentifier>{7a1fe877-004c-4af4-95a1-78ded27f4749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Texture\Tga">
+      <UniqueIdentifier>{96e5ca16-ecb7-4131-a6ec-77049a8d04ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Base">
+      <UniqueIdentifier>{594d4ac1-dbac-4b5f-b1bc-4d6e1415ef3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Manager">
+      <UniqueIdentifier>{1bf61612-c9f6-4796-9a40-8abde0e1f058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Mesh">
+      <UniqueIdentifier>{89d4ee00-8ab7-4568-83c5-fb5a87adeaac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Mesh\Pmd">
+      <UniqueIdentifier>{6e041d18-2337-446e-8bfa-f1602c3cfc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX">
+      <UniqueIdentifier>{3c8038a3-c6b5-4537-a52f-6fc5a226ce98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX\Analyzer">
+      <UniqueIdentifier>{f6ef3b2d-149b-4d4e-8626-a4ada371c898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX\Analyzer\UV">
+      <UniqueIdentifier>{668118ba-cda7-44e1-b1cd-4c69f69c8066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX\Analyzer\Material">
+      <UniqueIdentifier>{b06efcc1-6c8a-4710-a17d-d6a1861fe4db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader">
+      <UniqueIdentifier>{c6604532-f9d8-4209-951c-c5e1463715c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\Lambert">
+      <UniqueIdentifier>{19d47976-2bfd-4fcb-b28d-d782bdf03114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\Phong">
+      <UniqueIdentifier>{87fcb093-4bb0-42f9-8505-96e9b8341227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\Header">
+      <UniqueIdentifier>{1c8a6a14-64c2-4c28-a444-4807c9d8f4c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\Base">
+      <UniqueIdentifier>{d5c3be19-076e-4934-b4ce-1c75e8d0b37c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader">
+      <UniqueIdentifier>{5acf756c-78b5-467e-9307-5688afa57dae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader\VertexShader">
+      <UniqueIdentifier>{31d8c65f-bcf9-4c6f-af68-8632a914af0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader\PixelShader">
+      <UniqueIdentifier>{c92d8d69-c91a-4c23-929a-2b283b73b86c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer">
+      <UniqueIdentifier>{01f99a72-88ab-42f6-8cb4-9a82d0620e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Base">
+      <UniqueIdentifier>{97bfe1c2-fac2-4d02-9c74-e30799825db2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Material">
+      <UniqueIdentifier>{141094bb-38dd-4a26-8b4c-ad4888d49f40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Light">
+      <UniqueIdentifier>{78cb09aa-9ba5-4efa-9063-61786ee30169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Mesh">
       <UniqueIdentifier>{abd73b5f-8a7a-44cc-b08a-81566fab2440}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame">
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Frame">
       <UniqueIdentifier>{7a25b383-4ff7-4625-8f6e-d9527b2151fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\Fog">
+      <UniqueIdentifier>{4f1a2863-1b2c-4dac-8f25-68c2e1ef465c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Graphic">
+      <UniqueIdentifier>{69479914-833c-4a7a-bee1-c1ea79765265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Graphic\IGraphics">
+      <UniqueIdentifier>{0f7f15b4-3339-4b37-af75-d51e8850c631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Graphic\Blend">
+      <UniqueIdentifier>{37a502b7-550c-46fc-8305-107c87fd0ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Object">
+      <UniqueIdentifier>{32d6302d-dc6d-4355-a367-8c465d25cbdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Object\Object3D">
+      <UniqueIdentifier>{668fa619-55f7-457e-a2e1-685f2aa65061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Object\Object3D\Quad">
+      <UniqueIdentifier>{de0da0c3-1937-46ee-9a37-2e63d642b437}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Object\Object3D\Quad\QuadPolygon">
+      <UniqueIdentifier>{d7e674ce-3c00-4fe6-8566-56acbb96de7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Object\Object3D\Manager">
+      <UniqueIdentifier>{07a2227b-d28d-4714-ae8d-59dfcc32feb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Object\Object2D">
+      <UniqueIdentifier>{22e2aada-13be-4b22-9e07-3cf2ccdc1845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Object\Base">
+      <UniqueIdentifier>{744d5c1d-e20c-4853-8431-86664e218fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Light">
+      <UniqueIdentifier>{e8ec288f-60d2-4a47-a1d6-854315dc5401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Light\Manager">
+      <UniqueIdentifier>{96ee4946-1768-4219-8422-e56bae3424c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Camera">
+      <UniqueIdentifier>{6265cd88-4970-4436-b2fb-aec92ce2b214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Camera\Manager">
+      <UniqueIdentifier>{9dda35dd-dc2e-41f8-b712-82c6208d1282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Debug">
+      <UniqueIdentifier>{c759ec72-1a44-406b-a884-a6840ebe899d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math">
+      <UniqueIdentifier>{d9c6687f-f9fd-45fc-ae37-de6c18f03731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Matrix">
+      <UniqueIdentifier>{13378320-98c2-4085-85c7-6a462f4bfd43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Matrix\Matrix4x4">
+      <UniqueIdentifier>{4e86f176-6d6e-480f-86c4-43a90154b58a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Vector">
+      <UniqueIdentifier>{c4431143-5b8a-47d0-ae40-bd7e2c9997b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Vector\Vector2">
+      <UniqueIdentifier>{2c5d9074-0858-41bb-ac30-e2e36703e406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Vector\Vector3">
+      <UniqueIdentifier>{fc3f6f59-6f37-4d27-b1e6-c110b8d16ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Vector\Vector4">
+      <UniqueIdentifier>{a5255068-054d-4c22-b13a-6c12c4d6d67c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Funcs">
+      <UniqueIdentifier>{fc34edfa-8e72-495a-8251-8bbeb32f04cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\Quaternion">
+      <UniqueIdentifier>{b65ea478-b81d-4efe-a502-378d2b0d1ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Math\EulerAngle">
+      <UniqueIdentifier>{4ac33e95-2341-48ef-8712-00272aba5f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Application">
+      <UniqueIdentifier>{445e785d-157d-40de-9698-8d9bbe00129c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Application\DirectX">
+      <UniqueIdentifier>{1face33e-b152-40c4-af8e-336e5d39385c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\DirectX">
+      <UniqueIdentifier>{331d32e9-75bf-4fc1-aafd-5263fe29eb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\DirectX\Ver.11">
+      <UniqueIdentifier>{fcedbae2-9f8d-42d9-83c4-d87794984113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Pool">
+      <UniqueIdentifier>{2af66fb9-bc74-476b-8bc7-107b51874caa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -298,88 +310,88 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\AnimationCurve</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\AnimationCurve</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Application\Application.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Application</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Application</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Application\DirectX\DXApplication.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Application\DirectX</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Application\DirectX</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Debug\Debug.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Debug</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Screen\Screen.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Screen</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Screen</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Time\Time.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Time</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Time</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Utility\Math\MathUtility.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Utility\Math</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Utility\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\DirectX\DX11Base.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\DirectX\Ver.11</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\DirectX\Ver.11</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Matrix\Matrix4x4</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Matrix\Matrix4x4</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Vector\Vector4</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Vector\Vector4</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Vector\Vector3</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Vector\Vector3</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Vector\Vector2</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Vector\Vector2</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\Funcs\MathFuncs.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Funcs</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Funcs</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Base\IResource.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Texture\Texture.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Texture</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Texture</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Graphic\Graphics.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Graphic</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Graphic</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Input\Input.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Input</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Input</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Save\Obj\SaveObjBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Save\Obj</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Save\Obj</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Save\Manager\SaveManagerBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Save\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Save\Manager</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Save\Factory\SaveFactory.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Save\Factory</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Save\Factory</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Scene\ManagerWin\SceneManagerWin.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Scene\ManagerWin</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Scene\ManagerWin</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Scene\Manager\SceneManager.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Scene\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Scene\Manager</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Scene\Fade\SceneFadeBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Scene\Fade</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Scene\Fade</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\Transform\Transform.cpp">
       <Filter>ソース ファイル\GameFramework\Transform</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Collision\Collision.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Collision</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Collision</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Camera\Camera.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Camera</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Object\Object.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Object\3DObject\Object3D.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\DelayFunction\Collection\DelayFunctionCollection.cpp">
       <Filter>ソース ファイル\GameFramework\DelayFunction\Collection</Filter>
@@ -388,13 +400,13 @@
       <Filter>ソース ファイル\GameFramework\DelayFunction</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Light\Light.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Light</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Light</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\Quaternion\Quaternion.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Quaternion</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Quaternion</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Math\EulerAngle</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\EulerAngle</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\DirectX\GameDirectX11Base.cpp">
       <Filter>ソース ファイル\GameFramework\DirectX</Filter>
@@ -406,204 +418,207 @@
       <Filter>ソース ファイル\DirectX</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\Pmd</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\Pmd</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\MaterialAnalyzer.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\FBX\Analyzer\Material</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX\Analyzer\Material</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UVAnalyzer.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UV</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX\Analyzer\UV</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\FBX\CreateFbxMesh.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\FBX</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Mesh.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\Base\Shader.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Path\Path.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Path</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Path</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Texture\Tga\Tga.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Texture\Tga</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Texture\Tga</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Graphic\Blend\GraphicBlend.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Graphic\Blend</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Graphic\Blend</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader\VertexShader</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader\VertexShader</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader\PixelShader</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader\PixelShader</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Material</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Material</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Light</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Object\3DObject\Quad\QuadPolygon\QuadPolygon.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad\QuadPolygon</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D\Quad\QuadPolygon</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Object\3DObject\Quad\Quad.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D\Quad</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Camera\Manager\CameraManager.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Camera\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Camera\Manager</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Object\3DObject\Manager\Object3DManager.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D\Manager</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Sound\SoundBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameFramework\framework\Sound\SoundManager.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Sound</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Sound\Wave\WaveLoader.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Sound\Wave</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Sound\Wave</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Archives\Sound\ArchivesSoundBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Sound</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Sound</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Archives\Shader\ArchivesShaderBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Shader</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Shader</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Archives\Tag\ArchivesTagBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Tag</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Tag</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Archives\Mesh\ArchivesMeshBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Mesh</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Archives\Texture\ArchivesTextureBase.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Texture</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Texture</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Archives\Archives.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Archives</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.cpp">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Light\Manager\LightManager.cpp">
+      <Filter>ソース ファイル\GameFramework\MSLib\Light\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Sound\SoundManager.cpp">
+      <Filter>ソース ファイル\GameFramework\MSLib\Sound\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameFramework\framework\AnimationCurve\AnimationCurve.h">
-      <Filter>ソース ファイル\GameFramework\framework\AnimationCurve</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\AnimationCurve</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Application\Application.h">
-      <Filter>ソース ファイル\GameFramework\framework\Application</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Application</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Application\DirectX\DXApplication.h">
-      <Filter>ソース ファイル\GameFramework\framework\Application\DirectX</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Application\DirectX</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Convert\Convert.h">
-      <Filter>ソース ファイル\GameFramework\framework\Convert</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Convert</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Debug\Debug.h">
-      <Filter>ソース ファイル\GameFramework\framework\Debug</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\DirectX\DXBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\DirectX</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\DirectX</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Screen\Screen.h">
-      <Filter>ソース ファイル\GameFramework\framework\Screen</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Screen</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Singleton\Singleton.h">
-      <Filter>ソース ファイル\GameFramework\framework\Singleton</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Singleton</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Time\Time.h">
-      <Filter>ソース ファイル\GameFramework\framework\Time</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Time</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Utility\System\SystemUtility.h">
-      <Filter>ソース ファイル\GameFramework\framework\Utility\System</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Utility\System</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Utility\Math\MathUtility.h">
-      <Filter>ソース ファイル\GameFramework\framework\Utility\Math</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Utility\Math</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\DirectX\DX11Base.h">
-      <Filter>ソース ファイル\GameFramework\framework\DirectX\Ver.11</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\DirectX\Ver.11</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\Matrix\Matrix4x4\Matrix4x4.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Matrix\Matrix4x4</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Matrix\Matrix4x4</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector4\Vector4.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Vector\Vector4</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Vector\Vector4</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector3\Vector3.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Vector\Vector3</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Vector\Vector3</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\Vector\Vector2\Vector2.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Vector\Vector2</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Vector\Vector2</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\Funcs\MathFuncs.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Funcs</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Funcs</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Base\IResource.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Texture\Texture.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Texture</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Texture</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Graphic\IGraphics\IGraphics.h">
-      <Filter>ソース ファイル\GameFramework\framework\Graphic\IGraphics</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Graphic\IGraphics</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Graphic\Graphics.h">
-      <Filter>ソース ファイル\GameFramework\framework\Graphic</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Graphic</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Manager\ResourceManager.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Manager</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Input\Input.h">
-      <Filter>ソース ファイル\GameFramework\framework\Input</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\MathDefine.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Save\Obj\SaveObjBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Save\Obj</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Save\Obj</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Save\Manager\SaveManagerBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Save\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Save\Manager</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Save\Factory\SaveFactory.h">
-      <Filter>ソース ファイル\GameFramework\framework\Save\Factory</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Save\Factory</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Scene\ManagerWin\SceneManagerWin.h">
-      <Filter>ソース ファイル\GameFramework\framework\Scene\ManagerWin</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Scene\ManagerWin</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Scene\Manager\SceneManager.h">
-      <Filter>ソース ファイル\GameFramework\framework\Scene\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Scene\Manager</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Scene\Fade\SceneFadeBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Scene\Fade</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Scene\Fade</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Scene\Base\SceneBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Scene\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Scene\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\Transform\Transform.h">
       <Filter>ソース ファイル\GameFramework\Transform</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Collision\cell.h">
-      <Filter>ソース ファイル\GameFramework\framework\Collision</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Collision</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Collision\Collision.h">
-      <Filter>ソース ファイル\GameFramework\framework\Collision</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Collision</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Camera\Camera.h">
-      <Filter>ソース ファイル\GameFramework\framework\Camera</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Camera</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Object\Object.h">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Object\3DObject\Object3D.h">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\DelayFunction\Collection\DelayFunctionCollection.h">
       <Filter>ソース ファイル\GameFramework\DelayFunction\Collection</Filter>
@@ -612,22 +627,19 @@
       <Filter>ソース ファイル\GameFramework\DelayFunction</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\CPPEvent\CPPEvent.h">
-      <Filter>ソース ファイル\GameFramework\framework\CPPEvent</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\CPPEvent</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Delegate\Delegate.h">
-      <Filter>ソース ファイル\GameFramework\framework\Delegate</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameFramework\framework\Delegate\IDelegate.h">
-      <Filter>ソース ファイル\GameFramework\framework\Delegate</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Delegate</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Light\Light.h">
-      <Filter>ソース ファイル\GameFramework\framework\Light</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Light</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\Quaternion\Quaternion.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math\Quaternion</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\Quaternion</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Math\EularAngles\EulerAngles.h">
-      <Filter>ソース ファイル\GameFramework\framework\Math\EulerAngle</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Math\EulerAngle</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\DirectX\GameDirectX11Base.h">
       <Filter>ソース ファイル\GameFramework\DirectX</Filter>
@@ -639,134 +651,146 @@
       <Filter>ソース ファイル\DirectX</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\Pmd</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\Pmd</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\MaterialAnalyzer.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\FBX\Analyzer\Material</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX\Analyzer\Material</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UVAnalyzer.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\FBX\Analyzer\UV</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX\Analyzer\UV</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\FBX\CreateFbxMesh.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh\FBX</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh\FBX</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Mesh.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Mesh</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\Base\Shader.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Path\Path.h">
-      <Filter>ソース ファイル\GameFramework\framework\Path</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Path</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Texture\Tga\Tga.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Texture\Tga</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Texture\Tga</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Graphic\Blend\GraphicBlend.h">
-      <Filter>ソース ファイル\GameFramework\framework\Graphic\Blend</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Graphic\Blend</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\ITypeShader.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader\VertexShader</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader\VertexShader</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\TypeShader\PixelShader</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\TypeShader\PixelShader</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Material</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Material</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Light</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Light</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Object\3DObject\Quad\QuadPolygon\QuadPolygon.h">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad\QuadPolygon</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D\Quad\QuadPolygon</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Object\3DObject\Quad\Quad.h">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Quad</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D\Quad</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Camera\Manager\CameraManager.h">
-      <Filter>ソース ファイル\GameFramework\framework\Camera\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Camera\Manager</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Object\3DObject\Manager\Object3DManager.h">
-      <Filter>ソース ファイル\GameFramework\framework\Object\Object3D\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Object\Object3D\Manager</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Sound\SoundBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameFramework\framework\Sound\SoundManager.h">
-      <Filter>ソース ファイル\GameFramework\framework\Sound</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Sound</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Sound\Wave\WaveLoader.h">
-      <Filter>ソース ファイル\GameFramework\framework\Sound\Wave</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Sound\Wave</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Archives\Sound\ArchivesSoundBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Sound</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Sound</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Archives\Shader\ArchivesShaderBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Shader</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Shader</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Archives\Base\IArchivesType.h">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Archives\Tag\ArchivesTagBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Tag</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Tag</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Archives\Mesh\ArchivesMeshBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Mesh</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Archives\Texture\ArchivesTextureBase.h">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Texture</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Texture</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Archives\Archives.h">
-      <Filter>ソース ファイル\GameFramework\framework\Archives</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.h">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Light\Manager\LightManager.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Light\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Delegate\IDelegate.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Delegate\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Sound\SoundManager.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Sound\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Pool\Pool.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Pool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\GameFramework\framework\Delegate\Delegate.inl">
-      <Filter>ソース ファイル\GameFramework\framework\Delegate</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Delegate</Filter>
     </None>
     <None Include="src\GameFramework\framework\CPPEvent\CPPEvent.inl">
-      <Filter>ソース ファイル\GameFramework\framework\CPPEvent</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\CPPEvent</Filter>
     </None>
     <None Include="src\GameFramework\framework\Resource\Manager\ResourceManager.inl">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Manager</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Manager</Filter>
     </None>
     <None Include="Vertex.hlslh">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Header</Filter>
     </None>
     <None Include="Material.hlslh">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Header</Filter>
     </None>
     <None Include="Light.hlslh">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Header</Filter>
     </None>
     <None Include="src\GameFramework\framework\Archives\Base\IArchivesType.inl">
-      <Filter>ソース ファイル\GameFramework\framework\Archives\Base</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Archives\Base</Filter>
     </None>
     <None Include="Color.hlslh">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Header</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Header</Filter>
+    </None>
+    <None Include="src\GameFramework\framework\Pool\Pool.inl">
+      <Filter>ソース ファイル\GameFramework\MSLib\Pool</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Phong.hlsl">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Phong</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Phong</Filter>
     </FxCompile>
     <FxCompile Include="Lambert.hlsl">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Lambert</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Lambert</Filter>
     </FxCompile>
     <FxCompile Include="Fog.hlsl">
-      <Filter>ソース ファイル\GameFramework\framework\Resource\Shader\Fog</Filter>
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Fog</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

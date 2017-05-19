@@ -9,10 +9,9 @@
 #include	"../GameFramework/DirectX/GameDirectX11Base.h"
 
 
-
-class GameDirectX11	:	public	GameDirectX11Base {
+class GameDirectX11	:	public	MSLib::GameDirectX11Base {
 public:
-	GameDirectX11(Application* app);
+	explicit GameDirectX11(MSLib::Application* app);
 	virtual ~GameDirectX11();
 
 private:

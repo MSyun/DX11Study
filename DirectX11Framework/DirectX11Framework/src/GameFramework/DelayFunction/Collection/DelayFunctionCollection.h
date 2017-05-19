@@ -9,20 +9,24 @@
 #include	<vector>
 
 
-class DelayFunctionCollection {
-private:
-	static std::vector<DelayFunction*> m_aCollection;
+namespace MSLib {
 
-public:
-	DelayFunctionCollection();
-	virtual ~DelayFunctionCollection();
+	class DelayFunctionCollection {
+	private:
+		static std::vector<DelayFunction*> m_aCollection;
 
-	// 追加
-	static void Add(DelayFunction* func);
+	public:
+		DelayFunctionCollection();
+		virtual ~DelayFunctionCollection();
 
-	// 時間計測
-	static void Update();
+		// 追加
+		static void Add(DelayFunction* func);
 
-	// 全要素削除
-	static void AllDelete();
-};
+		// 時間計測
+		static void Update();
+
+		// 全要素削除
+		static void AllDelete();
+	};
+
+}

@@ -6,40 +6,44 @@
 #include	"../../../Debug/Debug.h"
 
 
-Quad::Quad() :
-	m_pPolygon(nullptr)
-{
-	m_pPolygon = new QuadPolygon;
-	if (!m_pPolygon->Create())
-		Debug::LogError("ƒ|ƒŠƒSƒ“‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½");
-}
+namespace MSLib {
 
-Quad::~Quad() {
-	SAFE_DELETE(m_pPolygon);
-}
+	Quad::Quad() :
+		m_pPolygon(nullptr)
+	{
+		m_pPolygon = new QuadPolygon;
+		if (!m_pPolygon->Create())
+			Debug::LogError("ƒ|ƒŠƒSƒ“‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½");
+	}
 
-void Quad::Init() {
-	Object3D::Init();
-}
+	Quad::~Quad() {
+		SAFE_DELETE(m_pPolygon);
+	}
 
-void Quad::Update() {
-	Object3D::Update();
-}
+	void Quad::Init() {
+		Object3D::Init();
+	}
 
-void Quad::LateUpdate() {
-	Object3D::LateUpdate();
-}
+	void Quad::Update() {
+		Object3D::Update();
+	}
 
-void Quad::Draw() {
-	Object3D::Draw();
-}
+	void Quad::LateUpdate() {
+		Object3D::LateUpdate();
+	}
 
-void Quad::LateDraw() {
-	Object3D::LateDraw();
+	void Quad::Draw() {
+		Object3D::Draw();
+	}
 
-	m_pPolygon->Draw(&m_pTransform->GetWorld());
-}
+	void Quad::LateDraw() {
+		Object3D::LateDraw();
 
-QuadPolygon* Quad::GetPolygon() const {
-	return m_pPolygon;
-}
+		m_pPolygon->Draw(&m_pTransform->GetWorld());
+	}
+
+	QuadPolygon* Quad::GetPolygon() const {
+		return m_pPolygon;
+	}
+
+};

@@ -13,42 +13,47 @@
 #include	"Shader/ArchivesShaderBase.h"
 #include	"../Utility/System/SystemUtility.h"
 
-class Archives {
-private:
-	static ArchivesCollection::ArchivesMeshBase*	m_pMeshName;
-	static ArchivesCollection::ArchivesTextureBase*	m_pTexName;
-	static ArchivesCollection::ArchivesSoundBase*	m_pSoundName;
-	static ArchivesCollection::ArchivesTagBase*		m_pTagName;
-	static ArchivesCollection::ArchivesShaderBase*	m_pShaderName;
 
-public:
-	Archives();
-	virtual ~Archives();
+namespace MSLib {
 
-	template<class T>static void MeshCreate() {
-		SAFE_DELETE(m_pMeshName);
-		m_pMeshName = new T;
-	}
-	template<class T>static void TexCreate() {
-		SAFE_DELETE(m_pTexName);
-		m_pTexName = new T;
-	}
-	template<class T>static void SoundCreate() {
-		SAFE_DELETE(m_pSoundName);
-		m_pSoundName = new T;
-	}
-	template<class T>static void TagCreate() {
-		SAFE_DELETE(m_pTagName);
-		m_pTagName = new T;
-	}
-	template<class T>static void ShaderCreate() {
-		SAFE_DELETE(m_pShaderName);
-		m_pShaderName = new T;
-	}
+	class Archives {
+	private:
+		static ArchivesCollection::ArchivesMeshBase*	m_pMeshName;
+		static ArchivesCollection::ArchivesTextureBase*	m_pTexName;
+		static ArchivesCollection::ArchivesSoundBase*	m_pSoundName;
+		static ArchivesCollection::ArchivesTagBase*		m_pTagName;
+		static ArchivesCollection::ArchivesShaderBase*	m_pShaderName;
 
-	static string Mesh(const string Name);
-	static string Texture(const string Name);
-	static string Sound(const string Name);
-	static unsigned char Tag(const string Name);
-	static string Shader(const string Name);
+	public:
+		Archives();
+		virtual ~Archives();
+
+		template<class T>static void MeshCreate() {
+			SAFE_DELETE(m_pMeshName);
+			m_pMeshName = new T;
+		}
+		template<class T>static void TexCreate() {
+			SAFE_DELETE(m_pTexName);
+			m_pTexName = new T;
+		}
+		template<class T>static void SoundCreate() {
+			SAFE_DELETE(m_pSoundName);
+			m_pSoundName = new T;
+		}
+		template<class T>static void TagCreate() {
+			SAFE_DELETE(m_pTagName);
+			m_pTagName = new T;
+		}
+		template<class T>static void ShaderCreate() {
+			SAFE_DELETE(m_pShaderName);
+			m_pShaderName = new T;
+		}
+
+		static std::string Mesh(const std::string Name);
+		static std::string Texture(const std::string Name);
+		static std::string Sound(const std::string Name);
+		static unsigned char Tag(const std::string Name);
+		static std::string Shader(const std::string Name);
+	};
+
 };

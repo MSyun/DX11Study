@@ -8,15 +8,17 @@
 #include	"../Base/IArchivesType.h"
 
 
-namespace ArchivesCollection {
+namespace MSLib {
+	namespace ArchivesCollection {
 
-	class ArchivesShaderBase : public	IArchivesType<string> {
-	public:
-		ArchivesShaderBase();
-		virtual ~ArchivesShaderBase();
+		class ArchivesShaderBase : public	IArchivesType<std::string> {
+		public:
+			ArchivesShaderBase();
+			virtual ~ArchivesShaderBase();
 
-	protected:
-		virtual void Create() override;
+		protected:
+			virtual void Create() override;
+		};
+
 	};
-
-}
+};

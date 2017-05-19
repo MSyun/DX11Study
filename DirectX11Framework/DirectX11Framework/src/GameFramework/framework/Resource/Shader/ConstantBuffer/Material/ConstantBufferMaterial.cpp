@@ -4,78 +4,75 @@
 
 
 #include	"ConstantBufferMaterial.h"
-
 #include	"../../../../Graphic/Graphics.h"
 #include	"../../../../Utility/Math/MathUtility.h"
 
-#include	"../Mesh/ConstantBufferMesh.h"
 
+namespace MSLib {
+	namespace ShaderCollection {
+		namespace Buffer {
 
+			ConstantBufferMaterial::ConstantBufferMaterial() :
+				ConstantBuffer(2)
+			{
+			}
 
-namespace ShaderCollection {
-	namespace Buffer {
+			ConstantBufferMaterial::~ConstantBufferMaterial()
+			{
+			}
 
-		ConstantBufferMaterial::ConstantBufferMaterial() :
-			ConstantBuffer(2)
-		{
-		}
+			void ConstantBufferMaterial::EndPass() {
+				auto context = Graphics::GetDevice();
+				memcpy_s(pData.pData, pData.RowPitch, (void*)(&m_material), sizeof(m_material));
+				context->Unmap(m_pBuffer, 0);
 
-		ConstantBufferMaterial::~ConstantBufferMaterial()
-		{
-		}
+				context->VSSetConstantBuffers(m_ResourceNumber, 1, &m_pBuffer);
+				context->PSSetConstantBuffers(m_ResourceNumber, 1, &m_pBuffer);
+			}
 
-		void ConstantBufferMaterial::EndPass() {
-			auto context = Graphics::GetDevice();
-			memcpy_s(pData.pData, pData.RowPitch, (void*)(&m_material), sizeof(m_material));
-			context->Unmap(m_pBuffer, 0);
+			void ConstantBufferMaterial::Diffuse(const float3& diffuse) {
+				m_material.Diffuse.r = diffuse.r;
+				m_material.Diffuse.g = diffuse.g;
+				m_material.Diffuse.b = diffuse.b;
+			}
 
-			context->VSSetConstantBuffers(m_ResourceNumber, 1, &m_pBuffer);
-			context->PSSetConstantBuffers(m_ResourceNumber, 1, &m_pBuffer);
-		}
+			void ConstantBufferMaterial::Ambient(const float3& ambient) {
+				m_material.Ambient.r = ambient.r;
+				m_material.Ambient.g = ambient.g;
+				m_material.Ambient.b = ambient.b;
+			}
 
-		void ConstantBufferMaterial::Diffuse(const float3& diffuse) {
-			m_material.Diffuse.r = diffuse.r;
-			m_material.Diffuse.g = diffuse.g;
-			m_material.Diffuse.b = diffuse.b;
-		}
+			void ConstantBufferMaterial::Emissive(const float3& emissive) {
+				m_material.Emissive.r = emissive.r;
+				m_material.Emissive.g = emissive.g;
+				m_material.Emissive.b = emissive.b;
+			}
 
-		void ConstantBufferMaterial::Ambient(const float3& ambient) {
-			m_material.Ambient.r = ambient.r;
-			m_material.Ambient.g = ambient.g;
-			m_material.Ambient.b = ambient.b;
-		}
+			void ConstantBufferMaterial::Alpha(const float alpha) {
+				float a = Clamp(alpha, 0.0f, 1.0f);
+				m_material.Diffuse.a = a;
+				m_material.Ambient.a = a;
+				m_material.Emissive.a = a;
+			}
 
-		void ConstantBufferMaterial::Emissive(const float3& emissive) {
-			m_material.Emissive.r = emissive.r;
-			m_material.Emissive.g = emissive.g;
-			m_material.Emissive.b = emissive.b;
-		}
+			void ConstantBufferMaterial::Specular(const float3& specular) {
+				m_material.Specular.r = specular.r;
+				m_material.Specular.g = specular.g;
+				m_material.Specular.b = specular.b;
+			}
 
-		void ConstantBufferMaterial::Alpha(const float alpha) {
-			float a = Clamp(alpha, 0.0f, 1.0f);
-			m_material.Diffuse.a = a;
-			m_material.Ambient.a = a;
-			m_material.Emissive.a = a;
-		}
+			void ConstantBufferMaterial::Shininess(const float shininess) {
+				m_material.Specular.w = shininess;
+			}
 
-		void ConstantBufferMaterial::Specular(const float3& specular) {
-			m_material.Specular.r = specular.r;
-			m_material.Specular.g = specular.g;
-			m_material.Specular.b = specular.b;
-		}
+			bool ConstantBufferMaterial::Create() {
+				if (!CreateConstantBuffer(
+					&m_pBuffer,
+					sizeof(MATERIAL_CONSTANT_BUFFER)))
+					return false;
 
-		void ConstantBufferMaterial::Shininess(const float shininess) {
-			m_material.Specular.w = shininess;
-		}
-
-		bool ConstantBufferMaterial::Create(D3D11_BUFFER_DESC* desc) {
-			if (!CreateConstantBuffer(
-				desc,
-				&m_pBuffer,
-				sizeof(MATERIAL_CONSTANT_BUFFER)))
-				return false;
-
-			return true;
+				return true;
+			}
 		}
 	}
 }

@@ -17,61 +17,57 @@
 #include	"../framework/Camera/Manager/CameraManager.h"
 #include	"../framework/Object/3DObject/Manager/Object3DManager.h"
 #include	"../framework/Archives/Archives.h"
+#include	"../framework/Light/Manager/LightManager.h"
+#include	"../framework/Sound/SoundManager.h"
 
 
 
-class GameDirectX11Base	:	public	DX11Base {
-protected:
-#pragma region variable
+namespace MSLib {
 
-	Time				m_time;
-	SceneBase*			m_pCurScene;
-	SceneManagerWin*	m_pSceneManager;
-	ResourceManager<Texture>*	m_pTexManager;
-	ResourceManager<Mesh>*		m_pMeshManager;
-	ResourceManager<Shader>*	m_pShaderManager;
-	CameraManager*				m_pCameraManager;
-	Object3DManager*			m_pObject3DManager;
-	Archives					m_Archives;
+	class GameDirectX11Base : public	DX11Base {
+	protected:
+		Time						m_time;
+		SceneBase*					m_pCurScene;
+		SceneManagerWin*			m_pSceneManager;
+		ResourceManager<Texture>*	m_pTexManager;
+		ResourceManager<Mesh>*		m_pMeshManager;
+		ResourceManager<Shader>*	m_pShaderManager;
+		CameraManager*				m_pCameraManager;
+		Object3DManager*			m_pObject3DManager;
+		Archives					m_Archives;
+		LightManager*				m_pLightManager;
+		Sound::SoundManager*		m_pSoundManager;
 
-#pragma endregion
+	public:
+		explicit GameDirectX11Base(Application* app);
+		virtual ~GameDirectX11Base();
 
-public:
-#pragma region method
+		/* 初期化
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT Init() override;
 
-	GameDirectX11Base(Application* app);
-	virtual ~GameDirectX11Base();
+		/* ステップ関数
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT Step() override;
 
-	/* 初期化
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT Init() override;
+		/* 終了処理
+		// return	: S_OK. 成功、E_FAIL. 失敗
+		*/
+		virtual HRESULT Release() override;
 
-	/* ステップ関数
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT Step() override;
+	private:
+		HRESULT InvalidateDeviceObjects() final;
+		virtual HRESULT InvalidateDeviceObjectsGame() { return S_OK; }
+		HRESULT RestoreDeviceObjects() final;
+		virtual HRESULT RestoreDeviceObjectsGame() { return S_OK; }
+		virtual HRESULT InitGame() { return S_OK; }
+		virtual HRESULT InitApp() final;
+		virtual HRESULT ReleaseGame() { return S_OK; }
+		virtual HRESULT ReleaseApp() final;
+		virtual void Update() override;
+		virtual void Draw() override;
+	};
 
-	/* 終了処理
-	// return	: S_OK. 成功、E_FAIL. 失敗
-	*/
-	virtual HRESULT Release() override;
-
-#pragma endregion
-
-private:
-#pragma region conceal method
-
-	HRESULT InvalidateDeviceObjects() final;
-	virtual HRESULT InvalidateDeviceObjectsGame() { return S_OK; }
-	HRESULT RestoreDeviceObjects() final;
-	virtual HRESULT RestoreDeviceObjectsGame() { return S_OK; }
-	virtual HRESULT InitGame() { return S_OK; }
-	virtual HRESULT InitApp() final;
-	virtual HRESULT ReleaseGame() { return S_OK; }
-	virtual HRESULT ReleaseApp() final;
-	virtual void Update() override;
-	virtual void Draw() override;
-
-#pragma endregion conceal method
 };

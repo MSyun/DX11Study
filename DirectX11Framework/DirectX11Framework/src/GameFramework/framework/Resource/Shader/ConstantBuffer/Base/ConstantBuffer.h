@@ -10,36 +10,37 @@
 #include	"../../../../Convert/Convert.h"
 
 
-namespace ShaderCollection {
-	namespace Buffer {
+namespace MSLib {
+	namespace ShaderCollection {
+		namespace Buffer {
 
-		class ConstantBuffer {
-		protected:
-			int m_ResourceNumber;
-			ID3D11Buffer*	m_pBuffer;
+			class ConstantBuffer {
+			protected:
+				int m_ResourceNumber;
+				ID3D11Buffer*	m_pBuffer;
 
-			D3D11_MAPPED_SUBRESOURCE pData;
+				D3D11_MAPPED_SUBRESOURCE pData;
 
-		public:
-			ConstantBuffer(int resourceNum = -1);
-			virtual ~ConstantBuffer();
+			public:
+				ConstantBuffer(int resourceNum = -1);
+				virtual ~ConstantBuffer();
 
-			//		void Update(const void* srcPtr);
-			virtual void BeginPass();
-			virtual void EndPass() = 0;
+				//		void Update(const void* srcPtr);
+				virtual void BeginPass();
+				virtual void EndPass() = 0;
 
-			virtual bool Create(D3D11_BUFFER_DESC* desc) = 0;
-		};
+				virtual bool Create() = 0;
+			};
 
 
-		/* コンスタントバッファー作成
-		// ppBuffer	:
-		// size		:
-		*/
-		bool CreateConstantBuffer(
-			D3D11_BUFFER_DESC* desc,
-			ID3D11Buffer** ppBuffer,
-			size_t size);
+			/* コンスタントバッファー作成
+			// ppBuffer	:
+			// size		:
+			*/
+			bool CreateConstantBuffer(
+				ID3D11Buffer** ppBuffer,
+				size_t size);
 
+		}
 	}
 }
