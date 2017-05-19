@@ -30,6 +30,11 @@ bool CheckScene::Init() {
 	m_pObj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Watch")));
 	m_pObj->GetTransform()->Translate(-3.0f, 0.0f, 0.0f);
 	m_pObj->GetTransform()->SetScale(0.3f, 0.3f, 0.3f);
+	m_pObj->DontDestroyOnLoad();
+
+	//obj = new Object3D;
+	//obj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Miku1")));
+	//obj->GetTransform()->SetScale(0.2f, 0.2f, 0.2f);
 
 	obj = GetCameraManager()->Create("mainCamera");
 	obj->GetTransform()->SetPos(10.0f, 5.0f, -10.0f);

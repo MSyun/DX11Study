@@ -8,6 +8,7 @@
 #include	"../Object3D.h"
 #include	"../../../Singleton/Singleton.h"
 #include	<list>
+#include	<memory>
 
 
 namespace MSLib {
@@ -19,9 +20,7 @@ namespace MSLib {
 
 	class Object3DManager : public	Singleton<Object3DManager> {
 	protected:
-		list<_3DOBJECT*>	m_lstObject;
-
-		bool	m_bHelper;
+		list<shared_ptr<Object3D>>	m_lstObject;
 
 	public:
 		Object3DManager();
@@ -33,7 +32,6 @@ namespace MSLib {
 
 		void Add(Object3D* obj);
 		void AllClear();
-		void Delete(Object3D* obj);
 
 		void Update();
 		void LateUpdate();
@@ -42,7 +40,6 @@ namespace MSLib {
 		void LateDraw();
 
 		void CheckDestroy();
-		void SetHelper(bool helper);
 	};
 
 

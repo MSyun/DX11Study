@@ -26,7 +26,6 @@ namespace MSLib {
 	//			デストラクタ			//
 	//									*/
 	Object3D::~Object3D() {
-		GetObject3DManager()->Delete(this);
 		SAFE_DELETE(m_pTransform);
 	}
 

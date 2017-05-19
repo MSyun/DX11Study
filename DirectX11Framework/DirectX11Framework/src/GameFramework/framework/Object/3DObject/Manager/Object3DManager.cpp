@@ -10,30 +10,25 @@
 
 namespace MSLib {
 
-	Object3DManager::Object3DManager() :
-		m_bHelper(true)
-	{
+	Object3DManager::Object3DManager() {
 		m_lstObject.clear();
 		Debug::Log("Object3DManagerを作成");
 	}
 
 	Object3DManager::~Object3DManager() {
-		Debug::Log("Object3DManagerを削除");
-		if (!m_bHelper)	return;
-
-		while (m_lstObject.begin() != m_lstObject.end()) {
-			auto it = m_lstObject.begin();
-			delete[](*it)->pObject;
+		for(auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
+			it->reset();
 		}
 		m_lstObject.clear();
+		Debug::Log("Object3DManagerを削除");
 	}
 
 	Object3D* Object3DManager::Find(const string& name) {
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if (!(*it)->pObject->GetActive())	continue;
+			if (!(*it)->GetActive())	continue;
 
-			if ((*it)->pObject->GetName() == name) {
-				return (*it)->pObject;
+			if((*it)->GetName() == name) {
+				return (*it).get();
 			}
 		}
 
@@ -43,10 +38,10 @@ namespace MSLib {
 
 	Object3D* Object3DManager::FindWithTag(const byte tag) {
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if (!(*it)->pObject->GetActive())	continue;
+			if (!(*it)->GetActive())	continue;
 
-			if ((*it)->pObject->GetTag() == tag) {
-				return (*it)->pObject;
+			if((*it)->GetTag() == tag) {
+				return (*it).get();
 			}
 		}
 
@@ -60,104 +55,68 @@ namespace MSLib {
 			return;
 		}
 
-		_3DOBJECT* regist = new _3DOBJECT;
-		regist->pObject = obj;
-
-		m_lstObject.push_back(regist);
+		m_lstObject.push_back(shared_ptr<Object3D>(obj));
 	}
 
 	void Object3DManager::AllClear() {
-		list<_3DOBJECT*> lstBuff;
-		while (m_lstObject.begin() != m_lstObject.end()) {
-			auto it = m_lstObject.begin();
-			if ((*it)->pObject->GetDontDestroy()) {
-				lstBuff.push_back(*it);
-				m_lstObject.erase(it);
+		for(auto it = m_lstObject.begin(); it != m_lstObject.end();) {
+			if((*it)->GetDontDestroy()) {
+				++it;
 				continue;
 			}
-			delete[](*it)->pObject;
-		}
-		m_lstObject.clear();
-
-		for (auto it = lstBuff.begin(); it != lstBuff.end(); ++it) {
-			m_lstObject.push_back(*it);
-		}
-	}
-
-	void Object3DManager::Delete(Object3D* obj) {
-		if (!obj) {
-			Debug::LogError("オブジェクトの実態がありません");
-			return;
-		}
-		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if ((*it)->pObject != obj)	continue;
-
-			SAFE_DELETE(*it);
-
-			m_lstObject.erase(it);
-
-			return;
+			(*it).reset();
+			it = m_lstObject.erase(it);
 		}
 	}
 
 	void Object3DManager::Update() {
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if ((*it)->pObject->GetTransform()->CheckParent())
+			if((*it)->GetTransform()->CheckParent())
 				continue;
 
-			(*it)->pObject->UpdateAll();
+			(*it)->UpdateAll();
 		}
 	}
 
 	void Object3DManager::LateUpdate() {
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if ((*it)->pObject->GetTransform()->CheckParent())
+			if((*it)->GetTransform()->CheckParent())
 				continue;
 
-			(*it)->pObject->LateUpdateAll();
+			(*it)->LateUpdateAll();
 		}
 	}
 
 	void Object3DManager::Draw() {
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if ((*it)->pObject->GetTransform()->CheckParent())
+			if((*it)->GetTransform()->CheckParent())
 				continue;
 
-			(*it)->pObject->DrawAll();
+			(*it)->DrawAll();
 		}
 	}
 
 	void Object3DManager::LateDraw() {
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if ((*it)->pObject->GetTransform()->CheckParent())
+			if((*it)->GetTransform()->CheckParent())
 				continue;
 
-			(*it)->pObject->LateDrawAll();
+			(*it)->LateDrawAll();
 		}
 	}
 
 	void Object3DManager::CheckDestroy() {
 		list<_3DOBJECT*>	lstObj;
-		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
-			if ((*it)->pObject->GetDestroy()) {
-				(*it)->pObject->OnDestroy();
-				lstObj.push_back(*it);
+		for (auto it = m_lstObject.begin(); it != m_lstObject.end();) {
+			if((*it)->GetDestroy()) {
+				(*it)->OnDestroy();
+				(*it).reset();
+				it = m_lstObject.erase(it);
 				continue;
 			}
-		}
-		while (lstObj.begin() != lstObj.end()) {
-			auto it = lstObj.begin();
-			delete[](*it)->pObject;
-			lstObj.erase(it);
+			++it;
 		}
 	}
-
-	void Object3DManager::SetHelper(bool helper) {
-		string swit = (helper ? "ON" : "OFF");
-		Debug::Log("Object3DManagerの補助機能 ： " + swit);
-		m_bHelper = helper;
-	}
-
 
 	Object3DManager* GetObject3DManager() {
 		return Object3DManager::Instance();

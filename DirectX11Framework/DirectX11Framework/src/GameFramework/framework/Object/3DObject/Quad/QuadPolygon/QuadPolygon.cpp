@@ -67,59 +67,59 @@ namespace MSLib {
 
 
 	void QuadPolygon::Draw(Matrix* world) {
-		//auto context = Graphics::GetDevice();
+		auto context = Graphics::GetDevice();
 
-		//Shader* shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
-		//Camera* camera = GetCameraManager()->CurrentCamera();
-		//Vector3 pos = camera->GetTransform()->GetPos();
+		Shader* shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
+		Camera* camera = GetCameraManager()->CurrentCamera();
+		Vector3 pos = camera->GetTransform()->GetPos();
 
-		//UINT stride = sizeof(SimpleVertex);
-		//UINT offset = 0;
-		//Graphics::GetDevice()->IASetVertexBuffers(
-		//	0,
-		//	1,
-		//	&m_pVertexBuffer,
-		//	&stride,
-		//	&offset);
+		UINT stride = sizeof(SimpleVertex);
+		UINT offset = 0;
+		Graphics::GetDevice()->IASetVertexBuffers(
+			0,
+			1,
+			&m_pVertexBuffer,
+			&stride,
+			&offset);
 
-		//auto MeshBuff = shader->GetBuffMesh();
-		//MeshBuff->BeginPass();
-		//Matrix m = *world;
-		//MatrixTranspose(&m, &m);
-		//MeshBuff->World(m);
-		//// ワールド、カメラ、射影行列を渡す
-		//m = *world * camera->GetView() * camera->GetProj();
-		//MatrixTranspose(&m, &m);
-		//MeshBuff->WVP(m);
-		//MeshBuff->EndPass();
+		auto MeshBuff = shader->GetBuffMesh();
+		MeshBuff->BeginPass();
+		Matrix m = *world;
+		MatrixTranspose(&m, &m);
+		MeshBuff->World(m);
+		// ワールド、カメラ、射影行列を渡す
+		m = *world * camera->GetView() * camera->GetProj();
+		MatrixTranspose(&m, &m);
+		MeshBuff->WVP(m);
+		MeshBuff->EndPass();
 
-		//auto FrameBuff = shader->GetBuffFrame();
-		//FrameBuff->BeginPass();
-		//FrameBuff->EyePos(Vector4(pos.x, pos.y, pos.z, 0.0f));
-		//FrameBuff->EndPass();
+		auto FrameBuff = shader->GetBuffFrame();
+		FrameBuff->BeginPass();
+		FrameBuff->EyePos(Vector4(pos.x, pos.y, pos.z, 0.0f));
+		FrameBuff->EndPass();
 
-		//auto MatBuff = shader->GetBuffMat();
-		//MatBuff->BeginPass();
-		//MatBuff->Diffuse(m_Diffuse);
-		//MatBuff->Alpha(m_Alpha);
-		//MatBuff->Ambient(m_Ambient);
-		//MatBuff->Emissive(m_Emissive);
-		//MatBuff->Specular(m_Specular);
-		//MatBuff->Shininess(m_Shininess);
-		//MatBuff->EndPass();
+		auto MatBuff = shader->GetBuffMat();
+		MatBuff->BeginPass();
+		MatBuff->Diffuse(m_Diffuse);
+		MatBuff->Alpha(m_Alpha);
+		MatBuff->Ambient(m_Ambient);
+		MatBuff->Emissive(m_Emissive);
+		MatBuff->Specular(m_Specular);
+		MatBuff->Shininess(m_Shininess);
+		MatBuff->EndPass();
 
-		//// プリミティブ・トポロジーをセット
-		//context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+		// プリミティブ・トポロジーをセット
+		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-		//// テクスチャ―をシェーダに渡す
-		//if (m_pTexture) {
-		//	auto samp = m_pTexture->GetSample();
-		//	auto tex = m_pTexture->GetTexture();
-		//	context->PSSetSamplers(0, 1, &samp);
-		//	context->PSSetShaderResources(0, 1, &tex);
-		//}
+		// テクスチャ―をシェーダに渡す
+		if (m_pTexture) {
+			auto samp = m_pTexture->GetSample();
+			auto tex = m_pTexture->GetTexture();
+			context->PSSetSamplers(0, 1, &samp);
+			context->PSSetShaderResources(0, 1, &tex);
+		}
 
-		//context->Draw(4, 0);
+		context->Draw(4, 0);
 	}
 
 

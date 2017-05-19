@@ -39,7 +39,7 @@ namespace MSLib {
 	//									*/
 	template<class T>
 	T* ResourceManager<T>::Create(const std::string& name) {
-//	std::shared_ptr<T> ResourceManager<T>::Create(const std::string& name) {
+//	std::shared_ptr<T>* ResourceManager<T>::Create(const std::string& name) {
 			if (name.empty()) {
 			Debug::LogError("ƒtƒ@ƒCƒ‹–¼‚ª‚ ‚è‚Ü‚¹‚ñ");
 			return nullptr;
@@ -102,7 +102,7 @@ namespace MSLib {
 	//									*/
 	template<class T>
 	T* ResourceManager<T>::Get(const std::string& name) {
-//	std::shared_ptr<T> ResourceManager<T>::Get(const std::string& name) {
+//	std::shared_ptr<T>* ResourceManager<T>::Get(const std::string& name) {
 		auto it = m_MapResources.find(name);
 
 		if (it == m_MapResources.end()) {

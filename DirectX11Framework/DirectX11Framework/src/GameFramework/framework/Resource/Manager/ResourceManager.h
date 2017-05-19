@@ -30,7 +30,7 @@ namespace MSLib {
 		// return	: 生成したインスタンス
 		*/
 		T* Create(const std::string& name);
-//		std::shared_ptr<T> Create(const std::string& name);
+//		std::shared_ptr<T>* Create(const std::string& name);
 
 		/* 削除
 		// name		: 削除したいファイル名
@@ -43,7 +43,7 @@ namespace MSLib {
 		// return	: 生成したインスタンス
 		*/
 		T* Get(const std::string& name);
-//		std::shared_ptr<T> Get(const std::string& name);
+//		std::shared_ptr<T>* Get(const std::string& name);
 
 		/* 補助機能設定
 		// helper	: 補助機能 ON : OFF
