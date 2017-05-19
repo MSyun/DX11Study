@@ -90,19 +90,15 @@ namespace MSLib {
 #pragma region Mesh
 	void Object3D::CreateMesh(string name) {
 		DeleteMesh();
-		m_pMesh = new Mesh;
-//		shared_ptr<Mesh> ptr(new Mesh);
+		shared_ptr<Mesh> ptr(new Mesh);
 
-		m_pMesh->Create(name);
-//		ptr->Create(name);
-//		m_pMesh = ptr;
+		ptr->Create(name);
+		m_pMesh = ptr;
 	}
 	void Object3D::DeleteMesh() {
-		SAFE_DELETE(m_pMesh);
-//		m_pMesh.reset();
+		m_pMesh.reset();
 	}
-	void Object3D::SetModel(Mesh* mesh) {
-//	void Object3D::SetModel(shared_ptr<Mesh> mesh) {
+	void Object3D::SetModel(shared_ptr<Mesh> mesh) {
 		m_pMesh = mesh;
 	}
 #pragma endregion

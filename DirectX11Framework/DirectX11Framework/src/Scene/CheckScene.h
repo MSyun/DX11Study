@@ -16,8 +16,8 @@
 
 class CheckScene	:	public	MSLib::SceneBase {
 private:
-	MSLib::Shader*	m_pShader;
-//	shared_ptr<MSLib::Shader> m_pShader;
+//	MSLib::Shader*	m_pShader;
+	shared_ptr<MSLib::Shader> m_pShader;
 	MSLib::Object3D* m_pObj;
 
 public:

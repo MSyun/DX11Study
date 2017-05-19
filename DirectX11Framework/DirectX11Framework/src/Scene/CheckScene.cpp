@@ -32,9 +32,9 @@ bool CheckScene::Init() {
 	m_pObj->GetTransform()->SetScale(0.3f, 0.3f, 0.3f);
 	m_pObj->DontDestroyOnLoad();
 
-	//obj = new Object3D;
-	//obj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Miku1")));
-	//obj->GetTransform()->SetScale(0.2f, 0.2f, 0.2f);
+	obj = new Object3D;
+	obj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Watch")));
+	obj->GetTransform()->SetScale(0.2f, 0.2f, 0.2f);
 
 	obj = GetCameraManager()->Create("mainCamera");
 	obj->GetTransform()->SetPos(10.0f, 5.0f, -10.0f);
@@ -68,6 +68,9 @@ void CheckScene::Update() {
 	}
 	if (Input::GetKeyPress(DIK_LEFT)) {
 		m_pObj->GetTransform()->Rotate(0.0f, -angle, 0.0f);
+	}
+	if (Input::GetKeyTrigger(DIK_RETURN)) {
+		m_pObj->Destroy();
 	}
 
 	GetObject3DManager()->Update();

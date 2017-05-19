@@ -147,8 +147,8 @@ namespace MSLib {
 	void Mesh::Draw(Matrix* mat, _eAlphaCheck type) {
 		auto context = Graphics::GetDevice();
 
-		Shader* shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
-//		shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
+//		Shader* shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
+		shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
 
 		Camera* camera = GetCameraManager()->CurrentCamera();
 		Vector3 pos = camera->GetTransform()->GetPos();
@@ -201,8 +201,8 @@ namespace MSLib {
 
 			string texName(m_pMeshData->material[i].texfile_name);
 			if (texName != "") {
-				Texture* texture = GetResourceManager<Texture>()->Get(texName);
-//				shared_ptr<Texture> texture = GetResourceManager<Texture>()->Get(texName);
+//				Texture* texture = GetResourceManager<Texture>()->Get(texName);
+				shared_ptr<Texture> texture = GetResourceManager<Texture>()->Get(texName);
 				auto samp = texture->GetSample();
 				auto tex = texture->GetTexture();
 				context->PSSetSamplers(0, 1, &samp);
