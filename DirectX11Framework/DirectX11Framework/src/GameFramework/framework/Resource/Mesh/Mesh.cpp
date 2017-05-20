@@ -65,7 +65,7 @@ namespace MSLib {
 	//			テクスチャ読み込み		//
 	//									*/
 	void Mesh::LoadTexture(const std::string& fileName) {
-		string dir = Path::GetDirectoryName(fileName);
+		std::string dir = Path::GetDirectoryName(fileName);
 
 		TCHAR szCurDir[_MAX_PATH];
 		GetCurrentDirectory(_MAX_PATH, szCurDir);
@@ -147,8 +147,7 @@ namespace MSLib {
 	void Mesh::Draw(Matrix* mat, _eAlphaCheck type) {
 		auto context = Graphics::GetDevice();
 
-//		Shader* shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
-		shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
+		std::shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
 
 		Camera* camera = GetCameraManager()->CurrentCamera();
 		Vector3 pos = camera->GetTransform()->GetPos();
@@ -199,10 +198,9 @@ namespace MSLib {
 			MatBuff->Shininess(m_pMeshData->material[i].specularity);
 			MatBuff->EndPass();
 
-			string texName(m_pMeshData->material[i].texfile_name);
+			std::string texName(m_pMeshData->material[i].texfile_name);
 			if (texName != "") {
-//				Texture* texture = GetResourceManager<Texture>()->Get(texName);
-				shared_ptr<Texture> texture = GetResourceManager<Texture>()->Get(texName);
+				std::shared_ptr<Texture> texture = GetResourceManager<Texture>()->Get(texName);
 				auto samp = texture->GetSample();
 				auto tex = texture->GetTexture();
 				context->PSSetSamplers(0, 1, &samp);

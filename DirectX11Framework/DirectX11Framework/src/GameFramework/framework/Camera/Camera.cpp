@@ -6,6 +6,7 @@
 #include	"Camera.h"
 #include	"../Screen/Screen.h"
 
+#include	"Manager/CameraManager.h"
 
 namespace MSLib {
 
@@ -16,12 +17,14 @@ namespace MSLib {
 		m_fFar(100.0f),
 		m_fLookLength(5.0f)
 	{
+		GetCameraManager()->Add(this);
+
 		GetTransform()->SetPos(0.0f, 0.0f, -5.0f);
 		SetName("Camera");
 	}
 
 	Camera::~Camera() {
-
+		GetCameraManager()->Delete(this);
 	}
 
 
@@ -34,7 +37,6 @@ namespace MSLib {
 			&transform->GetPos(),
 			&(transform->GetPos() + transform->GetForward() * m_fLookLength),
 			&transform->GetUp());
-		//	GetGraphics()->SetView(m_matView);
 
 			// プロジェクションマトリクスの設定
 		MatrixPerspectiveFovLH(
@@ -43,7 +45,6 @@ namespace MSLib {
 			m_fAspect,
 			m_fNear,
 			m_fFar);
-		//	GetGraphics()->SetProjection(m_matProj);
 	}
 
 	void Camera::SetLookLength(float len) {

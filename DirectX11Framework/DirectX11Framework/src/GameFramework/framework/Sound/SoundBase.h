@@ -17,7 +17,7 @@
 namespace MSLib {
 	namespace Sound {
 
-		class	SoundBase : public	ISaveObjBase {
+		class	SoundBase : public	Save::ISaveObjBase {
 		protected:
 			// サウンド構造体
 			struct _tSound {
@@ -33,7 +33,7 @@ namespace MSLib {
 			float	m_fVolum;
 
 			// セーブオブジェクト
-			static DATARECORD m_DataRecord[];
+			static Save::DATARECORD m_DataRecord[];
 
 		public:
 			SoundBase();
@@ -52,7 +52,7 @@ namespace MSLib {
 			float GetVolum();								// ボリューム取得
 
 			// セーブデータ
-			virtual DATARECORD* GetDataRecord() { return m_DataRecord; }
+			virtual Save::DATARECORD* GetDataRecord() { return m_DataRecord; }
 			virtual int GetClassID();
 
 		protected:

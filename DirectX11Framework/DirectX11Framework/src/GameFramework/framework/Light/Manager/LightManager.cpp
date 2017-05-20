@@ -9,73 +9,55 @@
 
 namespace MSLib {
 
-	LightManager::LightManager() :
-		m_bHelper(true)
-	{
+	LightManager::LightManager() {
 		Debug::Log("LightManager を作成");
-		m_MapLight.clear();
-		SetHelper(m_bHelper);
+		m_aLight.resize(10);
+		m_aLight.clear();
 	}
 
 	LightManager::~LightManager() {
 		Debug::Log("LightManager を削除");
-		if (!m_bHelper)	return;
+		m_aLight.clear();
+	}
 
-		m_MapLight.clear();
+	void LightManager::Add(Light* light) {
+		if (!light) {
+			Debug::LogError("ライトの実態がありません");
+			return;
+		}
+
+		m_aLight.push_back(light);
+	}
+
+	bool LightManager::Delete(Light* light) {
+		for (auto it = m_aLight.begin(); it != m_aLight.end(); ++it) {
+			if ((*it) == light) {
+				m_aLight.erase(it);
+				return true;
+			}
+		}
+		Debug::LogError("LightManager : 削除したいオブジェクトが見つかりません");
+		return false;
+	}
+
+	Light* LightManager::Get(const std::string& Name) {
+		if (Name.empty()) {
+			Debug::LogError("ライトの名前がありません");
+			return nullptr;
+		}
+
+		for (auto it = m_aLight.begin(); it != m_aLight.end(); ++it) {
+			if ((*it)->GetName() == Name)
+				return (*it);
+		}
+
+		return nullptr;
 	}
 
 	void LightManager::Set() {
-		auto it = m_MapLight.begin();
-
-		while (it != m_MapLight.end()) {
-			it->second->Set();
-			++it;
+		for (auto it = m_aLight.begin(); it != m_aLight.end(); ++it) {
+			(*it)->Set();
 		}
-	}
-
-	Light* LightManager::Create(const string& Name) {
-		if (m_MapLight.end() != m_MapLight.find(Name)) {
-			Debug::Log("カメラ名 : " + Name + " はすでに生成されています");
-			return Get(Name);
-		}
-
-		Light* light = new Light;
-		light->SetName(Name);
-		m_MapLight.insert(pair<string, Light*>(Name, light));
-
-		return light;
-	}
-
-	bool LightManager::Delete(const string& Name) {
-		auto it = m_MapLight.find(Name);
-
-		if (it == m_MapLight.end()) {
-			Debug::Log("Light : " + Name + " は登録されていないため削除できません");
-			return false;
-		}
-
-		SAFE_DELETE(it->second);
-
-		m_MapLight.erase(Name);
-
-		return true;
-	}
-
-	Light* LightManager::Get(const string& Name) {
-		auto it = m_MapLight.find(Name);
-
-		if (it == m_MapLight.end()) {
-			return Create(Name);
-		}
-
-		return it->second;
-	}
-
-	void LightManager::SetHelper(bool helper) {
-		string swit = (helper ? "ON" : "OFF");
-		Debug::Log("LightManagerの補助機能 : " + swit);
-
-		m_bHelper = helper;
 	}
 
 

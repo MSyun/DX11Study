@@ -8,19 +8,21 @@
 
 
 namespace MSLib {
+	namespace Save {
 
-	ISaveObjBase* SaveFactory::Create(int classID) {
-		ISaveObjBase* Obj = nullptr;
+		ISaveObjBase* SaveFactory::Create(int classID) {
+			ISaveObjBase* Obj = nullptr;
 
-		switch (classID) {
-		case 0:
-			break;
+			switch (classID) {
+			case 0:
+				break;
 
-		default:
-			break;
-		};
+			default:
+				break;
+			};
 
-		return Obj;
+			return Obj;
+		}
+
 	}
-
 }

@@ -6,6 +6,7 @@
 #include	"Light.h"
 #include	"../Screen/Screen.h"
 
+#include	"Manager/LightManager.h"
 
 namespace MSLib {
 
@@ -19,6 +20,8 @@ namespace MSLib {
 		m_Ambient(1.0f, 1.0f, 1.0f, 1.0f),
 		m_Specular(1.0f, 1.0f, 1.0f, 1.0f)
 	{
+		GetLightManager()->Add(this);
+
 		MatrixIdentity(&m_mtxView);
 		MatrixIdentity(&m_mtxProj);
 
@@ -29,7 +32,7 @@ namespace MSLib {
 	}
 
 	Light::~Light() {
-
+		GetLightManager()->Delete(this);
 	}
 
 

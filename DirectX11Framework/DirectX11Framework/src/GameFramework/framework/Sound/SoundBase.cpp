@@ -13,7 +13,7 @@
 namespace MSLib {
 	namespace Sound {
 
-		DATARECORD SoundBase::m_DataRecord[] = {
+		Save::DATARECORD SoundBase::m_DataRecord[] = {
 			DATA_LOCAL(SoundBase, m_fVolum),
 			DATA_END,
 		};

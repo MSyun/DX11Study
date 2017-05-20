@@ -23,7 +23,7 @@ namespace MSLib {
 		Debug::Log("Object3DManager‚ðíœ");
 	}
 
-	Object3D* Object3DManager::Find(const string& name) {
+	Object3D* Object3DManager::Find(const std::string& name) {
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end(); ++it) {
 			if (!(*it)->GetActive())	continue;
 
@@ -55,7 +55,7 @@ namespace MSLib {
 			return;
 		}
 
-		m_lstObject.push_back(shared_ptr<Object3D>(obj));
+		m_lstObject.push_back(std::shared_ptr<Object3D>(obj));
 	}
 
 	void Object3DManager::AllClear() {
@@ -106,7 +106,7 @@ namespace MSLib {
 	}
 
 	void Object3DManager::CheckDestroy() {
-		list<_3DOBJECT*>	lstObj;
+		std::list<_3DOBJECT*>	lstObj;
 		for (auto it = m_lstObject.begin(); it != m_lstObject.end();) {
 			if((*it)->GetDestroy()) {
 				(*it)->OnDestroy();

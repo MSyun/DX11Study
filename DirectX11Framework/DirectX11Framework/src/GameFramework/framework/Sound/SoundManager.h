@@ -31,7 +31,7 @@ namespace MSLib {
 		} _SOUND_TYPE;
 
 
-		class	SoundManager : public	Singleton<SoundManager>, public	ISaveObjBase {
+		class	SoundManager : public	Singleton<SoundManager>, public	Save::ISaveObjBase {
 		public:
 			SoundManager();
 			virtual ~SoundManager();
@@ -55,7 +55,7 @@ namespace MSLib {
 			void Save();
 
 			// セーブデータ
-			virtual DATARECORD* GetDataRecord() { return m_DataRecord; }
+			virtual Save::DATARECORD* GetDataRecord() { return m_DataRecord; }
 			virtual int GetClassID();
 
 		protected:
@@ -68,7 +68,7 @@ namespace MSLib {
 			SoundBase*	m_pVoice;
 
 			// セーブオブジェクト
-			static DATARECORD m_DataRecord[];
+			static Save::DATARECORD m_DataRecord[];
 
 			// サウンドタイプ
 			SoundBase* CheckSound(_SOUND_TYPE type);

@@ -42,7 +42,7 @@ namespace MSLib {
 			Input();
 		Update();
 
-		vector<Transform*>* childs = m_pTransform->GetChilds();
+		std::vector<Transform*>* childs = m_pTransform->GetChilds();
 		for (auto it = childs->begin(); it != childs->end(); ++it) {
 			(*it)->GetGameObject()->UpdateAll();
 		}
@@ -53,7 +53,7 @@ namespace MSLib {
 
 		LateUpdate();
 
-		vector<Transform*>* childs = m_pTransform->GetChilds();
+		std::vector<Transform*>* childs = m_pTransform->GetChilds();
 		for (auto it = childs->begin(); it != childs->end(); ++it) {
 			(*it)->GetGameObject()->LateUpdateAll();
 		}
@@ -69,7 +69,7 @@ namespace MSLib {
 		Draw();
 		if (m_pMesh)		m_pMesh->Draw(&m_pTransform->GetWorld(), Mesh::CHECK_NOALPHA);
 
-		vector<Transform*>* childs = m_pTransform->GetChilds();
+		std::vector<Transform*>* childs = m_pTransform->GetChilds();
 		for (auto it = childs->begin(); it != childs->end(); ++it) {
 			(*it)->GetGameObject()->DrawAll();
 		}
@@ -80,7 +80,7 @@ namespace MSLib {
 		LateDraw();
 		if (m_pMesh)		m_pMesh->Draw(&m_pTransform->GetWorld(), Mesh::CHECK_ALPHA);
 
-		vector<Transform*>* childs = m_pTransform->GetChilds();
+		std::vector<Transform*>* childs = m_pTransform->GetChilds();
 		for (auto it = childs->begin(); it != childs->end(); ++it) {
 			(*it)->GetGameObject()->LateDrawAll();
 		}
@@ -88,9 +88,9 @@ namespace MSLib {
 
 
 #pragma region Mesh
-	void Object3D::CreateMesh(string name) {
+	void Object3D::CreateMesh(std::string name) {
 		DeleteMesh();
-		shared_ptr<Mesh> ptr(new Mesh);
+		std::shared_ptr<Mesh> ptr(new Mesh);
 
 		ptr->Create(name);
 		m_pMesh = ptr;
@@ -98,7 +98,7 @@ namespace MSLib {
 	void Object3D::DeleteMesh() {
 		m_pMesh.reset();
 	}
-	void Object3D::SetModel(shared_ptr<Mesh> mesh) {
+	void Object3D::SetModel(std::shared_ptr<Mesh> mesh) {
 		m_pMesh = mesh;
 	}
 #pragma endregion

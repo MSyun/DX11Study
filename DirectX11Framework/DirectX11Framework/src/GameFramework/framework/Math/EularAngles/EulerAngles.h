@@ -10,6 +10,7 @@ namespace MSLib {
 
 	class Matrix4x3;
 	struct Quaternion;
+	class RotationMatrix;
 
 
 	class EulerAngles {
@@ -44,7 +45,7 @@ namespace MSLib {
 		void fromWorldToObjectMatrix(const Matrix4x3& m);
 
 		// 回転行列をオイラー角形式に変換する
-	//	void fromRotationMatrix(const RotationMatrix& m);
+		void fromRotationMatrix(const RotationMatrix& m);
 	};
 
 	extern const EulerAngles kEularAnglesIdentity;

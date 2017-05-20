@@ -20,14 +20,14 @@ namespace MSLib {
 
 	class Object3DManager : public	Singleton<Object3DManager> {
 	protected:
-		list<shared_ptr<Object3D>>	m_lstObject;
+		std::list<std::shared_ptr<Object3D>>	m_lstObject;
 
 	public:
 		Object3DManager();
 		virtual ~Object3DManager();
 
 		/* åüçı */
-		Object3D* Find(const string& name);
+		Object3D* Find(const std::string& name);
 		Object3D* FindWithTag(const byte tag);
 
 		void Add(Object3D* obj);

@@ -8,7 +8,6 @@
 #include	"../CPPEvent/CPPEvent.h"
 #include	"../Utility/System/SystemUtility.h"
 #include	<string>
-using namespace std;
 
 
 namespace MSLib {
@@ -17,13 +16,13 @@ namespace MSLib {
 	private:
 #pragma region variable
 
-		string	m_Name;		// –¼‘O
-		byte	m_uTag;
-		bool	m_bOperate;
-		bool	m_bIsActive;
-		bool	m_bDontDestroy;
-		bool	m_bDestroy;
-		bool	m_bInit;
+		std::string	m_Name;		// –¼‘O
+		byte		m_uTag;
+		bool		m_bOperate;
+		bool		m_bIsActive;
+		bool		m_bDontDestroy;
+		bool		m_bDestroy;
+		bool		m_bInit;
 
 		CPPEvent<>*	m_onDestroyEvent;
 
@@ -47,8 +46,8 @@ namespace MSLib {
 #pragma endregion
 
 #pragma region Name
-		void SetName(const string name);
-		string GetName();
+		void SetName(const std::string name);
+		std::string GetName();
 #pragma endregion
 
 #pragma region Tag

@@ -478,7 +478,7 @@ namespace MSLib {
 	/*									//
 	//				q‚ÌŒŸõ			//
 	//									*/
-	Transform* Transform::Find(const string name) {
+	Transform* Transform::Find(const std::string name) {
 		for (auto it = m_Childs.begin(); it != m_Childs.end(); ++it) {
 			if ((*it)->GetGameObject()->GetName() == name) {
 				return (*it);

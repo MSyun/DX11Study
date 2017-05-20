@@ -63,11 +63,11 @@ namespace MSLib {
 
 
 #pragma region Name
-	void Object::SetName(const string name) {
+	void Object::SetName(const std::string name) {
 		m_Name = name;
 	}
 
-	string Object::GetName() {
+	std::string Object::GetName() {
 		return m_Name;
 	}
 #pragma endregion

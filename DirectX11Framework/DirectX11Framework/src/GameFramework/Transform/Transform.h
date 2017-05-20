@@ -7,7 +7,6 @@
 
 #include	"../framework/Convert/Convert.h"
 #include	<vector>
-using namespace std;
 
 
 namespace MSLib {
@@ -24,7 +23,7 @@ namespace MSLib {
 		Matrix	m_matLocal;
 
 		Transform* m_pParent;			// 親
-		vector<Transform*> m_Childs;	// 子
+		std::vector<Transform*> m_Childs;	// 子
 
 #pragma endregion
 
@@ -113,7 +112,7 @@ namespace MSLib {
 		// 更新
 		void UpdateChilds(const Matrix& world);
 		// 子の取得
-		vector<Transform*>* GetChilds() {
+		std::vector<Transform*>* GetChilds() {
 			return &m_Childs;
 		}
 #pragma endregion
@@ -122,7 +121,7 @@ namespace MSLib {
 		void Destroy();
 
 		// 検索
-		Transform* Find(const string name);
+		Transform* Find(const std::string name);
 
 #pragma endregion
 

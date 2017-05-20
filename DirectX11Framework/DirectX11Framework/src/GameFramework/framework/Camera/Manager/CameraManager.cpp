@@ -9,91 +9,71 @@
 
 namespace MSLib {
 
-	/*									//
-	//			コンストラクタ			//
-	//									*/
 	CameraManager::CameraManager() :
-		m_bHelper(true),
 		m_CurCameraName("")
 	{
 		Debug::Log("CameraManager を作成");
-		m_MapCamera.clear();
-		SetHelper(m_bHelper);
+		m_aCamera.resize(3);
+		m_aCamera.clear();
 	}
 
 
-	/*									//
-	//			デストラクタ			//
-	//									*/
 	CameraManager::~CameraManager() {
 		Debug::Log("CameraManager を削除");
-		if (!m_bHelper)		return;
-
-		// 要素解放
-		m_MapCamera.clear();
+		m_aCamera.clear();
 	}
 
 
 	/*									//
-	//			カメラを作成			//
+	//				追加				//
 	//									*/
-	Camera* CameraManager::Create(const string& Name) {
-		if (m_MapCamera.end() != m_MapCamera.find(Name)) {
-			Debug::Log("カメラ名 : " + Name + " はすでに生成されています");
-			return Get(Name);
+	void CameraManager::Add(Camera* camera) {
+		if (!camera) {
+			Debug::LogError("カメラの実態がありません");
+			return;
 		}
 
-		Camera* camera = new Camera;
-		camera->SetName(Name);
-		m_MapCamera.insert(pair<string, Camera*>(Name, camera));
-
-		return camera;
+		m_aCamera.push_back(camera);
 	}
 
 
 	/*									//
 	//			カメラの削除			//
 	//									*/
-	bool CameraManager::Delete(const string& Name) {
-		//----- 初期化
-		auto it = m_MapCamera.find(Name);
-
-		if (it == m_MapCamera.end()) {
-			Debug::Log("カメラ名 : " + Name + " は登録されていないため削除できません");
-			return false;
+	bool CameraManager::Delete(Camera* camera) {
+		for (auto it = m_aCamera.begin(); it != m_aCamera.end(); ++it) {
+			if ((*it) == camera) {
+				m_aCamera.erase(it);
+				return true;
+			}
 		}
-
-		SAFE_DELETE(it->second);
-
-		m_MapCamera.erase(Name);
-
-		return true;
+		Debug::LogError("CameraManager : 削除したいオブジェクトが見つかりません");
+		return false;
 	}
 
 
 	/*									//
 	//			カメラの取得			//
 	//									*/
-	Camera* CameraManager::Get(const string& Name) {
-		auto it = m_MapCamera.find(Name);
-
-		if (it == m_MapCamera.end()) {
-			return Create(Name);
+	Camera* CameraManager::Get(const std::string& Name) {
+		if (Name.empty()) {
+			Debug::LogError("カメラの名前がありません");
+			return nullptr;
 		}
 
-		return it->second;
+		for (auto it = m_aCamera.begin(); it != m_aCamera.end(); ++it) {
+			if ((*it)->GetName() == Name)
+				return (*it);
+		}
+
+		return nullptr;
 	}
 
 
 	/*									//
 	//			カメラの設定			//
 	//									*/
-	bool CameraManager::Set(const string& Name) {
-		if (Name.empty()) {
-			Debug::LogError("カメラの名前がありません");
-			return false;
-		}
-
+	bool CameraManager::Set(const std::string& Name) {
 		Camera* camera = Get(Name);
 		if (!camera) {
 			Debug::LogError("カメラ名 : " + Name + " は存在しませんでした");
@@ -111,14 +91,6 @@ namespace MSLib {
 	//									*/
 	Camera* CameraManager::CurrentCamera() {
 		return Get(m_CurCameraName);
-	}
-
-	/* 管理オブジェクトを自動で削除するか設定 */
-	void CameraManager::SetHelper(bool helper) {
-		string swit = (helper ? "ON" : "OFF");
-		Debug::Log("CameraManagerの補助機能 ： " + swit);
-
-		m_bHelper = helper;
 	}
 
 

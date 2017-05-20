@@ -19,7 +19,7 @@ namespace MSLib {
 #pragma region variable
 
 		Transform*	m_pTransform;
-		shared_ptr<Mesh>	m_pMesh;
+		std::shared_ptr<Mesh>	m_pMesh;
 
 #pragma endregion
 
@@ -33,22 +33,19 @@ namespace MSLib {
 		virtual void LateDrawAll() final;
 
 		Transform* GetTransform() { return m_pTransform; }
-		shared_ptr<Mesh> GetMesh() { return m_pMesh; }
+		std::shared_ptr<Mesh> GetMesh() { return m_pMesh; }
 
 		virtual void OnCollisionTrigger(Object3D* obj) {}
 		virtual void OnCollisionStay(Object3D* obj) {}
 		virtual void OnCollisionRelease(Object3D* obj) {}
 
 #pragma region Mesh
-		void CreateMesh(string name);
+		void CreateMesh(std::string name);
 		void DeleteMesh();
-		void SetModel(shared_ptr<Mesh> mesh);
+		void SetModel(std::shared_ptr<Mesh> mesh);
 #pragma endregion
 
 		virtual void Destroy() override;
-
-	private:
-
 	};
 
 };

@@ -69,7 +69,7 @@ namespace MSLib {
 	void QuadPolygon::Draw(Matrix* world) {
 		auto context = Graphics::GetDevice();
 
-		shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
+		std::shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
 		Camera* camera = GetCameraManager()->CurrentCamera();
 		Vector3 pos = camera->GetTransform()->GetPos();
 

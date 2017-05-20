@@ -27,7 +27,7 @@ bool CheckScene::Init() {
 	Object3D* obj;
 
 	m_pObj = new Object3D;
-	m_pObj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Watch")));
+	m_pObj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Miku2")));
 	m_pObj->GetTransform()->Translate(-3.0f, 0.0f, 0.0f);
 	m_pObj->GetTransform()->SetScale(0.3f, 0.3f, 0.3f);
 	m_pObj->DontDestroyOnLoad();
@@ -36,14 +36,16 @@ bool CheckScene::Init() {
 	obj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Watch")));
 	obj->GetTransform()->SetScale(0.2f, 0.2f, 0.2f);
 
-	obj = GetCameraManager()->Create("mainCamera");
+	obj = new Camera;
+	obj->SetName("mainCamera");
 	obj->GetTransform()->SetPos(10.0f, 5.0f, -10.0f);
 	obj->GetTransform()->LookAt(m_pObj->GetTransform());
 
-	Light* light = GetLightManager()->Create("Direction");
-	light->GetTransform()->SetPos(10.0f, 5.0f, -10.0f);
-	light->GetTransform()->Rotate(-25.0f, 0.0f, 0.0f);
-	light->GetTransform()->LookAt(m_pObj->GetTransform());
+	obj = new Light;
+	obj->SetName("Direction");
+	obj->GetTransform()->SetPos(10.0f, 5.0f, -10.0f);
+	obj->GetTransform()->Rotate(-25.0f, 0.0f, 0.0f);
+	obj->GetTransform()->LookAt(m_pObj->GetTransform());
 
 	m_pShader = GetResourceManager<Shader>()->Create(Archives::Shader("Default/Phong"));
 

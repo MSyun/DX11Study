@@ -8,28 +8,30 @@
 
 
 namespace MSLib {
+	namespace Save {
 
-	/*									//
-	//				セーブ				//
-	//									*/
-	int ISaveObjBase::Save(SaveManagerBase* mgr) {
-		return mgr->Write(GetDataRecord(), this);	// 書き込み
+		/*									//
+		//				セーブ				//
+		//									*/
+		int ISaveObjBase::Save(SaveManagerBase* mgr) {
+			return mgr->Write(GetDataRecord(), this);	// 書き込み
+		}
+
+
+		/*									//
+		//				ロード				//
+		//									*/
+		int ISaveObjBase::Load(SaveManagerBase* mgr) {
+			return mgr->Read(GetDataRecord(), this);	// 読み込み
+		}
+
+
+		/*									//
+		//			ポインタ接続			//
+		//									*/
+		int ISaveObjBase::ConnectPtr(SaveManagerBase* mgr) {
+			return mgr->ConnectPtr(GetDataRecord(), this);
+		}
+
 	}
-
-
-	/*									//
-	//				ロード				//
-	//									*/
-	int ISaveObjBase::Load(SaveManagerBase* mgr) {
-		return mgr->Read(GetDataRecord(), this);	// 読み込み
-	}
-
-
-	/*									//
-	//			ポインタ接続			//
-	//									*/
-	int ISaveObjBase::ConnectPtr(SaveManagerBase* mgr) {
-		return mgr->ConnectPtr(GetDataRecord(), this);
-	}
-
 }

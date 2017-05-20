@@ -15,7 +15,7 @@
 namespace MSLib {
 	namespace Sound {
 
-		DATARECORD SoundManager::m_DataRecord[] = {
+		Save::DATARECORD SoundManager::m_DataRecord[] = {
 			DATA_PTR(SoundManager, m_pBGM),
 			DATA_PTR(SoundManager, m_pSE),
 			DATA_PTR(SoundManager, m_pVoice),
@@ -84,8 +84,8 @@ namespace MSLib {
 				return E_FAIL;
 			}
 
-			SaveManagerBase mgr;
-			if (mgr.Load(SaveName) == NO_SAVEFILE) {
+			Save::SaveManagerBase mgr;
+			if (mgr.Load(SaveName) == Save::NO_SAVEFILE) {
 				// サウンドの作成
 				m_pBGM = new SoundBase;
 				m_pSE = new SoundBase;
@@ -239,7 +239,7 @@ namespace MSLib {
 		//				セーブ				//
 		//									*/
 		void SoundManager::Save() {
-			SaveManagerBase mgr;
+			Save::SaveManagerBase mgr;
 			mgr.AddSaveData(this->m_pBGM);
 			mgr.AddSaveData(this->m_pSE);
 			mgr.AddSaveData(this->m_pVoice);

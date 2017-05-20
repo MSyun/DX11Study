@@ -15,7 +15,7 @@ namespace MSLib {
 
 	template<class T>
 	ResourceManager<T>::~ResourceManager() {
-		Debug::Log("ResourceManager<" + string(typeid(T).name()) + "> ‚ğíœ");
+		Debug::Log("ResourceManager<" + std::string(typeid(T).name()) + "> ‚ğíœ");
 
 		auto it = m_MapResources.begin();
 
@@ -45,14 +45,14 @@ namespace MSLib {
 			return it->second;
 		}
 
-		shared_ptr<T> ptr(new T);
+		std::shared_ptr<T> ptr(new T);
 		if(!ptr->Create(name)) {
 			Debug::LogError("ƒŠƒ\[ƒX : " + name + " ‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½");
 			ptr.reset();
 		}
 
 		// “o˜^
-		Debug::Log(string(typeid(T).name()) + " : " + name + " ‚ğì¬");
+		Debug::Log(std::string(typeid(T).name()) + " : " + name + " ‚ğì¬");
 		m_MapResources.insert(std::pair<std::string, std::shared_ptr<T>>(name, ptr));
 
 		return ptr;
