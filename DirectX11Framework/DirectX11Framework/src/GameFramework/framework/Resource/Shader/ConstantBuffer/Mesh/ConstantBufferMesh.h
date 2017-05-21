@@ -10,29 +10,27 @@
 
 namespace MSLib {
 	namespace ShaderCollection {
-		namespace Buffer {
 
-			struct MESH_CONSTANT_BUFFER {
-				Matrix	World;
-				Matrix	WVP;
-			};
+		struct MESH_CONSTANT_BUFFER {
+			Matrix	World;
+			Matrix	WVP;
+		};
 
-			class ConstantBufferMesh : public	ConstantBuffer {
-			private:
-				MESH_CONSTANT_BUFFER m_mesh;
+		class ConstantBufferMesh : public	ConstantBuffer {
+		private:
+			MESH_CONSTANT_BUFFER m_mesh;
 
-			public:
-				ConstantBufferMesh();
-				virtual ~ConstantBufferMesh();
+		public:
+			ConstantBufferMesh(int resourceNum);
+			virtual ~ConstantBufferMesh();
 
-				void EndPass() override;
+			void Set() override;
 
-				void World(const Matrix& world);
-				void WVP(const Matrix& wvp);
+			void World(const Matrix& world);
+			void WVP(const Matrix& wvp);
 
-				virtual bool Create() override;
-			};
+			virtual bool Create() override;
+		};
 
-		}
 	}
 }

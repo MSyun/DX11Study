@@ -39,10 +39,10 @@ namespace MSLib {
 			"PS",
 			"ps_5_0");
 
-		m_pFrameBuff = new ShaderCollection::Buffer::ConstantBufferFrame;
-		m_pMatBuff = new ShaderCollection::Buffer::ConstantBufferMaterial;
-		m_pLightBuff = new ShaderCollection::Buffer::ConstantBufferLight;
-		m_pMeshBuff = new ShaderCollection::Buffer::ConstantBufferMesh;
+		m_pFrameBuff = new ShaderCollection::ConstantBufferFrame(0);
+		m_pMatBuff = new ShaderCollection::ConstantBufferMaterial(2);
+		m_pLightBuff = new ShaderCollection::ConstantBufferLight(3);
+		m_pMeshBuff = new ShaderCollection::ConstantBufferMesh(1);
 
 		m_pFrameBuff->Create();
 		m_pMatBuff->Create();
@@ -71,19 +71,19 @@ namespace MSLib {
 		m_pPS->End();
 	}
 
-	ShaderCollection::Buffer::ConstantBufferFrame* Shader::GetBuffFrame() {
+	ShaderCollection::ConstantBufferFrame* Shader::GetBuffFrame() {
 		return m_pFrameBuff;
 	}
 
-	ShaderCollection::Buffer::ConstantBufferMaterial* Shader::GetBuffMat() {
+	ShaderCollection::ConstantBufferMaterial* Shader::GetBuffMat() {
 		return m_pMatBuff;
 	}
 
-	ShaderCollection::Buffer::ConstantBufferLight* Shader::GetBuffLight() {
+	ShaderCollection::ConstantBufferLight* Shader::GetBuffLight() {
 		return m_pLightBuff;
 	}
 
-	ShaderCollection::Buffer::ConstantBufferMesh* Shader::GetBuffMesh() {
+	ShaderCollection::ConstantBufferMesh* Shader::GetBuffMesh() {
 		return m_pMeshBuff;
 	}
 

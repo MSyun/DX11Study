@@ -73,11 +73,11 @@ namespace MSLib {
 	//			ƒAƒvƒŠ‚Ì‰ð•ú			//
 	//									*/
 	HRESULT GameDirectX11Base::ReleaseApp() {
+		SAFE_DELETE(m_pSceneManager);
 		SAFE_DELETE(m_pSoundManager);
 		SAFE_DELETE(m_pShaderManager);
 		SAFE_DELETE(m_pMeshManager);
 		SAFE_DELETE(m_pTexManager);
-		SAFE_DELETE(m_pSceneManager);
 
 		SAFE_DELETE(m_pObject3DManager);
 		SAFE_DELETE(m_pCameraManager);

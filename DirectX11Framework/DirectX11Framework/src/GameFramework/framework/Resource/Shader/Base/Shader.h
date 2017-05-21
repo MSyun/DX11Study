@@ -23,10 +23,10 @@ namespace MSLib {
 	private:
 		ShaderCollection::VertexShader* m_pVS;
 		ShaderCollection::PixelShader* m_pPS;
-		ShaderCollection::Buffer::ConstantBufferFrame* m_pFrameBuff;
-		ShaderCollection::Buffer::ConstantBufferMaterial* m_pMatBuff;
-		ShaderCollection::Buffer::ConstantBufferLight* m_pLightBuff;
-		ShaderCollection::Buffer::ConstantBufferMesh* m_pMeshBuff;
+		ShaderCollection::ConstantBufferFrame* m_pFrameBuff;
+		ShaderCollection::ConstantBufferMaterial* m_pMatBuff;
+		ShaderCollection::ConstantBufferLight* m_pLightBuff;
+		ShaderCollection::ConstantBufferMesh* m_pMeshBuff;
 
 	public:
 		Shader();
@@ -38,10 +38,10 @@ namespace MSLib {
 		void Begin();
 		void End();
 
-		ShaderCollection::Buffer::ConstantBufferFrame* GetBuffFrame();
-		ShaderCollection::Buffer::ConstantBufferMaterial* GetBuffMat();
-		ShaderCollection::Buffer::ConstantBufferLight* GetBuffLight();
-		ShaderCollection::Buffer::ConstantBufferMesh* GetBuffMesh();
+		ShaderCollection::ConstantBufferFrame* GetBuffFrame();
+		ShaderCollection::ConstantBufferMaterial* GetBuffMat();
+		ShaderCollection::ConstantBufferLight* GetBuffLight();
+		ShaderCollection::ConstantBufferMesh* GetBuffMesh();
 	};
 
 	namespace ShaderCollection {

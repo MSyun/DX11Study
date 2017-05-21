@@ -73,11 +73,11 @@ namespace MSLib {
 		}
 
 		// 削除
-		if (it->second->use_count() > 1) {
+		if (it->second.use_count() > 1) {
 			Debug::Log("リソース : " + name + " は参照されているため削除できません");
 			return false;
 		}
-		it->second->reset();
+		it->second.reset();
 
 		m_MapResources.erase(name);
 

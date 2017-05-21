@@ -13,8 +13,11 @@
 #include	"../GameFramework/framework/Light/Manager/LightManager.h"
 
 #include	"../GameFramework/framework/Input/Input.h"
+#include	"../GameFramework/framework/Resource/Shader/Phong/Phong.h"
+#include	"../GameFramework/framework/Resource/Shader/Fog/Fog.h"
 
 using namespace MSLib;
+
 
 CheckScene::CheckScene() {
 }
@@ -27,18 +30,18 @@ bool CheckScene::Init() {
 	Object3D* obj;
 
 	m_pObj = new Object3D;
-	m_pObj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Miku2")));
+	m_pObj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Watch")));
 	m_pObj->GetTransform()->Translate(-3.0f, 0.0f, 0.0f);
 	m_pObj->GetTransform()->SetScale(0.3f, 0.3f, 0.3f);
-	m_pObj->DontDestroyOnLoad();
 
 	obj = new Object3D;
 	obj->SetModel(GetResourceManager<Mesh>()->Get(Archives::Mesh("Watch")));
-	obj->GetTransform()->SetScale(0.2f, 0.2f, 0.2f);
+	obj->GetTransform()->SetScale(5.0f, 0.1f, 5.0f);
+	obj->GetTransform()->SetPos(0.0f, -2.0f, 0.0f);
 
 	obj = new Camera;
 	obj->SetName("mainCamera");
-	obj->GetTransform()->SetPos(10.0f, 5.0f, -10.0f);
+	obj->GetTransform()->SetPos(10.0f, 10.0f, -30.0f);
 	obj->GetTransform()->LookAt(m_pObj->GetTransform());
 
 	obj = new Light;
@@ -47,12 +50,16 @@ bool CheckScene::Init() {
 	obj->GetTransform()->Rotate(-25.0f, 0.0f, 0.0f);
 	obj->GetTransform()->LookAt(m_pObj->GetTransform());
 
-	m_pShader = GetResourceManager<Shader>()->Create(Archives::Shader("Default/Phong"));
+//	m_pShader = GetResourceManager<Shader>()->Create(Archives::Shader("Default/Phong"));
+	ShaderCollection::Fog* shader = new ShaderCollection::Fog;
+	ShaderCollection::Fog::Instance()->Create();
 
 	return true;
 }
 
 void CheckScene::Release() {
+	GetResourceManager<Mesh>()->Delete(Archives::Mesh("Watch"));
+
 	GetObject3DManager()->AllClear();
 }
 
@@ -85,12 +92,13 @@ void CheckScene::Draw() {
 	GetCameraManager()->Set("mainCamera");
 
 	// 使用するシェーダの登録
-	m_pShader->Begin();
+//	m_pShader->Begin();
+	auto shader = ShaderCollection::Fog::Instance();
+	shader->Begin();
 
 	// ライト
 	Light* light = GetLightManager()->Get("Direction");
-	auto LightBuff = m_pShader->GetBuffLight();
-	LightBuff->BeginPass();
+	auto LightBuff = shader->GetBuffLight();
 	Color col;
 	col = light->GetColor(Light::LIGHT_DIFFUSE);
 	LightBuff->Diffuse(Vector3(col.r, col.g, col.b));
@@ -100,7 +108,7 @@ void CheckScene::Draw() {
 	LightBuff->Specular(Vector3(col.r, col.g, col.b));
 	LightBuff->Direction(light->GetDirection4());
 	LightBuff->Alpha(col.a);
-	LightBuff->EndPass();
+	LightBuff->Set();
 
 	// プリミティブをレンダリング
 	GetGraphics()->SetBlend(BlendType::BLEND_NORMAL);
@@ -109,5 +117,6 @@ void CheckScene::Draw() {
 	GetGraphics()->SetAlphaEnable(true);
 	GetObject3DManager()->LateDraw();
 
-	m_pShader->End();
+//	m_pShader->End();
+	shader->End();
 }

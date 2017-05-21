@@ -20,7 +20,7 @@ namespace MSLib {
 
 	class Object3DManager : public	Singleton<Object3DManager> {
 	protected:
-		std::list<std::shared_ptr<Object3D>>	m_lstObject;
+		std::list<std::unique_ptr<Object3D>>	m_lstObject;
 
 	public:
 		Object3DManager();

@@ -204,10 +204,13 @@
     <ClCompile Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\Base\Shader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\FogFrame\ConstantBufferFogFrame.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\Fog\Fog.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\Phong\Phong.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.cpp" />
     <ClCompile Include="src\GameFramework\framework\Resource\Texture\Texture.cpp" />
@@ -219,6 +222,7 @@
     <ClCompile Include="src\GameFramework\framework\Scene\ManagerWin\SceneManagerWin.cpp" />
     <ClCompile Include="src\GameFramework\framework\Scene\Manager\SceneManager.cpp" />
     <ClCompile Include="src\GameFramework\framework\Screen\Screen.cpp" />
+    <ClCompile Include="src\GameFramework\framework\Skydome\Skydome.cpp" />
     <ClCompile Include="src\GameFramework\framework\Sound\SoundBase.cpp" />
     <ClCompile Include="src\GameFramework\framework\Sound\SoundManager.cpp" />
     <ClCompile Include="src\GameFramework\framework\Sound\Wave\WaveLoader.cpp" />
@@ -284,10 +288,14 @@
     <ClInclude Include="src\GameFramework\framework\Resource\Mesh\Pmd\Pmd.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\Base\Shader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Base\ConstantBuffer.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\FogFrame\ConstantBufferFogFrame.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Frame\ConstantBufferFrame.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Light\ConstantBufferLight.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Material\ConstantBufferMaterial.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\Mesh\ConstantBufferMesh.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\Fog\Fog.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\Phong\Phong.h" />
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\Technique\Technique.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\ITypeShader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\PixelShader\PixelShader.h" />
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\TypeShader\VertexShader\VertexShader.h" />
@@ -302,6 +310,7 @@
     <ClInclude Include="src\GameFramework\framework\Scene\Manager\SceneManager.h" />
     <ClInclude Include="src\GameFramework\framework\Screen\Screen.h" />
     <ClInclude Include="src\GameFramework\framework\Singleton\Singleton.h" />
+    <ClInclude Include="src\GameFramework\framework\Skydome\Skydome.h" />
     <ClInclude Include="src\GameFramework\framework\Sound\SoundBase.h" />
     <ClInclude Include="src\GameFramework\framework\Sound\SoundManager.h" />
     <ClInclude Include="src\GameFramework\framework\Sound\Wave\WaveLoader.h" />

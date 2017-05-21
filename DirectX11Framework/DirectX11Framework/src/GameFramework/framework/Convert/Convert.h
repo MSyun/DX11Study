@@ -10,7 +10,7 @@
 #define	DX11
 
 #if defined(_DEBUG) && !defined(NEW)
-#define new		::new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define NEW		::new(_NORMAL_BLOCK, __FILE__, __LINE__)
 #endif
 
 

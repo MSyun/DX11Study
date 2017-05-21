@@ -55,7 +55,7 @@ namespace MSLib {
 			return;
 		}
 
-		m_lstObject.push_back(std::shared_ptr<Object3D>(obj));
+		m_lstObject.push_back(std::unique_ptr<Object3D>(obj));
 	}
 
 	void Object3DManager::AllClear() {

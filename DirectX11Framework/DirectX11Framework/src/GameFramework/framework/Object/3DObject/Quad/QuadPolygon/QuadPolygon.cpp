@@ -83,7 +83,6 @@ namespace MSLib {
 			&offset);
 
 		auto MeshBuff = shader->GetBuffMesh();
-		MeshBuff->BeginPass();
 		Matrix m = *world;
 		MatrixTranspose(&m, &m);
 		MeshBuff->World(m);
@@ -91,22 +90,20 @@ namespace MSLib {
 		m = *world * camera->GetView() * camera->GetProj();
 		MatrixTranspose(&m, &m);
 		MeshBuff->WVP(m);
-		MeshBuff->EndPass();
+		MeshBuff->Set();
 
 		auto FrameBuff = shader->GetBuffFrame();
-		FrameBuff->BeginPass();
 		FrameBuff->EyePos(Vector4(pos.x, pos.y, pos.z, 0.0f));
-		FrameBuff->EndPass();
+		FrameBuff->Set();
 
 		auto MatBuff = shader->GetBuffMat();
-		MatBuff->BeginPass();
 		MatBuff->Diffuse(m_Diffuse);
 		MatBuff->Alpha(m_Alpha);
 		MatBuff->Ambient(m_Ambient);
 		MatBuff->Emissive(m_Emissive);
 		MatBuff->Specular(m_Specular);
 		MatBuff->Shininess(m_Shininess);
-		MatBuff->EndPass();
+		MatBuff->Set();
 
 		// プリミティブ・トポロジーをセット
 		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);

@@ -304,6 +304,15 @@
     <Filter Include="ソース ファイル\GameFramework\MSLib\Pool">
       <UniqueIdentifier>{2af66fb9-bc74-476b-8bc7-107b51874caa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\Technique">
+      <UniqueIdentifier>{bdbb0332-a072-4ae7-be1d-bd9d1574ddfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\FogFrame">
+      <UniqueIdentifier>{446f8aaf-d4ae-45e0-9c0b-00e7fcc8201d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameFramework\MSLib\Skydome">
+      <UniqueIdentifier>{48da45bc-2b58-4475-a0f3-f916a05e3ee2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -506,6 +515,18 @@
     </ClCompile>
     <ClCompile Include="src\GameFramework\framework\Sound\SoundManager.cpp">
       <Filter>ソース ファイル\GameFramework\MSLib\Sound\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\Phong\Phong.cpp">
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Phong</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\Fog\Fog.cpp">
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Fog</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\FogFrame\ConstantBufferFogFrame.cpp">
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\FogFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameFramework\framework\Skydome\Skydome.cpp">
+      <Filter>ソース ファイル\GameFramework\MSLib\Skydome</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -751,6 +772,21 @@
     </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Pool\Pool.h">
       <Filter>ソース ファイル\GameFramework\MSLib\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\Phong\Phong.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Phong</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\Technique\Technique.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Technique</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\Fog\Fog.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Fog</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Resource\Shader\ConstantBuffer\FogFrame\ConstantBufferFogFrame.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\ConstantBuffer\FogFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameFramework\framework\Skydome\Skydome.h">
+      <Filter>ソース ファイル\GameFramework\MSLib\Skydome</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,8 @@
 #include	"../../Path/Path.h"
 #include	"../Shader/Base/Shader.h"
 
+#include	"../Shader/Phong/Phong.h"
+#include	"../Shader/Fog/Fog.h"
 
 namespace MSLib {
 
@@ -147,7 +149,8 @@ namespace MSLib {
 	void Mesh::Draw(Matrix* mat, _eAlphaCheck type) {
 		auto context = Graphics::GetDevice();
 
-		std::shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
+//		std::shared_ptr<Shader> shader = GetResourceManager<Shader>()->Get("Phong.hlsl");
+		ShaderCollection::Fog* shader = ShaderCollection::Fog::Instance();
 
 		Camera* camera = GetCameraManager()->CurrentCamera();
 		Vector3 pos = camera->GetTransform()->GetPos();
@@ -164,7 +167,6 @@ namespace MSLib {
 			&offset);
 
 		auto MeshBuff = shader->GetBuffMesh();
-		MeshBuff->BeginPass();
 		Matrix m;
 		m = *mat;
 		MatrixTranspose(&m, &m);
@@ -172,12 +174,11 @@ namespace MSLib {
 		m = *mat * camera->GetView() * camera->GetProj();
 		MatrixTranspose(&m, &m);
 		MeshBuff->WVP(m);
-		MeshBuff->EndPass();
+		MeshBuff->Set();
 
 		auto FrameBuff = shader->GetBuffFrame();
-		FrameBuff->BeginPass();
 		FrameBuff->EyePos(Vector4(pos.x, pos.y, pos.z, 1.0f));
-		FrameBuff->EndPass();
+		FrameBuff->Set();
 
 		for (unsigned int i = 0; i < m_pMeshData->material_count; ++i) {
 			if (!CheckAlpha(type, m_pMeshData->material[i].alpha)) {
@@ -189,14 +190,13 @@ namespace MSLib {
 				DXGI_FORMAT_R16_UINT,
 				0);
 
-			MatBuff->BeginPass();
 			MatBuff->Diffuse(m_pMeshData->material[i].diffuse);
 			MatBuff->Ambient(m_pMeshData->material[i].ambient);
 			MatBuff->Emissive(Vector3(0.0f, 0.0f, 0.0f));
 			MatBuff->Alpha(m_pMeshData->material[i].alpha);
 			MatBuff->Specular(m_pMeshData->material[i].specular);
 			MatBuff->Shininess(m_pMeshData->material[i].specularity);
-			MatBuff->EndPass();
+			MatBuff->Set();
 
 			std::string texName(m_pMeshData->material[i].texfile_name);
 			if (texName != "") {

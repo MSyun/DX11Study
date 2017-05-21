@@ -6,6 +6,7 @@
 
 #include	"../Object/3DObject/Object3D.h"
 #include	"../Convert/Convert.h"
+#include	"../Skydome/Skydome.h"
 
 
 namespace MSLib {
@@ -22,6 +23,8 @@ namespace MSLib {
 		float	m_fAspect;		// アスペクト比
 		float	m_fNear;		// 前方クリップ
 		float	m_fFar;			// 後方クリップ
+
+		Skydome*	m_pSky;
 
 	public:
 		/* コンストラクタ */
@@ -64,6 +67,12 @@ namespace MSLib {
 		// Far	: 設定したいファークリップ
 		*/
 		void SetFar(float Far);
+
+		void CreateSky();
+		void DeleteSky();
+
+	protected:
+		virtual void Update() override;
 	};
 
 };

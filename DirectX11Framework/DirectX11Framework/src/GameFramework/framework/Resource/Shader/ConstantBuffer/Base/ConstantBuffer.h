@@ -12,35 +12,48 @@
 
 namespace MSLib {
 	namespace ShaderCollection {
-		namespace Buffer {
 
-			class ConstantBuffer {
-			protected:
-				int m_ResourceNumber;
-				ID3D11Buffer*	m_pBuffer;
+		class Buffer;
 
-				D3D11_MAPPED_SUBRESOURCE pData;
+		class ConstantBuffer {
+		protected:
+			// スロットの番号
+			int m_ResourceNumber;
+			Buffer* m_pBuffer;
 
-			public:
-				ConstantBuffer(int resourceNum = -1);
-				virtual ~ConstantBuffer();
+		public:
+			ConstantBuffer(int resourceNum);
+			virtual ~ConstantBuffer();
 
-				//		void Update(const void* srcPtr);
-				virtual void BeginPass();
-				virtual void EndPass() = 0;
+			virtual void Set() = 0;
 
-				virtual bool Create() = 0;
-			};
+			virtual bool Create() = 0;
+		};
 
 
-			/* コンスタントバッファー作成
-			// ppBuffer	:
-			// size		:
-			*/
-			bool CreateConstantBuffer(
-				ID3D11Buffer** ppBuffer,
-				size_t size);
+		/* コンスタントバッファー作成
+		// ppBuffer	:
+		// size		:
+		*/
+		bool CreateConstantBuffer(
+			ID3D11Buffer** ppBuffer,
+			size_t size);
 
-		}
+
+		class Buffer {
+		private:
+			ID3D11Buffer*	m_pBuffer;
+
+			D3D11_MAPPED_SUBRESOURCE pData;
+			size_t m_size;
+
+		public:
+			explicit Buffer(size_t size);
+			~Buffer();
+			void Update(const void* pSrc);
+
+			ID3D11Buffer* buf() { return m_pBuffer; }
+		};
+
 	}
 }
