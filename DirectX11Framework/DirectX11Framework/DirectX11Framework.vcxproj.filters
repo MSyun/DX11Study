@@ -301,9 +301,6 @@
     <Filter Include="ソース ファイル\GameFramework\MSLib\DirectX\Ver.11">
       <UniqueIdentifier>{fcedbae2-9f8d-42d9-83c4-d87794984113}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameFramework\MSLib\Pool">
-      <UniqueIdentifier>{2af66fb9-bc74-476b-8bc7-107b51874caa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\GameFramework\MSLib\Resource\Shader\Technique">
       <UniqueIdentifier>{bdbb0332-a072-4ae7-be1d-bd9d1574ddfc}</UniqueIdentifier>
     </Filter>
@@ -770,9 +767,6 @@
     <ClInclude Include="src\GameFramework\framework\Sound\SoundManager.h">
       <Filter>ソース ファイル\GameFramework\MSLib\Sound\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameFramework\framework\Pool\Pool.h">
-      <Filter>ソース ファイル\GameFramework\MSLib\Pool</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameFramework\framework\Resource\Shader\Phong\Phong.h">
       <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Phong</Filter>
     </ClInclude>
@@ -813,9 +807,6 @@
     </None>
     <None Include="Color.hlslh">
       <Filter>ソース ファイル\GameFramework\MSLib\Resource\Shader\Header</Filter>
-    </None>
-    <None Include="src\GameFramework\framework\Pool\Pool.inl">
-      <Filter>ソース ファイル\GameFramework\MSLib\Pool</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

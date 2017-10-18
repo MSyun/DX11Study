@@ -13,7 +13,7 @@ namespace MSLib {
 		m_CurCameraName("")
 	{
 		Debug::Log("CameraManager ‚ğì¬");
-		m_aCamera.resize(3);
+		m_aCamera.resize(4);
 		m_aCamera.clear();
 	}
 

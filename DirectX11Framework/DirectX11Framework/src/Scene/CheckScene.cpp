@@ -59,7 +59,8 @@ bool CheckScene::Init() {
 
 void CheckScene::Release() {
 	GetResourceManager<Mesh>()->Delete(Archives::Mesh("Watch"));
-
+	auto shader = ShaderCollection::Fog::Instance();
+	SAFE_DELETE(shader);
 	GetObject3DManager()->AllClear();
 }
 
